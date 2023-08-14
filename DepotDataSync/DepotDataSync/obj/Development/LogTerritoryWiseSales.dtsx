@@ -1,0 +1,1589 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/6/2022 4:16:11 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SPC-3"
+  DTS:CreatorName="SPC-3\Jannat"
+  DTS:DTSID="{01C4EEC8-CE93-4A16-89A4-6B282B1ADF24}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5228.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="LogTerritoryWiseSales"
+  DTS:PackageType="5"
+  DTS:VersionBuild="438"
+  DTS:VersionGUID="{A1D5202A-0D6C-4842-AAB8-D550D5C92202}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DB_SERVER]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{DDC9FEE5-FCBB-40A7-9BCC-D8C52995AEF8}"
+      DTS:ObjectName="DB_SERVER">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.4;User ID=sa;Initial Catalog=SD_DMS;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-LogTerritoryWiseSales-{DDC9FEE5-FCBB-40A7-9BCC-D8C52995AEF8}DB_SERVER;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4o4Lzv7alUWR3nBt0Y/yKQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAB0ZB/KtqD42GpdHxzu3Ibb3FlJXh4oWTsEGUO38GajngAAAAAOgAAAAAIAACAAAAAmq5iCB1AOLeLBr03ybFPm9R++uD5ERWTiodOfFhkRDjAAAADtg9qIjYAzq6EuH+8kG4p6X3nzftAn85gls2u5B1MKuirTE0WkjmP61EhRmM8cUTJAAAAA8x4SkW/yxnIBzpgzCa33SAMvWBhTNw9LaaAbgbheZpdURWC0ger3BZSZgG+nS2AOySsmuXs+opedkq6KfnxVMg</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DB_SERVER_MAINTENANCE]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{80dc3951-df7b-4e6d-b40a-245697f32d76}"
+      DTS:ObjectName="DB_SERVER_MAINTENANCE">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.4;User ID=sa;Initial Catalog=Maintenance;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-LogTerritoryWiseSales-{80dc3951-df7b-4e6d-b40a-245697f32d76}DB_SERVER_MAINTENANCE;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4o4Lzv7alUWR3nBt0Y/yKQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADzvT9Rkh0/vMyVhJd1C7jctNWdj8NiMGYGOPzu5SicWQAAAAAOgAAAAAIAACAAAADhPDRdct9j8P32UcEUGs/iJgjwcPYXfMo8atfQ1j/AkzAAAAAKxJUpaEfRPMpQruWhN8uaZu40fwfPl5l7AffR2AjJYMk9FOPy5HqFIfUYFC6sMJRAAAAAtzQXftMbvq22zK3hZmLwjwLLFD/HzI75CPxwprAUCn23D8/L1aoQL3qR30XA3H0HJnTQ1T9ImvWtlNKrgEaHSQ</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DEPOT_SERVER]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{AD5E8A19-678D-4FA9-9790-45E052DAC76F}"
+      DTS:ObjectName="DEPOT_SERVER">
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::IPAddress]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.4\DEPOT_CLONE;User ID=sa;Initial Catalog=SD_DMS;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-LogTerritoryWiseSales-{AD5E8A19-678D-4FA9-9790-45E052DAC76F}DEPOT_SERVER;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4o4Lzv7alUWR3nBt0Y/yKQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAB+XicwEvq74OdmEwe5h1/HUBrMHsKaQfCet2VMAGp9HQAAAAAOgAAAAAIAACAAAAAj54XJw0EuV0/62Wg2Dd+9ZLHjibUksUjGSrttTds8uyAAAABBLyjik35hWoZ2GNw+gHDTd8i9UOiQYUTm09v81BL/fkAAAABXFLpgR9XCzLqXiltrW557G1kJnwwJRvLKTuLboorgJCnjf0YjQn9U6y6BhuBhuBFb4ZvKaci3YQB9VVQZF36C</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="DB_SERVER_MAINTENANCE"
+      DTS:CreationName="Microsoft.LogProviderSQLServer"
+      DTS:Description="Writes log entries for events to a SQL Server database"
+      DTS:DTSID="{9C5E1211-BABD-4AE8-9B6F-A5C99A2FDD34}"
+      DTS:ObjectName="SSIS log provider for SQL Server">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{7C17C4F1-049F-4129-A843-9145ABF76CAC}"
+      DTS:ObjectName="CHEMIST_LOOKUPSqlCommand">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">select * from [dbo].[Chemist]</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B926AFE2-7A5F-4627-8E1C-5C71D52A8176}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::IPAddress]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="IPAddress">
+      <DTS:VariableValue
+        DTS:DataType="8">192.168.42.4\DEPOT_CLONE</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0798C8CF-9AC9-42E1-9F43-440F827A16A5}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::LinkedServerName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LinkedServerName">
+      <DTS:VariableValue
+        DTS:DataType="8">COM_SRV</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{60174546-E5D0-4691-ACE7-B2050CB82118}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="NumberOfRows">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{27A45DA1-7875-4C04-90D7-60EA23E9CBC7}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ServerList">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{41FD0A12-A765-4BBD-BC5A-C7E124AC4216}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::ServerName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ServerName">
+      <DTS:VariableValue
+        DTS:DataType="8">COM</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{9C5E1211-BABD-4AE8-9B6F-A5C99A2FDD34}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{29AB576B-E07A-47CC-BE7F-B5A67DF033A3}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:ForceExecutionResult="0"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachADOEnumerator"
+        DTS:DTSID="{E8ADA6CF-C931-4B41-91EF-F595108BC5A0}"
+        DTS:ObjectName="{E8ADA6CF-C931-4B41-91EF-F595108BC5A0}">
+        <DTS:ObjectData>
+          <FEEADO
+            EnumType="EnumerateRowsInFirstTable"
+            VarName="User::ServerList" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\CHECK_SERVER_ONLINE"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{936B074E-9963-4142-9490-52E510AFE9EB}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CHECK_SERVER_ONLINE"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DDC9FEE5-FCBB-40A7-9BCC-D8C52995AEF8}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="DECLARE   @sysservername sysname;&#xA;SELECT  @sysservername = CONVERT(sysname, ?);&#xA;exec&#x9; sys.sp_testlinkedserver @sysservername;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::LinkedServerName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\DELETE EXISTING"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{06CFA30A-245E-48ED-8A6B-8EB45D173F57}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DELETE EXISTING"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{80dc3951-df7b-4e6d-b40a-245697f32d76}"
+              SQLTask:SqlStatementSource="&#xA;DELETE  Maintenance.dbo.TerritoryWiseDailySalesLog WHERE CreatedOn &gt;= CAST(GETDATE() AS DATE) AND DepotCode = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::ServerName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{3369A7AB-AB1C-4063-8CD8-AE189F48914B}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="GET TERRITORY SALES FROM DEPOT"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Command"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                  name="OLE DB Command"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE Maintenance.DBO.TerritoryWiseDailySalesLog SET  DepotSales = ? WHERE TerritoryCode = ? AND ToDate = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Command.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DB_SERVER_MAINTENANCE]"
+                      connectionManagerRefId="Package.ConnectionManagers[DB_SERVER_MAINTENANCE]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Command.Inputs[OLE DB Command Input]"
+                      errorOrTruncationOperation="Command Execution"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Command Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Command.Inputs[OLE DB Command Input].Columns[SoldValueInDepot]"
+                          cachedDataType="numeric"
+                          cachedName="SoldValueInDepot"
+                          cachedPrecision="38"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Output].Columns[SoldValueInDepot]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Command.Inputs[OLE DB Command Input].Columns[TerritoryCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="TerritoryCode"
+                          externalMetadataColumnId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Output].Columns[TerritoryCode]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Command.Inputs[OLE DB Command Input].Columns[ToDate]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="11"
+                          cachedName="ToDate"
+                          externalMetadataColumnId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Output].Columns[ToDate]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          dataType="numeric"
+                          name="Param_0"
+                          precision="18"
+                          scale="2">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="Param_1">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          dataType="dbTimeStamp"
+                          name="Param_2">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Command.Outputs[OLE DB Command Output]"
+                      exclusionGroup="1"
+                      name="OLE DB Command Output"
+                      synchronousInputId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Command.Inputs[OLE DB Command Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Command Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Command.Inputs[OLE DB Command Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">Declare @FromDate as varchar(11) = SD_DMS.DBO.getCurrentMonthFirstDate(GETDATE());
+Declare @ToDate as varchar(11) =  DATEADD(DAY,-1, GETDATE());
+
+
+
+SELECT @ToDate AS ToDate, TerritoryCode,  SUM(SoldValue) AS SoldValueInDepot
+FROM (
+
+--TRANSIT 
+	SELECT    CL.TerritoryCode,  SUM(ID.TotalTP) AS SoldValue
+		FROM SD_DMS.DBO.Invoice I  WITH(NOLOCK) 
+
+		LEFT JOIN SD_DMS.DBO.InvoiceDetail ID  WITH(NOLOCK) ON I.InvoiceCode = ID.InvoiceCode
+		LEFT JOIN SD_DMS.DBO.SummaryInvoice SI WITH(NOLOCK)  ON I.InvoiceCode = SI.InvoiceCode 
+		LEFT JOIN SD_DMS.DBO.v_ChemistAndLocation CL ON I.ChemistCode = CL.ChemistCode
+
+		WHERE SI.SummaryCode IS NULL AND
+		InvoiceDate BETWEEN @FromDate AND  @ToDate
+		AND I.IsActive = 1 
+		AND ID.IsActive = 1
+
+		GROUP BY  CL.TerritoryCode
+
+
+		--SOLD
+		UNION ALL 
+
+		SELECT  CL.TerritoryCode,  SUM(SID.TotalTP) AS SoldValueInDepot
+			
+		FROM  SD_DMS.DBO.Invoice I   WITH(NOLOCK) 
+		INNER JOIN SD_DMS.DBO.SummaryInvoice SI  WITH(NOLOCK) ON SI.InvoiceCode = I.InvoiceCode 
+		INNER JOIN SD_DMS.DBO.Summary S WITH(NOLOCK) ON SI.SummaryCode = S.SummaryCode
+		INNER JOIN SD_DMS.DBO.SummaryInvoiceDetail SID WITH(NOLOCK)  ON SI.InvoiceCode = SID.InvoiceCode 
+		INNER JOIN SD_DMS.DBO.v_ChemistAndLocation CL ON I.ChemistCode = CL.ChemistCode
+
+		WHERE  InvoiceDate BETWEEN @FromDate AND  @ToDate
+		AND I.IsActive = 1 
+		AND SI.IsActive = 1
+		AND S.IsActive = 1
+		AND SID.IsActive = 1
+			
+		GROUP BY  CL.TerritoryCode
+
+)  AS Z 
+	
+GROUP BY TerritoryCode</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DEPOT_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[DEPOT_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Output].Columns[TerritoryCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TerritoryCode]"
+                          length="5"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Output].Columns[TerritoryCode]"
+                          name="TerritoryCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Output].Columns[SoldValueInDepot]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SoldValueInDepot]"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Output].Columns[SoldValueInDepot]"
+                          name="SoldValueInDepot"
+                          precision="38"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Output].Columns[ToDate]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ToDate]"
+                          length="11"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Output].Columns[ToDate]"
+                          name="ToDate"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TerritoryCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="TerritoryCode" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SoldValueInDepot]"
+                          dataType="numeric"
+                          name="SoldValueInDepot"
+                          precision="38"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ToDate]"
+                          codePage="1252"
+                          dataType="str"
+                          length="11"
+                          name="ToDate" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ToDate]"
+                          codePage="1252"
+                          dataType="str"
+                          length="11"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ToDate]"
+                          name="ToDate" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TerritoryCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TerritoryCode]"
+                          name="TerritoryCode" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SoldValueInDepot]"
+                          dataType="numeric"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SoldValueInDepot]"
+                          name="SoldValueInDepot"
+                          precision="38"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT.Paths[OLE DB Source Output]"
+                  endId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Command.Inputs[OLE DB Command Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{E609E159-1006-48D9-8EEC-CBAF5E9428EE}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="GET TERRITORY SALES FROM HO"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[TerritoryWiseDailySalesLog]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">Declare @FromDate as varchar(11) = SD_DMS.DBO.getCurrentMonthFirstDate(GETDATE());
+Declare @ToDate as varchar(11) =  DATEADD(DAY,-1, GETDATE());
+
+
+SELECT @FromDate AS FromDate, @ToDate AS ToDate, TerritoryCode,  SUM(SoldValue) AS SoldValueInHO
+	FROM (
+
+	--TRANSIT 
+		SELECT   CL.TerritoryCode,  SUM(ID.TotalTP) AS SoldValue
+			FROM SD_DMS.DBO.Invoice I  WITH(NOLOCK) 
+
+			LEFT JOIN SD_DMS.DBO.InvoiceDetail ID  WITH(NOLOCK) ON I.InvoiceCode = ID.InvoiceCode
+			LEFT JOIN SD_DMS.DBO.SummaryInvoice SI WITH(NOLOCK)  ON I.InvoiceCode = SI.InvoiceCode 
+			LEFT JOIN SD_DMS.DBO.v_ChemistAndLocation CL ON I.ChemistCode = CL.ChemistCode
+
+			WHERE SI.SummaryCode IS NULL AND
+			InvoiceDate BETWEEN @FromDate AND  @ToDate
+			AND I.IsActive = 1 
+			AND ID.IsActive = 1
+
+			GROUP BY   CL.TerritoryCode
+
+
+			--SOLD
+			UNION ALL 
+
+			SELECT  CL.TerritoryCode,  SUM(SID.TotalTP) AS SoldValue
+			
+			FROM  SD_DMS.DBO.Invoice I   WITH(NOLOCK) 
+			INNER JOIN SD_DMS.DBO.SummaryInvoice SI  WITH(NOLOCK) ON SI.InvoiceCode = I.InvoiceCode 
+			INNER JOIN SD_DMS.DBO.Summary S WITH(NOLOCK) ON SI.SummaryCode = S.SummaryCode
+			INNER JOIN SD_DMS.DBO.SummaryInvoiceDetail SID WITH(NOLOCK)  ON SI.InvoiceCode = SID.InvoiceCode 
+			INNER JOIN SD_DMS.DBO.v_ChemistAndLocation CL ON I.ChemistCode = CL.ChemistCode
+			
+			WHERE  InvoiceDate BETWEEN @FromDate AND  @ToDate
+			AND I.IsActive = 1 
+			AND SI.IsActive = 1
+			AND S.IsActive = 1
+			AND SID.IsActive = 1
+			
+			GROUP BY   CL.TerritoryCode
+
+	)  AS Z 
+	
+	GROUP BY TerritoryCode</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DB_SERVER_MAINTENANCE]"
+                      connectionManagerRefId="Package.ConnectionManagers[DB_SERVER_MAINTENANCE]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FromDate]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="11"
+                          cachedName="FromDate"
+                          externalMetadataColumnId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FromDate]"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output].Columns[FromDate]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ToDate]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="11"
+                          cachedName="ToDate"
+                          externalMetadataColumnId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ToDate]"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output].Columns[ToDate]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TerritoryCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="TerritoryCode"
+                          externalMetadataColumnId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryCode]"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output].Columns[TerritoryCode]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SoldValueInHO]"
+                          cachedDataType="numeric"
+                          cachedName="SoldValueInHO"
+                          cachedPrecision="38"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SoldValueInHO]"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output].Columns[SoldValueInHO]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DepotCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3"
+                          cachedName="DepotCode"
+                          externalMetadataColumnId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepotCode]"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepotCode]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOn]"
+                          dataType="dbTimeStamp"
+                          name="CreatedOn" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepotCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="DepotCode" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FromDate]"
+                          dataType="dbTimeStamp"
+                          name="FromDate" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ToDate]"
+                          dataType="dbTimeStamp"
+                          name="ToDate" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="TerritoryCode" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SoldValueInHO]"
+                          dataType="numeric"
+                          name="SoldValueInHO"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepotTerritoryCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="DepotTerritoryCode" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepotSales]"
+                          dataType="numeric"
+                          name="DepotSales"
+                          precision="18"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">Declare @FromDate as varchar(11) = SD_DMS.DBO.getCurrentMonthFirstDate(GETDATE());
+Declare @ToDate as varchar(11) =  DATEADD(DAY,-1, GETDATE());
+
+
+
+	SELECT   @FromDate AS FromDate, @ToDate AS ToDate, A.* FROM
+	(
+		SELECT DepotCode,TerritoryCode,  SUM(SoldValue) AS SoldValueInHO
+		FROM (
+
+		--TRANSIT 
+			SELECT    DA.DepotCode,CL.TerritoryCode,  SUM(ID.TotalTP) AS SoldValue
+				FROM SD_DMS.DBO.Invoice I  WITH(NOLOCK) 
+
+				LEFT JOIN SD_DMS.DBO.InvoiceDetail ID  WITH(NOLOCK) ON I.InvoiceCode = ID.InvoiceCode
+				LEFT JOIN SD_DMS.DBO.SummaryInvoice SI WITH(NOLOCK)  ON I.InvoiceCode = SI.InvoiceCode 
+				LEFT JOIN SD_DMS.DBO.v_ChemistAndLocation CL ON I.ChemistCode = CL.ChemistCode
+				LEFT JOIN DepotAreaMapping DA ON CL.AreaCode = DA.AreaCode
+
+				WHERE SI.SummaryCode IS NULL AND
+				InvoiceDate BETWEEN @FromDate AND  @ToDate
+				AND I.IsActive = 1 
+				AND ID.IsActive = 1
+
+				GROUP BY   DA.DepotCode, CL.TerritoryCode
+
+
+				--SOLD
+				UNION ALL 
+
+				SELECT  DA.DepotCode, CL.TerritoryCode,  SUM(SID.TotalTP) AS SoldValue
+			
+				FROM  SD_DMS.DBO.Invoice I   WITH(NOLOCK) 
+				INNER JOIN SD_DMS.DBO.SummaryInvoice SI  WITH(NOLOCK) ON SI.InvoiceCode = I.InvoiceCode 
+				INNER JOIN SD_DMS.DBO.Summary S WITH(NOLOCK) ON SI.SummaryCode = S.SummaryCode
+				INNER JOIN SD_DMS.DBO.SummaryInvoiceDetail SID WITH(NOLOCK)  ON SI.InvoiceCode = SID.InvoiceCode 
+				INNER JOIN SD_DMS.DBO.v_ChemistAndLocation CL ON I.ChemistCode = CL.ChemistCode
+				INNER JOIN DepotAreaMapping DA ON CL.AreaCode = DA.AreaCode
+
+				WHERE  InvoiceDate BETWEEN @FromDate AND  @ToDate
+				AND I.IsActive = 1 
+				AND SI.IsActive = 1
+				AND S.IsActive = 1
+				AND SID.IsActive = 1
+			
+				GROUP BY  DA.DepotCode, CL.TerritoryCode
+
+		)  AS Z 
+	
+		GROUP BY DepotCode,TerritoryCode
+	
+	) A
+
+WHERE A.DepotCode = ?</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping">"Parameter0:Input",{41FD0A12-A765-4BBD-BC5A-C7E124AC4216};</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DB_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[DB_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output].Columns[FromDate]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FromDate]"
+                          length="11"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output].Columns[FromDate]"
+                          name="FromDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output].Columns[ToDate]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ToDate]"
+                          length="11"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output].Columns[ToDate]"
+                          name="ToDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output].Columns[TerritoryCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TerritoryCode]"
+                          length="5"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output].Columns[TerritoryCode]"
+                          name="TerritoryCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output].Columns[SoldValueInHO]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SoldValueInHO]"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output].Columns[SoldValueInHO]"
+                          name="SoldValueInHO"
+                          precision="38"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepotCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepotCode]"
+                          length="3"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepotCode]"
+                          name="DepotCode"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FromDate]"
+                          codePage="1252"
+                          dataType="str"
+                          length="11"
+                          name="FromDate" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ToDate]"
+                          codePage="1252"
+                          dataType="str"
+                          length="11"
+                          name="ToDate" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TerritoryCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="TerritoryCode" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SoldValueInHO]"
+                          dataType="numeric"
+                          name="SoldValueInHO"
+                          precision="38"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepotCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          name="DepotCode" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepotCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepotCode]"
+                          name="DepotCode" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FromDate]"
+                          codePage="1252"
+                          dataType="str"
+                          length="11"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FromDate]"
+                          name="FromDate" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ToDate]"
+                          codePage="1252"
+                          dataType="str"
+                          length="11"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ToDate]"
+                          name="ToDate" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TerritoryCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TerritoryCode]"
+                          name="TerritoryCode" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SoldValueInHO]"
+                          dataType="numeric"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SoldValueInHO]"
+                          name="SoldValueInHO"
+                          precision="38"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO.Paths[OLE DB Source Output]"
+                  endId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\LOG_IF_OFFLINE"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{17373BF8-3A4D-404A-905C-B9B76A6B8347}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="LOG_IF_OFFLINE"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DDC9FEE5-FCBB-40A7-9BCC-D8C52995AEF8}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="INSERT INTO Maintenance.dbo.MasterDataSyncLog (PackageName, ServerName, ServerStatus)&#xA;VALUES('MasterDataSynce_ConsolidationStyle',?,'OFFLINE');" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::LinkedServerName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\SET_SERVER_OFFLINE"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{5D3ACB8C-C9BD-4514-B235-C8074A263778}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SET_SERVER_OFFLINE"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DDC9FEE5-FCBB-40A7-9BCC-D8C52995AEF8}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="UPDATE Maintenance.DBO.ServerList SET IsOnline = 0 WHERE ServerName = ?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::LinkedServerName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{8DE000F5-9D44-4494-AE2E-99BBD43F462A}"
+          DTS:From="Package\Foreach Loop Container\CHECK_SERVER_ONLINE"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Foreach Loop Container\LOG_IF_OFFLINE"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{0260FF05-3F79-48F1-B3C9-3F013B162365}"
+          DTS:From="Package\Foreach Loop Container\LOG_IF_OFFLINE"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Foreach Loop Container\SET_SERVER_OFFLINE" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{69B75CEC-FE5B-4DA1-84B8-7A5E94B183C1}"
+          DTS:From="Package\Foreach Loop Container\CHECK_SERVER_ONLINE"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Foreach Loop Container\DELETE EXISTING" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{F3EE9B71-40EC-4E19-AD71-A00253277DE5}"
+          DTS:From="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{145999DD-15B8-499D-A194-C5C382B90C84}"
+          DTS:From="Package\Foreach Loop Container\DELETE EXISTING"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{5CE2FB8E-74D0-4AAC-A947-5C1B9A357BA4}"
+          DTS:ObjectName="{5CE2FB8E-74D0-4AAC-A947-5C1B9A357BA4}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::ServerList" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{96764546-B19A-4DC6-B865-A09BF3DA7D23}"
+          DTS:ObjectName="{96764546-B19A-4DC6-B865-A09BF3DA7D23}"
+          DTS:ValueIndex="1"
+          DTS:VariableName="User::IPAddress" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{91D62A3E-AC40-419F-99D5-FCB5D9E6C856}"
+          DTS:ObjectName="{91D62A3E-AC40-419F-99D5-FCB5D9E6C856}"
+          DTS:ValueIndex="2"
+          DTS:VariableName="User::LinkedServerName" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{3C5AD039-2828-4900-B95D-42530E56D087}"
+          DTS:ObjectName="{3C5AD039-2828-4900-B95D-42530E56D087}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::ServerName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\GET_ALL_SERVER"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{FCB41D47-7EAC-4F74-BF0A-11E65D9E06FA}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="GET_ALL_SERVER"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DDC9FEE5-FCBB-40A7-9BCC-D8C52995AEF8}"
+          SQLTask:SqlStatementSource="SELECT ServerName, IPAddress, LinkedServerName&#xA;FROM Maintenance.dbo.ServerList &#xA;WHERE IsActive = 1&#xA;AND IsOnline = 1 &#xA;AND IsSSISOnly = 1&#xA;ORDER BY OrderNo;"
+          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::ServerList" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{FDBBA53B-3112-4869-9FA3-F7C87F004A31}"
+      DTS:From="Package\GET_ALL_SERVER"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Foreach Loop Container" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="216,42"
+          Id="Package\Foreach Loop Container\CHECK_SERVER_ONLINE"
+          TopLeft="68.4285714285714,32.4285714285714" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Foreach Loop Container\DELETE EXISTING"
+          TopLeft="91,116" />
+        <NodeLayout
+          Size="258,42"
+          Id="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT"
+          TopLeft="52,287" />
+        <NodeLayout
+          Size="240,42"
+          Id="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO"
+          TopLeft="57,209" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Foreach Loop Container\LOG_IF_OFFLINE"
+          TopLeft="377,28.8571428571429" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\Foreach Loop Container\SET_SERVER_OFFLINE"
+          TopLeft="619.857142857143,26.8571428571428" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          TopLeft="284.428571428571,51.6428571428571">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="92.5714285714286,0"
+              Start="0,0"
+              End="85.0714285714286,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="85.0714285714286,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="27.2943666294643,5,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="548,48.8571428571428">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="71.857142857143,0"
+              Start="0,0"
+              End="64.357142857143,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="64.357142857143,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 2]"
+          TopLeft="175.214285714286,74.4285714285714">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.5714285714286"
+              Start="0,0"
+              End="0,34.0714285714286">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.0714285714286" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 3]"
+          TopLeft="179,251">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 4]"
+          TopLeft="175.5,158">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51"
+              Start="0,0"
+              End="0,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="894,501"
+          Size="894,544"
+          Id="Package\Foreach Loop Container"
+          TopLeft="108.142857142858,327.015873015873" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\GET_ALL_SERVER"
+          TopLeft="461,197.857142857143" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="552.821428571429,239.857142857143">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,87.15873015873"
+              Start="0,0"
+              End="0,79.65873015873">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,79.65873015873" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source"
+          TopLeft="472,110" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Command"
+          TopLeft="459,251" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT.Paths[OLE DB Source Output]"
+          TopLeft="544.5,152">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,99"
+              Start="0,0"
+              End="0,91.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,91.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\GET TERRITORY SALES FROM DEPOT\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Destination"
+          TopLeft="385,339" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source"
+          TopLeft="392,188" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO.Paths[OLE DB Source Output]"
+          TopLeft="468.75,230">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,109"
+              Start="0,0"
+              End="0,101.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,101.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\GET TERRITORY SALES FROM HO\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

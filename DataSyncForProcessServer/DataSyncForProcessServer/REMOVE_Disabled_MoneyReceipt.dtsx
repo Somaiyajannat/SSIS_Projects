@@ -1,0 +1,747 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/31/2022 7:27:17 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="MEHEDI-PC"
+  DTS:CreatorName="MEHEDI-PC\Mehedi"
+  DTS:DTSID="{79F62DEB-D5D4-4462-B130-B23B238D61B3}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5228.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="REMOVE_Disabled_MoneyReceipt"
+  DTS:PackageType="5"
+  DTS:VersionBuild="186"
+  DTS:VersionGUID="{C7BB3531-1704-4D79-9CCD-BD912C8F1D2D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DB_SERVER]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{FCF78A2C-6101-481F-8834-D1336A3A263C}"
+      DTS:ObjectName="DB_SERVER">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.4;User ID=sa;Initial Catalog=SD_DMS;Provider=SQLNCLI11.1;Auto Translate=False;Application Name=SSIS-REMOVE_Disabled_MoneyReceipt-{FCF78A2C-6101-481F-8834-D1336A3A263C}DB_SERVER;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4o4Lzv7alUWR3nBt0Y/yKQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAYyMbnfDVFfVp5tR1K2BbJUsaxbG8MSiZwhehk/y533QAAAAAOgAAAAAIAACAAAAAvItE5nK2G6NhjnjMrJMplm6SSp0fw6Kzfmy3c1efzpzAAAABfXhDrvDAkHBIIfHvrwPafPYJChjp2+3HthXEL8Kq6n9Kf5MOJXFO3M7tSG9PjJBVAAAAAUascqJ5Mw8UCidDgkoQ2X8CzVTfoyBg4R6BFfApZY3qM0DHdqbdLwrvu5Q5lQ7FdjszpMcKtlkCgL8rRaUUgAQ</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PROCESS_SERVER]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{8A798D74-712D-4B84-AB87-7287A0340670}"
+      DTS:ObjectName="PROCESS_SERVER">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.5;User ID=sa;Initial Catalog=SALES;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-REMOVE_Disabled_MoneyReceipt-{8A798D74-712D-4B84-AB87-7287A0340670}PROCESS_SERVER;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4o4Lzv7alUWR3nBt0Y/yKQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAACkgsYbAqBrtdpARUXfcJA/bzw4mLE8En5fgWz0EcIgAAAAAOgAAAAAIAACAAAACWZCdoD2hHjfmPWAD3QeNdJS8h4zo5OJyAOn8SWzoTxzAAAAAisZ8oeugW/PegdE52kcyXdvGfDbotDOHwwjix5oCHeTvqIujR0y+SAULk8LPWjmJAAAAAlnq5Nn182zYym8IVCGUa4hx25xpXtAn8lTQdi+goP7IDFhplsHGZJjHnR4FLxiAguyW9e2GlGoplhu9GTLqIFA</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D72B624E-728D-4898-81DF-6AFCF23BBD1C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="NumberOfRows">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{5E681781-4629-4B64-ACBD-102D61439586}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DELETE DISABLE MONEY RECEIPT COLLECTION">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\DELETE FROM PROCESS DERVER"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{5D598C1C-4E25-4824-9717-DF4EEE38B202}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DELETE FROM PROCESS DERVER"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{8A798D74-712D-4B84-AB87-7287A0340670}"
+              SQLTask:SqlStatementSource="&#xA;&#xA;Declare @DateFrom as varchar(11), @DateTo  as varchar(11);&#xA;SELECT @DateFrom = DateFrom, @DateTo = DateTo  FROM SALES.DBO.getSyncDateDuration(0);&#xA;&#xA;DELETE SALES.DBO.InvoiceWiseCollectionDaily &#xA;WHERE MoneyReceiptCode IN&#xA;(&#xA;    SELECT A.MoneyReceiptCode FROM&#xA;    (&#xA;        SELECT DISTINCT MoneyReceiptCode FROM SALES.DBO.InvoiceWiseCollectionDaily &#xA;        WHERE CollectionDate BETWEEN @DateFrom  AND @DateTo  &#xA;&#xA;    ) AS A&#xA;&#xA;    LEFT JOIN&#xA;    (&#xA;&#xA;        SELECT DISTINCT MoneyReceiptCode FROM SALES.DBO.Staging_InvoiceWiseCollectionDaily &#xA;        WHERE CollectionDate BETWEEN @DateFrom AND @DateTo  &#xA;    ) AS B ON A.MoneyReceiptCode = B.MoneyReceiptCode&#xA;&#xA;    WHERE B.MoneyReceiptCode IS NULL&#xA;)&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{B805032C-705D-47C4-B9B5-58FDB32C0A7D}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="INSERT DATA INTO STAGING TABLE"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="COLLECTION DAILY | HO"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">Declare @DateFrom as varchar(11), @DateTo  as varchar(11);
+SELECT @DateFrom = DateFrom, @DateTo = DateTo  FROM
+ DBO.getSyncDateDuration();
+
+
+
+EXEC SD_DMS.DBO.SSIS_getInvoiceWiseCollectionDaily  @DateFrom, @DateTo;</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DB_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[DB_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].Columns[InvoiceCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].ExternalColumns[InvoiceCode]"
+                          length="17"
+                          lineageId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].Columns[InvoiceCode]"
+                          name="InvoiceCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          name="InvoiceDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].Columns[ChemistCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].ExternalColumns[ChemistCode]"
+                          length="20"
+                          lineageId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].Columns[ChemistCode]"
+                          name="ChemistCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].Columns[PaymentMode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].ExternalColumns[PaymentMode]"
+                          length="10"
+                          lineageId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].Columns[PaymentMode]"
+                          name="PaymentMode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].Columns[CollectionDate]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].ExternalColumns[CollectionDate]"
+                          lineageId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].Columns[CollectionDate]"
+                          name="CollectionDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].Columns[MoneyReceiptCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].ExternalColumns[MoneyReceiptCode]"
+                          length="20"
+                          lineageId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].Columns[MoneyReceiptCode]"
+                          name="MoneyReceiptCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].Columns[Amount]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
+                          lineageId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].Columns[Amount]"
+                          name="Amount"
+                          precision="18"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].ExternalColumns[InvoiceCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="17"
+                          name="InvoiceCode" />
+                        <externalMetadataColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          dataType="dbDate"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].ExternalColumns[ChemistCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="ChemistCode" />
+                        <externalMetadataColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].ExternalColumns[PaymentMode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="PaymentMode" />
+                        <externalMetadataColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].ExternalColumns[CollectionDate]"
+                          dataType="dbDate"
+                          name="CollectionDate" />
+                        <externalMetadataColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].ExternalColumns[MoneyReceiptCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="MoneyReceiptCode" />
+                        <externalMetadataColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
+                          dataType="numeric"
+                          name="Amount"
+                          precision="18"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Error Output].Columns[CollectionDate]"
+                          dataType="dbDate"
+                          lineageId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Error Output].Columns[CollectionDate]"
+                          name="CollectionDate" />
+                        <outputColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Error Output].Columns[MoneyReceiptCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Error Output].Columns[MoneyReceiptCode]"
+                          name="MoneyReceiptCode" />
+                        <outputColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Error Output].Columns[InvoiceCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="17"
+                          lineageId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Error Output].Columns[InvoiceCode]"
+                          name="InvoiceCode" />
+                        <outputColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          dataType="dbDate"
+                          lineageId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          name="InvoiceDate" />
+                        <outputColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Error Output].Columns[ChemistCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Error Output].Columns[ChemistCode]"
+                          name="ChemistCode" />
+                        <outputColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Error Output].Columns[PaymentMode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Error Output].Columns[PaymentMode]"
+                          name="PaymentMode" />
+                        <outputColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Error Output].Columns[Amount]"
+                          dataType="numeric"
+                          lineageId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Error Output].Columns[Amount]"
+                          name="Amount"
+                          precision="18"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Staging_InvoiceWiseCollection"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Staging_InvoiceWiseCollectionDaily]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].Columns[InvoiceCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="17"
+                          cachedName="InvoiceCode"
+                          externalMetadataColumnId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceCode]"
+                          lineageId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].Columns[InvoiceCode]" />
+                        <inputColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].Columns[InvoiceDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="InvoiceDate"
+                          externalMetadataColumnId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].Columns[InvoiceDate]" />
+                        <inputColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].Columns[ChemistCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="ChemistCode"
+                          externalMetadataColumnId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[ChemistCode]"
+                          lineageId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].Columns[ChemistCode]" />
+                        <inputColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].Columns[PaymentMode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="PaymentMode"
+                          externalMetadataColumnId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[PaymentMode]"
+                          lineageId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].Columns[PaymentMode]" />
+                        <inputColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].Columns[CollectionDate]"
+                          cachedDataType="dbDate"
+                          cachedName="CollectionDate"
+                          externalMetadataColumnId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[CollectionDate]"
+                          lineageId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].Columns[CollectionDate]" />
+                        <inputColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].Columns[MoneyReceiptCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="MoneyReceiptCode"
+                          externalMetadataColumnId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[MoneyReceiptCode]"
+                          lineageId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].Columns[MoneyReceiptCode]" />
+                        <inputColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].Columns[Amount]"
+                          cachedDataType="numeric"
+                          cachedName="Amount"
+                          cachedPrecision="18"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
+                          lineageId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output].Columns[Amount]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="17"
+                          name="InvoiceCode" />
+                        <externalMetadataColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          dataType="dbDate"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[ChemistCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="ChemistCode" />
+                        <externalMetadataColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[PaymentMode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="PaymentMode" />
+                        <externalMetadataColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[CollectionDate]"
+                          dataType="dbDate"
+                          name="CollectionDate" />
+                        <externalMetadataColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[MoneyReceiptCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="17"
+                          name="MoneyReceiptCode" />
+                        <externalMetadataColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
+                          dataType="numeric"
+                          name="Amount"
+                          precision="18"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE.Paths[OLE DB Source Output]"
+                  endId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\TRUNCATE STATING TABLE"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{CDD81A5A-2E3A-4320-9D3A-E54CC3924700}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="TRUNCATE STATING TABLE"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{8A798D74-712D-4B84-AB87-7287A0340670}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE SALES.DBO.Staging_InvoiceWiseCollectionDaily" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{88FBCA09-77B7-4623-80B1-996CA8665CF3}"
+          DTS:From="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\TRUNCATE STATING TABLE"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DELETE DISABLE MONEY RECEIPT COLLECTION.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{50EEA0FD-C1E3-404D-BFD3-C2A1C6211B45}"
+          DTS:From="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\DELETE FROM PROCESS DERVER" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="227,42"
+          Id="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\TRUNCATE STATING TABLE"
+          TopLeft="84,31" />
+        <NodeLayout
+          Size="271,42"
+          Id="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE"
+          TopLeft="64,121" />
+        <EdgeLayout
+          Id="Package\DELETE DISABLE MONEY RECEIPT COLLECTION.PrecedenceConstraints[Constraint]"
+          TopLeft="198.5,73">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="263,42"
+          Id="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\DELETE FROM PROCESS DERVER"
+          TopLeft="61,222" />
+        <EdgeLayout
+          Id="Package\DELETE DISABLE MONEY RECEIPT COLLECTION.PrecedenceConstraints[Constraint 1]"
+          TopLeft="196,163">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59"
+              Start="0,0"
+              End="0,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="385,343"
+          Size="385,386"
+          Id="Package\DELETE DISABLE MONEY RECEIPT COLLECTION"
+          TopLeft="339,73" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="222,42"
+          Id="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection"
+          TopLeft="356,250" />
+        <NodeLayout
+          Size="209,42"
+          Id="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO"
+          TopLeft="391,94" />
+        <EdgeLayout
+          Id="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE.Paths[OLE DB Source Output]"
+          TopLeft="495.5,136">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-28.5,114"
+              Start="0,0"
+              End="-28.5,106.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,53"
+                    Point2="0,57"
+                    Point3="-4,57" />
+                  <mssgle:LineSegment
+                    End="-24.5,57" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-24.5,57"
+                    Point2="-28.5,57"
+                    Point3="-28.5,61" />
+                  <mssgle:LineSegment
+                    End="-28.5,106.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\Staging_InvoiceWiseCollection">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DELETE DISABLE MONEY RECEIPT COLLECTION\INSERT DATA INTO STAGING TABLE\COLLECTION DAILY | HO">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

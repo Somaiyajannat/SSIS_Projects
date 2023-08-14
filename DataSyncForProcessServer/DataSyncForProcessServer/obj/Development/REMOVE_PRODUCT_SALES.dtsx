@@ -1,0 +1,3467 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/31/2022 7:27:17 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="MEHEDI-PC"
+  DTS:CreatorName="MEHEDI-PC\Mehedi"
+  DTS:DTSID="{88782D75-2FCD-4918-ADE5-057EEDAECDB4}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="REMOVE_PRODUCT_SALES"
+  DTS:PackageType="5"
+  DTS:VersionBuild="201"
+  DTS:VersionGUID="{8DC9B23A-1B8D-4ECC-B0A2-E8B455AF2208}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DB_SERVER]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F6794D07-46C4-4B0D-A402-150978AB9A43}"
+      DTS:ObjectName="DB_SERVER">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.4;User ID=sa;Initial Catalog=SD_DMS;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAZCwLT/uql0+f0k019B0lFwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADR0AnJrSgUp9RuVMyD5mCGsN2N6clyVV1yiYy2W6cHJQAAAAAOgAAAAAIAACAAAABSjh5PsVclpkv7Rhe+hDgmJD19V6m6kjorDgePQtVsIDAAAABAnwEkL2Sy5uefUj523PJG3jUuN0xJCENeBkrntUME52thkaGInZWNsj7ThB5eid5AAAAA/0Xsi30eMxfD1SCkWT1qyYGx63fHi9CXZcmt7i8RejH77AUMXRWNu9IrTlmsTPMkv9aenNTpN2C9wiTQCnZzJg</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PROCESS_SERVER]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{624A903E-A1A5-4FD7-98A6-F3F061C45193}"
+      DTS:ObjectName="PROCESS_SERVER">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.5;User ID=sa;Initial Catalog=SALES;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAZCwLT/uql0+f0k019B0lFwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAMEO2dc1CYDRoFqfaf03+rpnITVPE9JLtb+HtINsy6jQAAAAAOgAAAAAIAACAAAABKOh8DpNpu7/0R6N5nGaqaYV//KmGfO1rllS35bvFWKTAAAAC0ysOuGg4HkxlOf2/3tZIx/96T4UZKpp8sneY21PNrZDik2YJiTzvCHFCjkXO+X/tAAAAAYvRRGD0V9/qAd1sef8FVzSR5YbdQIgVdZjOpZr2+sKk5SXoL/NgQKyNpAiSW0SsKEyX7HnGHl1jS7jS/y9ewUw</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PROCESS_SERVER_MAINTENANCE]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{e48148ea-b25c-46ae-9885-313dca29ad08}"
+      DTS:ObjectName="PROCESS_SERVER_MAINTENANCE">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.5;User ID=sa;Initial Catalog=Maintenance;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAZCwLT/uql0+f0k019B0lFwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACfxCAuHc2lH/pJ3yfagxZwJ0JapHcHOTtnrWQi40qW2wAAAAAOgAAAAAIAACAAAACUbD3kF6wnncPPQibaD99kvXh43d/fpYZUQb3ORyICajAAAABAducSPYY5BjThAq/2pwCDGKBNWmAtoUBtMLsu0HP0luErbn8vYQfDCq4lZa2duHlAAAAAYNzbI4eMMb5T216svVv7EUhnbvWZfg8ljhgOHgVBRykIkMfyVvVK4jAPQnC1T4xNvRALuquN2DW3wWxwXR/deA</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="PROCESS_SERVER_MAINTENANCE"
+      DTS:CreationName="Microsoft.LogProviderSQLServer"
+      DTS:Description="Writes log entries for events to a SQL Server database"
+      DTS:DTSID="{422E5C13-AF4D-47DC-9958-775FAEFAC954}"
+      DTS:ObjectName="SSIS log provider for SQL Server">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3967E4BD-1B9F-49B1-BDB6-D0669F61E65C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="NumberOfRows">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{422E5C13-AF4D-47DC-9958-775FAEFAC954}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\PRODUCT TERRITORY VS AREA SALES"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{DEDE9846-CB3B-410A-866B-8B104049AA24}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="PRODUCT TERRITORY VS AREA SALES"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\PRODUCT TERRITORY VS AREA SALES\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DELETE ProductLocation_AreaDaily WHERE InvoiceDate = ? AND ProductCode = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\PRODUCT TERRITORY VS AREA SALES\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                  connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\PRODUCT TERRITORY VS AREA SALES\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\PRODUCT TERRITORY VS AREA SALES\OLE DB Command.Inputs[OLE DB Command Input].Columns[InvoiceDate]"
+                      cachedDataType="dbDate"
+                      cachedName="InvoiceDate"
+                      externalMetadataColumnId="Package\PRODUCT TERRITORY VS AREA SALES\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[InvoiceDate]" />
+                    <inputColumn
+                      refId="Package\PRODUCT TERRITORY VS AREA SALES\OLE DB Command.Inputs[OLE DB Command Input].Columns[ProductCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="ProductCode"
+                      externalMetadataColumnId="Package\PRODUCT TERRITORY VS AREA SALES\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[ProductCode]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\PRODUCT TERRITORY VS AREA SALES\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="dbDate"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\PRODUCT TERRITORY VS AREA SALES\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\PRODUCT TERRITORY VS AREA SALES\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\PRODUCT TERRITORY VS AREA SALES\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\PRODUCT TERRITORY VS AREA SALES\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\PRODUCT TERRITORY VS AREA SALES\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS AREA SALES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\PRODUCT TERRITORY VS AREA SALES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS AREA SALES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\PRODUCT TERRITORY VS AREA SALES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="ProductLocation_TerritoryDaily"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Declare @DateFrom as varchar(11), @DateTo  as varchar(11);
+SELECT @DateFrom = DateFrom, @DateTo = DateTo FROM DBO.getSyncDateDuration(0);
+
+
+SELECT A.* FROM
+(
+	SELECT  InvoiceDate, ProductCode,  SUM(SoldValue) AS SoldValue 
+	FROM  ProductLocation_TerritoryDaily T
+		INNER JOIN TerritoryMaster L ON T.TerritoryCode = L.TerritoryCode
+	WHERE InvoiceDate BETWEEN @DateFrom AND @DateTo
+	GROUP BY InvoiceDate, ProductCode
+) AS A
+LEFT JOIN
+(
+	SELECT  InvoiceDate, ProductCode, SUM(SoldValue) AS SoldValue 
+	FROM  ProductLocation_AreaDaily 
+	WHERE InvoiceDate  BETWEEN @DateFrom AND @DateTo
+	GROUP BY  InvoiceDate, ProductCode
+) AS B ON A.InvoiceDate = B.InvoiceDate AND A.ProductCode =  B.ProductCode
+WHERE (A.SoldValue - B.SoldValue) != 0</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                  connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                      lineageId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                      name="SoldValue"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                      lineageId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                      name="InvoiceDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[ProductCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[ProductCode]"
+                      length="12"
+                      lineageId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[ProductCode]"
+                      name="ProductCode"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                      dataType="numeric"
+                      name="SoldValue"
+                      precision="38"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                      dataType="dbDate"
+                      name="InvoiceDate" />
+                    <externalMetadataColumn
+                      refId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[ProductCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="ProductCode" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                      dataType="dbDate"
+                      lineageId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                      name="InvoiceDate" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ProductCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      lineageId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ProductCode]"
+                      name="ProductCode" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                      dataType="numeric"
+                      lineageId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                      name="SoldValue"
+                      precision="38"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\PRODUCT TERRITORY VS AREA SALES\Row Count"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::NumberOfRows</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\PRODUCT TERRITORY VS AREA SALES\Row Count.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\PRODUCT TERRITORY VS AREA SALES\Row Count.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\PRODUCT TERRITORY VS AREA SALES\Row Count.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\PRODUCT TERRITORY VS AREA SALES.Paths[OLE DB Source Output]"
+              endId="Package\PRODUCT TERRITORY VS AREA SALES\Row Count.Inputs[Row Count Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\PRODUCT TERRITORY VS AREA SALES.Paths[Row Count Output 1]"
+              endId="Package\PRODUCT TERRITORY VS AREA SALES\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Row Count Output 1"
+              startId="Package\PRODUCT TERRITORY VS AREA SALES\Row Count.Outputs[Row Count Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\PRODUCT TERRITORY VS OA SALES"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{E9C4B3A3-3E4B-42A2-BDA0-B4B1CB5910DF}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="PRODUCT TERRITORY VS OA SALES"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\PRODUCT TERRITORY VS OA SALES\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DELETE ProductLocation_OADaily WHERE InvoiceDate = ? AND ProductCode = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\PRODUCT TERRITORY VS OA SALES\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                  connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\PRODUCT TERRITORY VS OA SALES\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\PRODUCT TERRITORY VS OA SALES\OLE DB Command.Inputs[OLE DB Command Input].Columns[InvoiceDate]"
+                      cachedDataType="dbDate"
+                      cachedName="InvoiceDate"
+                      externalMetadataColumnId="Package\PRODUCT TERRITORY VS OA SALES\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[InvoiceDate]" />
+                    <inputColumn
+                      refId="Package\PRODUCT TERRITORY VS OA SALES\OLE DB Command.Inputs[OLE DB Command Input].Columns[ProductCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="ProductCode"
+                      externalMetadataColumnId="Package\PRODUCT TERRITORY VS OA SALES\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[ProductCode]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\PRODUCT TERRITORY VS OA SALES\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="dbDate"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\PRODUCT TERRITORY VS OA SALES\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\PRODUCT TERRITORY VS OA SALES\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\PRODUCT TERRITORY VS OA SALES\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\PRODUCT TERRITORY VS OA SALES\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\PRODUCT TERRITORY VS OA SALES\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS OA SALES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\PRODUCT TERRITORY VS OA SALES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS OA SALES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\PRODUCT TERRITORY VS OA SALES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="ProductLocation_TerritoryDaily"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Declare @DateFrom as varchar(11), @DateTo  as varchar(11);
+SELECT @DateFrom = DateFrom, @DateTo = DateTo FROM DBO.getSyncDateDuration(0);
+
+
+SELECT A.* FROM
+(
+	SELECT  InvoiceDate, ProductCode,  SUM(SoldValue) AS SoldValue 
+	FROM  ProductLocation_TerritoryDaily T
+		INNER JOIN TerritoryMaster L ON T.TerritoryCode = L.TerritoryCode
+	WHERE InvoiceDate BETWEEN @DateFrom AND @DateTo
+	GROUP BY InvoiceDate, ProductCode
+) AS A
+LEFT JOIN
+(
+	SELECT  InvoiceDate, ProductCode, SUM(SoldValue) AS SoldValue 
+	FROM  ProductLocation_OADaily 
+	WHERE InvoiceDate  BETWEEN @DateFrom AND @DateTo
+	GROUP BY  InvoiceDate, ProductCode
+) AS B ON A.InvoiceDate = B.InvoiceDate AND A.ProductCode =  B.ProductCode
+WHERE (A.SoldValue - B.SoldValue) != 0</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                  connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                      lineageId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                      name="SoldValue"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                      lineageId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                      name="InvoiceDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[ProductCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[ProductCode]"
+                      length="12"
+                      lineageId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[ProductCode]"
+                      name="ProductCode"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                      dataType="numeric"
+                      name="SoldValue"
+                      precision="38"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                      dataType="dbDate"
+                      name="InvoiceDate" />
+                    <externalMetadataColumn
+                      refId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[ProductCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="ProductCode" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                      dataType="dbDate"
+                      lineageId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                      name="InvoiceDate" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ProductCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      lineageId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ProductCode]"
+                      name="ProductCode" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                      dataType="numeric"
+                      lineageId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                      name="SoldValue"
+                      precision="38"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\PRODUCT TERRITORY VS OA SALES\Row Count"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::NumberOfRows</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\PRODUCT TERRITORY VS OA SALES\Row Count.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\PRODUCT TERRITORY VS OA SALES\Row Count.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\PRODUCT TERRITORY VS OA SALES\Row Count.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\PRODUCT TERRITORY VS OA SALES.Paths[OLE DB Source Output]"
+              endId="Package\PRODUCT TERRITORY VS OA SALES\Row Count.Inputs[Row Count Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\PRODUCT TERRITORY VS OA SALES.Paths[Row Count Output 1]"
+              endId="Package\PRODUCT TERRITORY VS OA SALES\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Row Count Output 1"
+              startId="Package\PRODUCT TERRITORY VS OA SALES\Row Count.Outputs[Row Count Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\PRODUCT TERRITORY VS REGION SALES"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{90468E8C-5773-49DE-85D3-D3DA2EA87108}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="PRODUCT TERRITORY VS REGION SALES"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\PRODUCT TERRITORY VS REGION SALES\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DELETE ProductLocation_RegionDaily WHERE InvoiceDate = ? AND ProductCode = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\PRODUCT TERRITORY VS REGION SALES\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                  connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\PRODUCT TERRITORY VS REGION SALES\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\PRODUCT TERRITORY VS REGION SALES\OLE DB Command.Inputs[OLE DB Command Input].Columns[InvoiceDate]"
+                      cachedDataType="dbDate"
+                      cachedName="InvoiceDate"
+                      externalMetadataColumnId="Package\PRODUCT TERRITORY VS REGION SALES\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[InvoiceDate]" />
+                    <inputColumn
+                      refId="Package\PRODUCT TERRITORY VS REGION SALES\OLE DB Command.Inputs[OLE DB Command Input].Columns[ProductCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="ProductCode"
+                      externalMetadataColumnId="Package\PRODUCT TERRITORY VS REGION SALES\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[ProductCode]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\PRODUCT TERRITORY VS REGION SALES\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="dbDate"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\PRODUCT TERRITORY VS REGION SALES\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\PRODUCT TERRITORY VS REGION SALES\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\PRODUCT TERRITORY VS REGION SALES\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\PRODUCT TERRITORY VS REGION SALES\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\PRODUCT TERRITORY VS REGION SALES\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS REGION SALES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\PRODUCT TERRITORY VS REGION SALES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS REGION SALES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\PRODUCT TERRITORY VS REGION SALES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="ProductLocation_TerritoryDaily"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Declare @DateFrom as varchar(11), @DateTo  as varchar(11);
+SELECT @DateFrom = DateFrom, @DateTo = DateTo FROM DBO.getSyncDateDuration(0);
+
+
+SELECT A.* FROM
+(
+	SELECT  InvoiceDate, ProductCode,  SUM(SoldValue) AS SoldValue 
+	FROM  ProductLocation_TerritoryDaily T
+		INNER JOIN TerritoryMaster L ON T.TerritoryCode = L.TerritoryCode
+	WHERE InvoiceDate BETWEEN @DateFrom AND @DateTo
+	GROUP BY InvoiceDate, ProductCode
+) AS A
+LEFT JOIN
+(
+	SELECT  InvoiceDate, ProductCode, SUM(SoldValue) AS SoldValue 
+	FROM  ProductLocation_RegionDaily 
+	WHERE InvoiceDate  BETWEEN @DateFrom AND @DateTo
+	GROUP BY  InvoiceDate, ProductCode
+) AS B ON A.InvoiceDate = B.InvoiceDate AND A.ProductCode =  B.ProductCode
+WHERE (A.SoldValue - B.SoldValue) != 0</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                  connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                      lineageId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                      name="SoldValue"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                      lineageId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                      name="InvoiceDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[ProductCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[ProductCode]"
+                      length="12"
+                      lineageId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[ProductCode]"
+                      name="ProductCode"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                      dataType="numeric"
+                      name="SoldValue"
+                      precision="38"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                      dataType="dbDate"
+                      name="InvoiceDate" />
+                    <externalMetadataColumn
+                      refId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[ProductCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="ProductCode" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                      dataType="dbDate"
+                      lineageId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                      name="InvoiceDate" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ProductCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      lineageId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ProductCode]"
+                      name="ProductCode" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                      dataType="numeric"
+                      lineageId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                      name="SoldValue"
+                      precision="38"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\PRODUCT TERRITORY VS REGION SALES.Paths[OLE DB Source Output]"
+              endId="Package\PRODUCT TERRITORY VS REGION SALES\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="OLE DB Source Output"
+              startId="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\PRODUCT TERRITORY VS ZONE SALES"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{6E0108D3-6C6B-4C42-B646-343816CEE2C6}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="PRODUCT TERRITORY VS ZONE SALES"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\PRODUCT TERRITORY VS ZONE SALES\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DELETE ProductLocation_ZoneDaily WHERE InvoiceDate = ? AND ProductCode = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\PRODUCT TERRITORY VS ZONE SALES\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                  connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\PRODUCT TERRITORY VS ZONE SALES\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\PRODUCT TERRITORY VS ZONE SALES\OLE DB Command.Inputs[OLE DB Command Input].Columns[InvoiceDate]"
+                      cachedDataType="dbDate"
+                      cachedName="InvoiceDate"
+                      externalMetadataColumnId="Package\PRODUCT TERRITORY VS ZONE SALES\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[InvoiceDate]" />
+                    <inputColumn
+                      refId="Package\PRODUCT TERRITORY VS ZONE SALES\OLE DB Command.Inputs[OLE DB Command Input].Columns[ProductCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="ProductCode"
+                      externalMetadataColumnId="Package\PRODUCT TERRITORY VS ZONE SALES\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[ProductCode]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\PRODUCT TERRITORY VS ZONE SALES\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="dbDate"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\PRODUCT TERRITORY VS ZONE SALES\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\PRODUCT TERRITORY VS ZONE SALES\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\PRODUCT TERRITORY VS ZONE SALES\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\PRODUCT TERRITORY VS ZONE SALES\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\PRODUCT TERRITORY VS ZONE SALES\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS ZONE SALES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\PRODUCT TERRITORY VS ZONE SALES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS ZONE SALES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\PRODUCT TERRITORY VS ZONE SALES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="ProductLocation_TerritoryDaily"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Declare @DateFrom as varchar(11), @DateTo  as varchar(11);
+SELECT @DateFrom = DateFrom, @DateTo = DateTo FROM DBO.getSyncDateDuration(0);
+
+
+SELECT A.* FROM
+(
+	SELECT  InvoiceDate, ProductCode,  SUM(SoldValue) AS SoldValue 
+	FROM  ProductLocation_TerritoryDaily T
+		INNER JOIN TerritoryMaster L ON T.TerritoryCode = L.TerritoryCode
+	WHERE InvoiceDate BETWEEN @DateFrom AND @DateTo
+	GROUP BY InvoiceDate, ProductCode
+) AS A
+LEFT JOIN
+(
+	SELECT  InvoiceDate, ProductCode, SUM(SoldValue) AS SoldValue 
+	FROM  ProductLocation_ZoneDaily 
+	WHERE InvoiceDate  BETWEEN @DateFrom AND @DateTo
+	GROUP BY  InvoiceDate, ProductCode
+) AS B ON A.InvoiceDate = B.InvoiceDate AND A.ProductCode =  B.ProductCode
+WHERE (A.SoldValue - B.SoldValue) != 0</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                  connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                      lineageId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                      name="SoldValue"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                      lineageId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                      name="InvoiceDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[ProductCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[ProductCode]"
+                      length="12"
+                      lineageId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[ProductCode]"
+                      name="ProductCode"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                      dataType="numeric"
+                      name="SoldValue"
+                      precision="38"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                      dataType="dbDate"
+                      name="InvoiceDate" />
+                    <externalMetadataColumn
+                      refId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[ProductCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="ProductCode" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                      dataType="dbDate"
+                      lineageId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                      name="InvoiceDate" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ProductCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      lineageId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ProductCode]"
+                      name="ProductCode" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                      dataType="numeric"
+                      lineageId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                      name="SoldValue"
+                      precision="38"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\PRODUCT TERRITORY VS ZONE SALES\Row Count"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::NumberOfRows</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\PRODUCT TERRITORY VS ZONE SALES\Row Count.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\PRODUCT TERRITORY VS ZONE SALES\Row Count.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\PRODUCT TERRITORY VS ZONE SALES\Row Count.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\PRODUCT TERRITORY VS ZONE SALES.Paths[OLE DB Source Output]"
+              endId="Package\PRODUCT TERRITORY VS ZONE SALES\Row Count.Inputs[Row Count Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\PRODUCT TERRITORY VS ZONE SALES.Paths[Row Count Output 1]"
+              endId="Package\PRODUCT TERRITORY VS ZONE SALES\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Row Count Output 1"
+              startId="Package\PRODUCT TERRITORY VS ZONE SALES\Row Count.Outputs[Row Count Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\PRODUCT VS LOCATION SALES"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{25FA79AA-1F85-4C24-BA51-0D61045607FC}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="PRODUCT VS LOCATION SALES"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\PRODUCT VS LOCATION SALES\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DELETE LocationSales_TerritoryDaily WHERE InvoiceDate = ? </property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\PRODUCT VS LOCATION SALES\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                  connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\PRODUCT VS LOCATION SALES\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\PRODUCT VS LOCATION SALES\OLE DB Command.Inputs[OLE DB Command Input].Columns[InvoiceDate]"
+                      cachedDataType="dbDate"
+                      cachedName="InvoiceDate"
+                      externalMetadataColumnId="Package\PRODUCT VS LOCATION SALES\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\PRODUCT VS LOCATION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[InvoiceDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\PRODUCT VS LOCATION SALES\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="dbDate"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\PRODUCT VS LOCATION SALES\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\PRODUCT VS LOCATION SALES\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\PRODUCT VS LOCATION SALES\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\PRODUCT VS LOCATION SALES\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\PRODUCT VS LOCATION SALES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\PRODUCT VS LOCATION SALES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\PRODUCT VS LOCATION SALES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\PRODUCT VS LOCATION SALES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\PRODUCT VS LOCATION SALES\ProductLocation_TerritoryDaily"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="ProductLocation_TerritoryDaily"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Declare @DateFrom as varchar(11), @DateTo  as varchar(11);
+SELECT @DateFrom = DateFrom, @DateTo = DateTo FROM DBO.getSyncDateDuration(0);
+
+
+SELECT B.* FROM
+(
+	SELECT InvoiceDate, SUM(SoldValue) AS SoldValue 
+	FROM  ProductSales_Daily 
+	WHERE InvoiceDate  BETWEEN @DateFrom AND @DateTo
+	GROUP BY InvoiceDate
+	
+) AS A
+LEFT JOIN
+(
+	SELECT InvoiceDate,  SUM(SoldValue) AS SoldValue 
+	FROM  LocationSales_TerritoryDaily  
+	WHERE InvoiceDate  BETWEEN @DateFrom AND @DateTo
+	GROUP BY InvoiceDate
+
+) AS B ON  A.InvoiceDate = B.InvoiceDate
+
+WHERE (A.SoldValue - B.SoldValue) !=0</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\PRODUCT VS LOCATION SALES\ProductLocation_TerritoryDaily.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                  connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\PRODUCT VS LOCATION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\PRODUCT VS LOCATION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PRODUCT VS LOCATION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                      lineageId="Package\PRODUCT VS LOCATION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                      name="SoldValue"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PRODUCT VS LOCATION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PRODUCT VS LOCATION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                      lineageId="Package\PRODUCT VS LOCATION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                      name="InvoiceDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\PRODUCT VS LOCATION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                      dataType="numeric"
+                      name="SoldValue"
+                      precision="38"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\PRODUCT VS LOCATION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                      dataType="dbDate"
+                      name="InvoiceDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\PRODUCT VS LOCATION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\PRODUCT VS LOCATION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                      dataType="dbDate"
+                      lineageId="Package\PRODUCT VS LOCATION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                      name="InvoiceDate" />
+                    <outputColumn
+                      refId="Package\PRODUCT VS LOCATION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                      dataType="numeric"
+                      lineageId="Package\PRODUCT VS LOCATION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                      name="SoldValue"
+                      precision="38"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\PRODUCT VS LOCATION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\PRODUCT VS LOCATION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\PRODUCT VS LOCATION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\PRODUCT VS LOCATION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\PRODUCT VS LOCATION SALES.Paths[OLE DB Source Output]"
+              endId="Package\PRODUCT VS LOCATION SALES\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="OLE DB Source Output"
+              startId="Package\PRODUCT VS LOCATION SALES\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\PRODUCT VS PRODUCT LOCATION SALES"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{BD4698FE-F600-4191-B0FB-C0DE5F80E8B8}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="PRODUCT VS PRODUCT LOCATION SALES">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\PRODUCT VS PRODUCT LOCATION SALES\DELETE"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{A5380093-0743-440B-8CFC-A6840D43C6A4}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DELETE"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{624A903E-A1A5-4FD7-98A6-F3F061C45193}"
+              SQLTask:SqlStatementSource="&#xA;DELETE B FROM Staging_ProductLocation A&#xA; INNER JOIN ProductLocation_TerritoryDaily B ON A.ProductCode = B.ProductCode AND A.InvoiceDate = B.InvoiceDate" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{28656C9C-987C-4FCF-822C-11370F8AF310}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="FIND DELETED ROWS"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Staging_ProductLocation]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SoldValue]"
+                          cachedDataType="numeric"
+                          cachedName="SoldValue"
+                          cachedPrecision="18"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SoldValue]"
+                          lineageId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[SoldValue]" />
+                        <inputColumn
+                          refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[InvoiceDate]"
+                          cachedDataType="dbDate"
+                          cachedName="InvoiceDate"
+                          externalMetadataColumnId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[InvoiceDate]" />
+                        <inputColumn
+                          refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ProductCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="12"
+                          cachedName="ProductCode"
+                          externalMetadataColumnId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                          lineageId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[ProductCode]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          dataType="dbDate"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocationCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="LocationCode" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="12"
+                          name="ProductCode" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TP]"
+                          dataType="numeric"
+                          name="TP"
+                          precision="18"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SoldQuantity]"
+                          dataType="i4"
+                          name="SoldQuantity" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SoldValue]"
+                          dataType="numeric"
+                          name="SoldValue"
+                          precision="18"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="ProductLocation_TerritoryDaily"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">-- TRUNCATE STAGING TABLE
+ TRUNCATE TABLE Staging_ProductLocation;
+
+
+
+Declare @DateFrom as varchar(11), @DateTo  as varchar(11);
+SELECT @DateFrom = DateFrom, @DateTo = DateTo FROM DBO.getSyncDateDuration(0);
+
+
+
+SELECT A.* FROM
+(
+	SELECT InvoiceDate, ProductCode, SUM(SoldValue) AS SoldValue 
+	FROM  ProductSales_Daily 
+	WHERE InvoiceDate  BETWEEN @DateFrom AND @DateTo
+	GROUP BY InvoiceDate, ProductCode
+	
+) AS A
+LEFT JOIN
+(
+	SELECT InvoiceDate, ProductCode, SUM(SoldValue) AS SoldValue 
+	FROM  ProductLocation_TerritoryDaily  
+	WHERE InvoiceDate  BETWEEN @DateFrom AND @DateTo
+	GROUP BY InvoiceDate, ProductCode
+
+) AS B ON A.ProductCode = B.ProductCode AND A.InvoiceDate = B.InvoiceDate
+
+WHERE (A.SoldValue - B.SoldValue) !=0</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                          lineageId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                          name="SoldValue"
+                          precision="18"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          name="InvoiceDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[ProductCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[ProductCode]"
+                          length="12"
+                          lineageId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].Columns[ProductCode]"
+                          name="ProductCode"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                          dataType="numeric"
+                          name="SoldValue"
+                          precision="38"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          dataType="dbDate"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output].ExternalColumns[ProductCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="12"
+                          name="ProductCode" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          dataType="dbDate"
+                          lineageId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          name="InvoiceDate" />
+                        <outputColumn
+                          refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ProductCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="12"
+                          lineageId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ProductCode]"
+                          name="ProductCode" />
+                        <outputColumn
+                          refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                          dataType="numeric"
+                          lineageId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                          name="SoldValue"
+                          precision="38"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS.Paths[OLE DB Source Output]"
+                  endId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\PRODUCT VS PRODUCT LOCATION SALES.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{A49E3711-7D60-4D80-B531-0D143BF95003}"
+          DTS:From="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\PRODUCT VS PRODUCT LOCATION SALES\DELETE" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{B1F11AAD-9399-4A99-90B7-016FA3BB80EE}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\DELETE"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{F3401359-CBD9-4B03-921B-6B10FC9B1AFA}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DELETE"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{624A903E-A1A5-4FD7-98A6-F3F061C45193}"
+              SQLTask:SqlStatementSource="&#xA;DELETE B FROM Staging_ProductLocation A&#xA; INNER JOIN ProductLocation_TerritoryDaily B ON A.ProductCode = B.ProductCode AND A.LocationCode = B.TerritoryCode&#xA;AND A.InvoiceDate = B.InvoiceDate&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\ProductLocation_TerritoryDaily"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{D8891B35-6BF8-409A-9E1E-FEAB5BAD0F8B}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ProductLocation_TerritoryDaily"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Staging_ProductLocation]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[InvoiceDate]"
+                          cachedDataType="dbDate"
+                          cachedName="InvoiceDate"
+                          externalMetadataColumnId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SoldValue]"
+                          cachedDataType="numeric"
+                          cachedName="SoldValue"
+                          cachedPrecision="18"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SoldValue]"
+                          lineageId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ProductCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ProductCode"
+                          externalMetadataColumnId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                          lineageId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output].Columns[ProductCode]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SoldQuantity]"
+                          cachedDataType="i4"
+                          cachedName="SoldQuantity"
+                          externalMetadataColumnId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SoldQuantity]"
+                          lineageId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TerritoryCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="TerritoryCode"
+                          externalMetadataColumnId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocationCode]"
+                          lineageId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output].Columns[TerritoryCode]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          dataType="dbDate"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocationCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="LocationCode" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="12"
+                          name="ProductCode" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TP]"
+                          dataType="numeric"
+                          name="TP"
+                          precision="18"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SoldQuantity]"
+                          dataType="i4"
+                          name="SoldQuantity" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SoldValue]"
+                          dataType="numeric"
+                          name="SoldValue"
+                          precision="18"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="TRANSACTION VS PROCESS SERVER"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Declare @DateFrom as varchar(11), @DateTo  as varchar(11);
+SELECT @DateFrom = DateFrom, @DateTo = DateTo FROM DBO.getSyncDateDuration();
+
+
+
+
+SELECT A.* 
+FROM
+(
+	SELECT TerritoryCode, InvoiceDate, ProductCode, SUM(SoldQuantity) AS SoldQuantity, SUM(SoldValue) AS SoldValue 
+	FROM PROCESS_SERVER.SALES.DBO.ProductLocation_TerritoryDaily
+	WHERE InvoiceDate BETWEEN @DateFrom AND @DateTo
+	GROUP BY TerritoryCode, InvoiceDate, ProductCode
+) AS A
+LEFT JOIN
+(
+	SELECT Z.InvoiceDate,TerritoryCode, Z.ProductCode, ISNULL(SUM(Z.SoldQuantity),0) AS SoldQuantity, SUM(SoldValue) AS SoldValue
+	FROM (
+
+	--TRANSIT 
+		SELECT  CL.TerritoryCode, I.InvoiceDate, ID.ProductCode, SUM(ID.InvoiceQty) AS SoldQuantity, SUM(ID.TotalTP) AS SoldValue
+			FROM SD_DMS.DBO.Invoice I  WITH(NOLOCK) 
+
+			LEFT JOIN SD_DMS.DBO.InvoiceDetail ID  WITH(NOLOCK) ON I.InvoiceCode = ID.InvoiceCode
+			LEFT JOIN SD_DMS.DBO.SummaryInvoice SI WITH(NOLOCK)  ON I.InvoiceCode = SI.InvoiceCode 
+			LEFT JOIN v_ChemistAndLocation CL ON I.ChemistCode = CL.ChemistCode
+
+			WHERE SI.SummaryCode IS NULL 
+			AND InvoiceDate BETWEEN @DateFrom AND  @DateTo
+			AND I.IsActive = 1 
+			AND ID.IsActive = 1
+			GROUP BY  I.InvoiceDate, ID.ProductCode, CL.TerritoryCode
+
+
+			--SOLD
+			UNION ALL 
+
+			SELECT  CL.TerritoryCode,I.InvoiceDate, SID.ProductCode, SUM(SID.SoldQty) AS SoldQuantity, SUM(SID.TotalTP) AS SoldValue
+			
+			FROM  SD_DMS.DBO.Invoice I   WITH(NOLOCK) 
+			INNER JOIN SD_DMS.DBO.SummaryInvoice SI  WITH(NOLOCK) ON SI.InvoiceCode = I.InvoiceCode 
+			INNER JOIN SD_DMS.DBO.Summary S ON SI.SummaryCode = S.SummaryCode
+			INNER JOIN SD_DMS.DBO.SummaryInvoiceDetail SID WITH(NOLOCK)  ON SI.InvoiceCode = SID.InvoiceCode 
+			LEFT JOIN v_ChemistAndLocation CL ON I.ChemistCode = CL.ChemistCode
+
+			WHERE  InvoiceDate BETWEEN @DateFrom AND  @DateTo
+			AND I.IsActive = 1 
+			AND SI.IsActive = 1
+			AND S.IsActive = 1
+			AND SID.IsActive = 1
+			GROUP BY I.InvoiceDate, SID.ProductCode, CL.TerritoryCode
+
+	)  AS Z group by ProductCode, InvoiceDate, TerritoryCode
+) AS B ON A.ProductCode = B.ProductCode AND A.TerritoryCode = B.TerritoryCode AND A.InvoiceDate = B.InvoiceDate
+
+WHERE (A.SoldValue  - B.SoldValue) !=0</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DB_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[DB_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          name="InvoiceDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                          lineageId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                          name="SoldValue"
+                          precision="18"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output].Columns[TerritoryCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output].ExternalColumns[TerritoryCode]"
+                          length="5"
+                          lineageId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output].Columns[TerritoryCode]"
+                          name="TerritoryCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output].Columns[ProductCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output].ExternalColumns[ProductCode]"
+                          length="50"
+                          lineageId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output].Columns[ProductCode]"
+                          name="ProductCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldQuantity]"
+                          lineageId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]"
+                          name="SoldQuantity"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          dataType="dbDate"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                          dataType="numeric"
+                          name="SoldValue"
+                          precision="38"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output].ExternalColumns[TerritoryCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="TerritoryCode" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output].ExternalColumns[ProductCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="12"
+                          name="ProductCode" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldQuantity]"
+                          dataType="i4"
+                          name="SoldQuantity" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          dataType="dbDate"
+                          lineageId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          name="InvoiceDate" />
+                        <outputColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Error Output].Columns[TerritoryCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          lineageId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Error Output].Columns[TerritoryCode]"
+                          name="TerritoryCode" />
+                        <outputColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Error Output].Columns[ProductCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="12"
+                          lineageId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Error Output].Columns[ProductCode]"
+                          name="ProductCode" />
+                        <outputColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Error Output].Columns[SoldQuantity]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Error Output].Columns[SoldQuantity]"
+                          name="SoldQuantity" />
+                        <outputColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                          name="SoldValue"
+                          precision="38"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\ProductLocation_TerritoryDaily.Paths[OLE DB Source Output]"
+                  endId="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\TRUNCATE STAGING TABLE"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{1A59F8A1-5C79-40D6-8C9C-D588A340575C}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="TRUNCATE STAGING TABLE"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{624A903E-A1A5-4FD7-98A6-F3F061C45193}"
+              SQLTask:SqlStatementSource="&#xA;&#xA; -- TRUNCATE STAGING TABLE&#xA; TRUNCATE TABLE Staging_ProductLocation;&#xA; TRUNCATE TABLE Staging_BrandLocation;&#xA; TRUNCATE TABLE Staging_LocationSales;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{AF603D40-7B3A-4FF1-B468-864F24F3EEBD}"
+          DTS:From="Package\Sequence Container\ProductLocation_TerritoryDaily"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Sequence Container\DELETE" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{11C82473-8C07-479A-B5F5-13BA9AF11584}"
+          DTS:From="Package\Sequence Container\TRUNCATE STAGING TABLE"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Sequence Container\ProductLocation_TerritoryDaily" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{555177D6-B4F1-4DF0-95CF-19A56706D5CC}"
+      DTS:From="Package\PRODUCT VS PRODUCT LOCATION SALES"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\PRODUCT VS LOCATION SALES" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{F4F54ADA-58D5-496C-848E-89F976ABFE75}"
+      DTS:From="Package\PRODUCT TERRITORY VS AREA SALES"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\PRODUCT TERRITORY VS REGION SALES" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 10]"
+      DTS:CreationName=""
+      DTS:DTSID="{A27C2FF4-058E-479B-BF32-F00623F5E0F1}"
+      DTS:From="Package\PRODUCT VS LOCATION SALES"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 10"
+      DTS:To="Package\PRODUCT TERRITORY VS AREA SALES" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{C53C5121-DA13-451D-8DAC-057CEFF4330C}"
+      DTS:From="Package\PRODUCT TERRITORY VS REGION SALES"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\PRODUCT TERRITORY VS ZONE SALES" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{ED93FA2E-C422-40F2-827E-0C9DB2CDBB33}"
+      DTS:From="Package\PRODUCT TERRITORY VS ZONE SALES"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\PRODUCT TERRITORY VS OA SALES" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
+      DTS:CreationName=""
+      DTS:DTSID="{617D9680-F3FE-4B7D-BB0E-514CB95FBDF0}"
+      DTS:From="Package\Sequence Container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 8"
+      DTS:To="Package\PRODUCT VS PRODUCT LOCATION SALES" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="262,42"
+          Id="Package\PRODUCT TERRITORY VS AREA SALES"
+          TopLeft="760,129" />
+        <NodeLayout
+          Size="251,42"
+          Id="Package\PRODUCT TERRITORY VS OA SALES"
+          TopLeft="757,412" />
+        <NodeLayout
+          Size="275,42"
+          Id="Package\PRODUCT TERRITORY VS REGION SALES"
+          TopLeft="747,227" />
+        <NodeLayout
+          Size="264,42"
+          Id="Package\PRODUCT TERRITORY VS ZONE SALES"
+          TopLeft="749,321" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\PRODUCT VS LOCATION SALES"
+          TopLeft="771,58" />
+        <NodeLayout
+          Size="116,42"
+          Id="Package\PRODUCT VS PRODUCT LOCATION SALES\DELETE"
+          TopLeft="66,97" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS"
+          TopLeft="27.5,28" />
+        <EdgeLayout
+          Id="Package\PRODUCT VS PRODUCT LOCATION SALES.PrecedenceConstraints[Constraint]"
+          TopLeft="121.5,70">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27"
+              Start="0,0"
+              End="0,19.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="258,194"
+          Size="258,237"
+          Id="Package\PRODUCT VS PRODUCT LOCATION SALES"
+          TopLeft="406,54" />
+        <NodeLayout
+          Size="116,42"
+          Id="Package\Sequence Container\DELETE"
+          TopLeft="66,173" />
+        <NodeLayout
+          Size="224,42"
+          Id="Package\Sequence Container\ProductLocation_TerritoryDaily"
+          TopLeft="18,94.5" />
+        <NodeLayout
+          Size="212,42"
+          Id="Package\Sequence Container\TRUNCATE STAGING TABLE"
+          TopLeft="28,21" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          TopLeft="127,136.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.5"
+              Start="0,0"
+              End="0,29">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="132,63">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.5"
+              Start="0,0"
+              End="0,24">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="258,266"
+          Size="258,309"
+          Id="Package\Sequence Container"
+          TopLeft="96,18" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="664,172.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="107,-93.5"
+              Start="0,0"
+              End="99.5,-93.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="49.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="49.5,0"
+                    Point2="53.5,0"
+                    Point3="53.5,-4" />
+                  <mssgle:LineSegment
+                    End="53.5,-89.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="53.5,-89.5"
+                    Point2="53.5,-93.5"
+                    Point3="57.5,-93.5" />
+                  <mssgle:LineSegment
+                    End="99.5,-93.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="887.75,171">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56"
+              Start="0,0"
+              End="0,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 10]"
+          TopLeft="888,100">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29"
+              Start="0,0"
+              End="0,21.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="882.75,269">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52"
+              Start="0,0"
+              End="0,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="881.75,363">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 8]"
+          TopLeft="354,172.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="52,0"
+              Start="0,0"
+              End="44.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="44.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\PRODUCT TERRITORY VS AREA SALES">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="224,42"
+          Id="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily"
+          TopLeft="668,152" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\PRODUCT TERRITORY VS AREA SALES\OLE DB Command"
+          TopLeft="694,432" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\PRODUCT TERRITORY VS AREA SALES\Row Count"
+          TopLeft="714,329" />
+        <EdgeLayout
+          Id="Package\PRODUCT TERRITORY VS AREA SALES.Paths[Row Count Output 1]"
+          TopLeft="778,371">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61"
+              Start="0,0"
+              End="0,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\PRODUCT TERRITORY VS AREA SALES.Paths[OLE DB Source Output]"
+          TopLeft="779.5,194">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,135"
+              Start="0,0"
+              End="0,127.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,127.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\PRODUCT TERRITORY VS AREA SALES\ProductLocation_TerritoryDaily">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\PRODUCT TERRITORY VS OA SALES">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="224,42"
+          Id="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily"
+          TopLeft="668,152" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\PRODUCT TERRITORY VS OA SALES\OLE DB Command"
+          TopLeft="694,432" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\PRODUCT TERRITORY VS OA SALES\Row Count"
+          TopLeft="714,329" />
+        <EdgeLayout
+          Id="Package\PRODUCT TERRITORY VS OA SALES.Paths[Row Count Output 1]"
+          TopLeft="778,371">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61"
+              Start="0,0"
+              End="0,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\PRODUCT TERRITORY VS OA SALES.Paths[OLE DB Source Output]"
+          TopLeft="779.5,194">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,135"
+              Start="0,0"
+              End="0,127.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,127.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\PRODUCT TERRITORY VS OA SALES\ProductLocation_TerritoryDaily">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\PRODUCT TERRITORY VS REGION SALES">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="224,42"
+          Id="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily"
+          TopLeft="668,152" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\PRODUCT TERRITORY VS REGION SALES\OLE DB Command"
+          TopLeft="690,310" />
+        <EdgeLayout
+          Id="Package\PRODUCT TERRITORY VS REGION SALES.Paths[OLE DB Source Output]"
+          TopLeft="776.5,194">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,116"
+              Start="0,0"
+              End="0,108.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,108.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\PRODUCT TERRITORY VS REGION SALES\ProductLocation_TerritoryDaily">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\PRODUCT TERRITORY VS ZONE SALES">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="224,42"
+          Id="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily"
+          TopLeft="668,152" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\PRODUCT TERRITORY VS ZONE SALES\OLE DB Command"
+          TopLeft="694,432" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\PRODUCT TERRITORY VS ZONE SALES\Row Count"
+          TopLeft="714,329" />
+        <EdgeLayout
+          Id="Package\PRODUCT TERRITORY VS ZONE SALES.Paths[Row Count Output 1]"
+          TopLeft="778,371">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61"
+              Start="0,0"
+              End="0,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\PRODUCT TERRITORY VS ZONE SALES.Paths[OLE DB Source Output]"
+          TopLeft="779.5,194">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,135"
+              Start="0,0"
+              End="0,127.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,127.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\PRODUCT TERRITORY VS ZONE SALES\ProductLocation_TerritoryDaily">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\PRODUCT VS LOCATION SALES">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="166,42"
+          Id="Package\PRODUCT VS LOCATION SALES\OLE DB Command"
+          TopLeft="694,432" />
+        <NodeLayout
+          Size="224,42"
+          Id="Package\PRODUCT VS LOCATION SALES\ProductLocation_TerritoryDaily"
+          TopLeft="668,152" />
+        <EdgeLayout
+          Id="Package\PRODUCT VS LOCATION SALES.Paths[OLE DB Source Output]"
+          TopLeft="778.5,194">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,238"
+              Start="0,0"
+              End="0,230.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,230.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\PRODUCT VS LOCATION SALES\ProductLocation_TerritoryDaily">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\OLE DB Destination"
+          TopLeft="503,263" />
+        <NodeLayout
+          Size="224,42"
+          Id="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily"
+          TopLeft="476,103" />
+        <EdgeLayout
+          Id="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS.Paths[OLE DB Source Output]"
+          TopLeft="588.25,145">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,118"
+              Start="0,0"
+              End="0,110.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,110.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\PRODUCT VS PRODUCT LOCATION SALES\FIND DELETED ROWS\ProductLocation_TerritoryDaily">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Sequence Container\ProductLocation_TerritoryDaily">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="253,42"
+          Id="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER"
+          TopLeft="502,112" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination"
+          TopLeft="541,261" />
+        <EdgeLayout
+          Id="Package\Sequence Container\ProductLocation_TerritoryDaily.Paths[OLE DB Source Output]"
+          TopLeft="627.5,154">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,107"
+              Start="0,0"
+              End="0,99.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,99.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\ProductLocation_TerritoryDaily\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\ProductLocation_TerritoryDaily\TRANSACTION VS PROCESS SERVER">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

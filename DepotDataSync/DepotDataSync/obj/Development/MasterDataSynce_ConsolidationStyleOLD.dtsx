@@ -1,0 +1,2610 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/17/2022 10:29:15 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SIAMIT"
+  DTS:CreatorName="SIAMIT\Jannat"
+  DTS:DTSID="{731C3D23-5832-43F7-8ED2-87E0B094DF1E}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="MasterDataSynce_ConsolidationStyleOLD"
+  DTS:PackageType="5"
+  DTS:VersionBuild="532"
+  DTS:VersionGUID="{963AE136-EDF0-4B0B-8716-521355C32B85}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DB_SERVER]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{6614016F-7693-4CAD-8649-4C98D0FBC071}"
+      DTS:ObjectName="DB_SERVER">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.4;User ID=sa;Initial Catalog=SD_DMS;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPiYp7VNS+06RYKbTPrxzeQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACODm5Io/YKA0qeka1XsBMlKoJR2T6Hmg2vGHiTZbo2JAAAAAAOgAAAAAIAACAAAAA6yNBeL64oG+JTpQuOuSqKN5plHfEHr4mWGqKc4ffDMDAAAACScniT1GDFtnGm2cr+RTwzkWF6MEndbNj0qfM2fQWwm2+PjA4+ablrv2Jn0+pC4M1AAAAAan5hsKEGGuSMn6mfB4OUZ/c8W/PYRo+e19hPHoyBpeVDhCY+0DsRL5XQm8G2C8B+prKUYbBXEOsGeSE9ugYICA</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DEPOT_SERVER]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{00DB1A99-4F0C-45D0-9A26-AE3026D05EFB}"
+      DTS:ObjectName="DEPOT_SERVER">
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::IPAddress]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.4\DEPOT_CLONE;User ID=sa;Initial Catalog=SD_DMS;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPiYp7VNS+06RYKbTPrxzeQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACVahzwXWFP8vYi4agCksN9w0c8BSyEgOZY48cq8kM+xQAAAAAOgAAAAAIAACAAAADV06CKbe5muiiQvCq2pfwNfKFcWzpGR3TVXTVKmINobyAAAACy13sIJW5NY7cLfURdQNzB01Ad7cIFh6P7Dm2I0Ie5W0AAAAAiVDJAO3RG8iD4ZdaVLsbdvmj6OO0OnuzyGG/JGI8RIAmMw7c3O8steSjadGvfqDEsPyiia533zCTWSbZvLf9u</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E3EA6D29-0293-4978-ACB5-A333F17EF87A}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::IPAddress]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="IPAddress">
+      <DTS:VariableValue
+        DTS:DataType="8">192.168.42.4\DEPOT_CLONE</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A56F8B42-E64D-46A6-994A-DE435766B6E5}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::LinkedServerName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LinkedServerName">
+      <DTS:VariableValue
+        DTS:DataType="8">BOG_SRV</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{74983FF1-27B9-43A9-8E20-CC5BB0263DEF}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="NumberOfAllocation">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8BDC2BFA-AFFF-49CA-B45F-2BF146A2DDF4}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="NumberOfInvoice">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{61D3E51C-589C-473E-97D6-54A64E50B668}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="NumberOfRows">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A1392A6C-3D1D-4D9E-95BC-53E1828C0DA4}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="NumberOfSummary">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7A09F2F1-C66F-4593-8FEC-C419A6190DA8}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ServerList">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DC2C2F8A-4F5A-4A5B-AEAD-22C200AE4D88}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::ServerName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ServerName">
+      <DTS:VariableValue
+        DTS:DataType="8">DHK</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{6049DF3D-1F65-4C50-8084-79AB5125F32A}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:ForceExecutionResult="0"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachADOEnumerator"
+        DTS:DTSID="{0311F134-3509-4C11-939D-DE40E05A8A8E}"
+        DTS:ObjectName="{0311F134-3509-4C11-939D-DE40E05A8A8E}">
+        <DTS:ObjectData>
+          <FEEADO
+            EnumType="EnumerateRowsInFirstTable"
+            VarName="User::ServerList" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\CHECK IS SERVER ONLINE"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:DelayValidation="True"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{DCCC7C1B-D28C-4602-8839-E7512EA761DE}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CHECK IS SERVER ONLINE"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{6614016F-7693-4CAD-8649-4C98D0FBC071}"
+              SQLTask:TimeOut="5"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="DECLARE   @sysservername sysname;&#xA;SELECT  @sysservername = CONVERT(sysname, ?);&#xA;exec&#x9; sys.sp_testlinkedserver @sysservername;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::LinkedServerName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\CHEMIST GROUP"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{502F242B-7E10-437E-B1E6-ABB33B6EC92E}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CHEMIST GROUP">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST"
+              DTS:CreationName="Microsoft.Pipeline"
+              DTS:Description="Data Flow Task"
+              DTS:DTSID="{6CAA39E8-B6E8-4609-9910-C12A051722B8}"
+              DTS:ExecutableType="Microsoft.Pipeline"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="CHEMEIST"
+              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <pipeline
+                  version="1">
+                  <components>
+                    <component
+                      refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT"
+                      componentClassID="Microsoft.OLEDBDestination"
+                      contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                      description="OLE DB Destination"
+                      name="INSERT INTO DEPOT"
+                      usesDispositions="true"
+                      version="4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the database object used to open a rowset."
+                          name="OpenRowset">[dbo].[Chemist]</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the name of the database object used to open a rowset."
+                          name="OpenRowsetVariable"></property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Forces the use of the DefaultCodePage property value when describing character data."
+                          name="AlwaysUseDefaultCodePage">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the mode used to access the database."
+                          name="AccessMode"
+                          typeConverter="AccessMode">3</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                          name="FastLoadKeepIdentity">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                          name="FastLoadKeepNulls">false</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                          name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                          name="FastLoadMaxInsertCommitSize">2147483647</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[DEPOT_SERVER]"
+                          connectionManagerRefId="Package.ConnectionManagers[DEPOT_SERVER]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input]"
+                          errorOrTruncationOperation="Insert"
+                          errorRowDisposition="RedirectRow"
+                          hasSideEffects="true"
+                          name="OLE DB Destination Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].Columns[ChemistID]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="10"
+                              cachedName="ChemistID"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[ChemistID]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[ChemistID]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].Columns[ChemistName]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="200"
+                              cachedName="ChemistName"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[ChemistName]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[ChemistName]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].Columns[DepotCode]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="5"
+                              cachedName="DepotCode"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[DepotCode]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepotCode]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].Columns[ContactPerson]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="250"
+                              cachedName="ContactPerson"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[ContactPerson]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[ContactPerson]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].Columns[Mobile]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="50"
+                              cachedName="Mobile"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[Mobile]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[Mobile]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].Columns[Phone]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="50"
+                              cachedName="Phone"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[Phone]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].Columns[Fax]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="50"
+                              cachedName="Fax"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[Fax]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[Fax]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].Columns[House]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="50"
+                              cachedName="House"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[House]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[House]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].Columns[Road]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="50"
+                              cachedName="Road"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[Road]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[Road]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].Columns[Area]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="50"
+                              cachedName="Area"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[Area]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[Area]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].Columns[City]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="50"
+                              cachedName="City"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[City]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].Columns[AddressDetail]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="250"
+                              cachedName="AddressDetail"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[AddressDetail]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[AddressDetail]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].Columns[Remarks]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="200"
+                              cachedName="Remarks"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[Remarks]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[Remarks]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].Columns[IsActive]"
+                              cachedDataType="bool"
+                              cachedName="IsActive"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsActive]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].Columns[IsTransferred]"
+                              cachedDataType="bool"
+                              cachedName="IsTransferred"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[IsTransferred]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsTransferred]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].Columns[ChemistTypeCode]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="3"
+                              cachedName="ChemistTypeCode"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[ChemistTypeCode]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[ChemistTypeCode]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].Columns[CreatedByID]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="15"
+                              cachedName="CreatedByID"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByID]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedByID]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].Columns[CreatedOn]"
+                              cachedDataType="dbTimeStamp"
+                              cachedName="CreatedOn"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOn]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedOn]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].Columns[UpdatedByID]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="15"
+                              cachedName="UpdatedByID"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedByID]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[UpdatedByID]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].Columns[UpdatedOn]"
+                              cachedDataType="dbTimeStamp"
+                              cachedName="UpdatedOn"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedOn]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[UpdatedOn]" />
+                          </inputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[ChemistID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="10"
+                              name="ChemistID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[ChemistName]"
+                              codePage="1252"
+                              dataType="str"
+                              length="200"
+                              name="ChemistName" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[DepotCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="20"
+                              name="DepotCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[ContactPerson]"
+                              codePage="1252"
+                              dataType="str"
+                              length="250"
+                              name="ContactPerson" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[Mobile]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="Mobile" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="Phone" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[Fax]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="Fax" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[House]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="House" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[Road]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="Road" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[Area]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="Area" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="City" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[AddressDetail]"
+                              codePage="1252"
+                              dataType="str"
+                              length="250"
+                              name="AddressDetail" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[Remarks]"
+                              codePage="1252"
+                              dataType="str"
+                              length="200"
+                              name="Remarks" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
+                              dataType="bool"
+                              name="IsActive" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[IsTransferred]"
+                              dataType="bool"
+                              name="IsTransferred" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[ChemistTypeCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="3"
+                              name="ChemistTypeCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="15"
+                              name="CreatedByID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOn]"
+                              dataType="dbTimeStamp"
+                              name="CreatedOn" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="15"
+                              name="UpdatedByID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedOn]"
+                              dataType="dbTimeStamp"
+                              name="UpdatedOn" />
+                          </externalMetadataColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Outputs[OLE DB Destination Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="OLE DB Destination Error Output"
+                          synchronousInputId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\Lookup"
+                      componentClassID="Microsoft.Lookup"
+                      contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                      description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                      name="Lookup"
+                      usesDispositions="true"
+                      version="6">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the SQL statement that generates the lookup table."
+                          expressionType="Notify"
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Chemist]</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                          expressionType="Notify"
+                          name="SqlCommandParam"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Chemist]) [refTable]
+where [refTable].[ChemistID] = ? and [refTable].[AddressDetail] = ? and [refTable].[IsActive] = ?</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of connection used to access the reference dataset."
+                          name="ConnectionType"
+                          typeConverter="LookupConnectionType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the cache type of the lookup table."
+                          name="CacheType"
+                          typeConverter="CacheType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                          name="NoMatchBehavior"
+                          typeConverter="LookupNoMatchBehavior">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                          name="NoMatchCachePercentage">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                          name="MaxMemoryUsage">25</property>
+                        <property
+                          dataType="System.Int64"
+                          description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                          name="MaxMemoryUsage64">25</property>
+                        <property
+                          dataType="System.String"
+                          description="Indicates whether to reference metadata in an XML format."
+                          name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ChemistID" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ChemistName" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DepotCode" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ContactPerson" dataType="DT_STR" length="250" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Mobile" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Phone" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Fax" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="House" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Road" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Area" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="City" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="AddressDetail" dataType="DT_STR" length="250" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Remarks" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IsActive" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsTransferred" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ChemistTypeCode" dataType="DT_STR" length="3" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CreatedByID" dataType="DT_STR" length="15" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CreatedOn" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UpdatedByID" dataType="DT_STR" length="15" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="UpdatedOn" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                          name="ParameterMap">#{Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[ChemistID]};#{Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[AddressDetail]};#{Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsActive]};</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                          name="TreatDuplicateKeysAsError">false</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\Lookup.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[DEPOT_SERVER]"
+                          connectionManagerRefId="Package.ConnectionManagers[DEPOT_SERVER]"
+                          description="Connection manager used to access lookup data."
+                          name="OleDbConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\Lookup.Inputs[Lookup Input]"
+                          name="Lookup Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\Lookup.Inputs[Lookup Input].Columns[ChemistID]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="10"
+                              cachedName="ChemistID"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[ChemistID]">
+                              <properties>
+                                <property
+                                  dataType="System.String"
+                                  description="Specifies the column in the reference table that a column joins."
+                                  name="JoinToReferenceColumn">ChemistID</property>
+                                <property
+                                  dataType="System.Null"
+                                  description="Specifies the column in the reference table from which a column is copied."
+                                  name="CopyFromReferenceColumn" />
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\Lookup.Inputs[Lookup Input].Columns[AddressDetail]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="250"
+                              cachedName="AddressDetail"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[AddressDetail]">
+                              <properties>
+                                <property
+                                  dataType="System.String"
+                                  description="Specifies the column in the reference table that a column joins."
+                                  name="JoinToReferenceColumn">AddressDetail</property>
+                                <property
+                                  dataType="System.Null"
+                                  description="Specifies the column in the reference table from which a column is copied."
+                                  name="CopyFromReferenceColumn" />
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\Lookup.Inputs[Lookup Input].Columns[IsActive]"
+                              cachedDataType="bool"
+                              cachedName="IsActive"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsActive]">
+                              <properties>
+                                <property
+                                  dataType="System.String"
+                                  description="Specifies the column in the reference table that a column joins."
+                                  name="JoinToReferenceColumn">IsActive</property>
+                                <property
+                                  dataType="System.Null"
+                                  description="Specifies the column in the reference table from which a column is copied."
+                                  name="CopyFromReferenceColumn" />
+                              </properties>
+                            </inputColumn>
+                          </inputColumns>
+                          <externalMetadataColumns />
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\Lookup.Outputs[Lookup Match Output]"
+                          errorOrTruncationOperation="Lookup"
+                          exclusionGroup="1"
+                          name="Lookup Match Output"
+                          synchronousInputId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\Lookup.Inputs[Lookup Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\Lookup.Outputs[Lookup Match Output].Columns[ChemistID]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Copy Column"
+                              length="10"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\Lookup.Outputs[Lookup Match Output].Columns[ChemistID]"
+                              name="ChemistID"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.String"
+                                  description="Specifies the column in the reference table from which a column is copied."
+                                  name="CopyFromReferenceColumn">ChemistID</property>
+                              </properties>
+                            </outputColumn>
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\Lookup.Outputs[Lookup No Match Output]"
+                          description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                          exclusionGroup="1"
+                          name="Lookup No Match Output"
+                          synchronousInputId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\Lookup.Inputs[Lookup Input]">
+                          <externalMetadataColumns />
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\Lookup.Outputs[Lookup Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="Lookup Error Output"
+                          synchronousInputId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\Lookup.Inputs[Lookup Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source"
+                      componentClassID="Microsoft.OLEDBSource"
+                      contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                      description="OLE DB Source"
+                      name="OLE DB Source"
+                      usesDispositions="true"
+                      version="7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the database object used to open a rowset."
+                          name="OpenRowset"></property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the name of the database object used to open a rowset."
+                          name="OpenRowsetVariable"></property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT TOP(50) C.*
+ FROM SD_DMS.DBO.CHEMIST C
+ INNER JOIN SD_DMS.DBO.MarketChemists MC ON C.ChemistID = MC.ChemistCode
+ INNER JOIN SD_DMS.DBO.TerritoryMarket TM ON MC.MarketCode = TM.MarketCode
+ INNER JOIN SD_DMS.DBO.TerritoryMaster L ON TM.TerritoryCode = L.TerritoryCode
+ INNER JOIN SD_DMS.DBO.DepotAreaMapping DA ON L.AreaCode = DA.AreaCode
+
+ INNER JOIN Maintenance.DBO.ServerList SL ON SL.ServerName = DA.DepotCode
+
+WHERE C.IsTransferred = 0
+AND MC.IsActive = 1
+AND TM.IsActive = 1
+AND L.IsActive = 1
+AND DA.DepotCode = ?</property>
+                        <property
+                          dataType="System.String"
+                          description="The variable that contains the SQL command to be executed."
+                          name="SqlCommandVariable"></property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Forces the use of the DefaultCodePage property value when describing character data."
+                          name="AlwaysUseDefaultCodePage">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the mode used to access the database."
+                          name="AccessMode"
+                          typeConverter="AccessMode">2</property>
+                        <property
+                          dataType="System.String"
+                          description="The mappings between the parameters in the SQL command and variables."
+                          name="ParameterMapping">"Parameter0:Input",{DC2C2F8A-4F5A-4A5B-AEAD-22C200AE4D88};</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[DB_SERVER]"
+                          connectionManagerRefId="Package.ConnectionManagers[DB_SERVER]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output]"
+                          name="OLE DB Source Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[ChemistID]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ChemistID]"
+                              length="10"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[ChemistID]"
+                              name="ChemistID"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[ChemistName]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ChemistName]"
+                              length="200"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[ChemistName]"
+                              name="ChemistName"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepotCode]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepotCode]"
+                              length="5"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepotCode]"
+                              name="DepotCode"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[ContactPerson]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ContactPerson]"
+                              length="250"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[ContactPerson]"
+                              name="ContactPerson"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[Mobile]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Mobile]"
+                              length="50"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[Mobile]"
+                              name="Mobile"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[Phone]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                              length="50"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[Phone]"
+                              name="Phone"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[Fax]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Fax]"
+                              length="50"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[Fax]"
+                              name="Fax"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[House]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[House]"
+                              length="50"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[House]"
+                              name="House"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[Road]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Road]"
+                              length="50"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[Road]"
+                              name="Road"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[Area]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Area]"
+                              length="50"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[Area]"
+                              name="Area"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[City]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                              length="50"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[City]"
+                              name="City"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[AddressDetail]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AddressDetail]"
+                              length="250"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[AddressDetail]"
+                              name="AddressDetail"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[Remarks]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Remarks]"
+                              length="200"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[Remarks]"
+                              name="Remarks"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsActive]"
+                              dataType="bool"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsActive]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsActive]"
+                              name="IsActive"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsTransferred]"
+                              dataType="bool"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsTransferred]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsTransferred]"
+                              name="IsTransferred"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[ChemistTypeCode]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ChemistTypeCode]"
+                              length="3"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[ChemistTypeCode]"
+                              name="ChemistTypeCode"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedByID]"
+                              length="15"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedByID]"
+                              name="CreatedByID"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedOn]"
+                              dataType="dbTimeStamp"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedOn]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedOn]"
+                              name="CreatedOn"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[UpdatedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[UpdatedByID]"
+                              length="15"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[UpdatedByID]"
+                              name="UpdatedByID"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[UpdatedOn]"
+                              dataType="dbTimeStamp"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[UpdatedOn]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[UpdatedOn]"
+                              name="UpdatedOn"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsApproved]"
+                              dataType="bool"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsApproved]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsApproved]"
+                              name="IsApproved"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[ApprovedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ApprovedByID]"
+                              length="15"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[ApprovedByID]"
+                              name="ApprovedByID"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[ApprovedOn]"
+                              dataType="dbTimeStamp"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ApprovedOn]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[ApprovedOn]"
+                              name="ApprovedOn"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[RejectedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RejectedByID]"
+                              length="15"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[RejectedByID]"
+                              name="RejectedByID"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[RejectedOn]"
+                              dataType="dbTimeStamp"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RejectedOn]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[RejectedOn]"
+                              name="RejectedOn"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsAuthenticated]"
+                              dataType="bool"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsAuthenticated]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsAuthenticated]"
+                              name="IsAuthenticated"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[AutenticatedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AutenticatedByID]"
+                              length="15"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[AutenticatedByID]"
+                              name="AutenticatedByID"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[AuthenticatedOn]"
+                              dataType="dbTimeStamp"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AuthenticatedOn]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[AuthenticatedOn]"
+                              name="AuthenticatedOn"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsChecked]"
+                              dataType="bool"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsChecked]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsChecked]"
+                              name="IsChecked"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[CheckedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CheckedByID]"
+                              length="15"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[CheckedByID]"
+                              name="CheckedByID"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[CheckedOn]"
+                              dataType="dbTimeStamp"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CheckedOn]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[CheckedOn]"
+                              name="CheckedOn"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[ApprovalRemarks]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ApprovalRemarks]"
+                              length="255"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[ApprovalRemarks]"
+                              name="ApprovalRemarks"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[RejectionRemarks]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RejectionRemarks]"
+                              length="255"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[RejectionRemarks]"
+                              name="RejectionRemarks"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[HasChemistBusiness]"
+                              dataType="bool"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HasChemistBusiness]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[HasChemistBusiness]"
+                              name="HasChemistBusiness"
+                              truncationRowDisposition="FailComponent" />
+                          </outputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ChemistID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="10"
+                              name="ChemistID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ChemistName]"
+                              codePage="1252"
+                              dataType="str"
+                              length="200"
+                              name="ChemistName" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepotCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="5"
+                              name="DepotCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ContactPerson]"
+                              codePage="1252"
+                              dataType="str"
+                              length="250"
+                              name="ContactPerson" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Mobile]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="Mobile" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="Phone" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Fax]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="Fax" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[House]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="House" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Road]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="Road" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Area]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="Area" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="City" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AddressDetail]"
+                              codePage="1252"
+                              dataType="str"
+                              length="250"
+                              name="AddressDetail" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Remarks]"
+                              codePage="1252"
+                              dataType="str"
+                              length="200"
+                              name="Remarks" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsActive]"
+                              dataType="bool"
+                              name="IsActive" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsTransferred]"
+                              dataType="bool"
+                              name="IsTransferred" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ChemistTypeCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="3"
+                              name="ChemistTypeCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="15"
+                              name="CreatedByID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedOn]"
+                              dataType="dbTimeStamp"
+                              name="CreatedOn" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[UpdatedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="15"
+                              name="UpdatedByID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[UpdatedOn]"
+                              dataType="dbTimeStamp"
+                              name="UpdatedOn" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsApproved]"
+                              dataType="bool"
+                              name="IsApproved" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ApprovedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="15"
+                              name="ApprovedByID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ApprovedOn]"
+                              dataType="dbTimeStamp"
+                              name="ApprovedOn" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RejectedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="15"
+                              name="RejectedByID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RejectedOn]"
+                              dataType="dbTimeStamp"
+                              name="RejectedOn" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsAuthenticated]"
+                              dataType="bool"
+                              name="IsAuthenticated" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AutenticatedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="15"
+                              name="AutenticatedByID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AuthenticatedOn]"
+                              dataType="dbTimeStamp"
+                              name="AuthenticatedOn" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsChecked]"
+                              dataType="bool"
+                              name="IsChecked" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CheckedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="15"
+                              name="CheckedByID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CheckedOn]"
+                              dataType="dbTimeStamp"
+                              name="CheckedOn" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ApprovalRemarks]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="ApprovalRemarks" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RejectionRemarks]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="RejectionRemarks" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HasChemistBusiness]"
+                              dataType="bool"
+                              name="HasChemistBusiness" />
+                          </externalMetadataColumns>
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                          isErrorOut="true"
+                          name="OLE DB Source Error Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ChemistID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="10"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ChemistID]"
+                              name="ChemistID" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ChemistName]"
+                              codePage="1252"
+                              dataType="str"
+                              length="200"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ChemistName]"
+                              name="ChemistName" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepotCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="5"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepotCode]"
+                              name="DepotCode" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ContactPerson]"
+                              codePage="1252"
+                              dataType="str"
+                              length="250"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ContactPerson]"
+                              name="ContactPerson" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Mobile]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Mobile]"
+                              name="Mobile" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                              name="Phone" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Fax]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Fax]"
+                              name="Fax" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[House]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[House]"
+                              name="House" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Road]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Road]"
+                              name="Road" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Area]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Area]"
+                              name="Area" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[City]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[City]"
+                              name="City" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AddressDetail]"
+                              codePage="1252"
+                              dataType="str"
+                              length="250"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AddressDetail]"
+                              name="AddressDetail" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Remarks]"
+                              codePage="1252"
+                              dataType="str"
+                              length="200"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Remarks]"
+                              name="Remarks" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsActive]"
+                              dataType="bool"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsActive]"
+                              name="IsActive" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsTransferred]"
+                              dataType="bool"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsTransferred]"
+                              name="IsTransferred" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ChemistTypeCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="3"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ChemistTypeCode]"
+                              name="ChemistTypeCode" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="15"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedByID]"
+                              name="CreatedByID" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedOn]"
+                              dataType="dbTimeStamp"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedOn]"
+                              name="CreatedOn" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UpdatedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="15"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UpdatedByID]"
+                              name="UpdatedByID" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UpdatedOn]"
+                              dataType="dbTimeStamp"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UpdatedOn]"
+                              name="UpdatedOn" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsApproved]"
+                              dataType="bool"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsApproved]"
+                              name="IsApproved" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ApprovedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="15"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ApprovedByID]"
+                              name="ApprovedByID" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ApprovedOn]"
+                              dataType="dbTimeStamp"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ApprovedOn]"
+                              name="ApprovedOn" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RejectedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="15"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RejectedByID]"
+                              name="RejectedByID" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RejectedOn]"
+                              dataType="dbTimeStamp"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RejectedOn]"
+                              name="RejectedOn" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsAuthenticated]"
+                              dataType="bool"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsAuthenticated]"
+                              name="IsAuthenticated" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AutenticatedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="15"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AutenticatedByID]"
+                              name="AutenticatedByID" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AuthenticatedOn]"
+                              dataType="dbTimeStamp"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AuthenticatedOn]"
+                              name="AuthenticatedOn" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsChecked]"
+                              dataType="bool"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsChecked]"
+                              name="IsChecked" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CheckedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="15"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CheckedByID]"
+                              name="CheckedByID" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CheckedOn]"
+                              dataType="dbTimeStamp"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CheckedOn]"
+                              name="CheckedOn" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ApprovalRemarks]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ApprovalRemarks]"
+                              name="ApprovalRemarks" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RejectionRemarks]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RejectionRemarks]"
+                              name="RejectionRemarks" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HasChemistBusiness]"
+                              dataType="bool"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HasChemistBusiness]"
+                              name="HasChemistBusiness" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT"
+                      componentClassID="Microsoft.OLEDBCommand"
+                      contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                      description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                      name="UPDATE DEPOT"
+                      usesDispositions="true"
+                      version="2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          expressionType="Notify"
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE SD_DMS.DBO.Chemist SET ChemistName = ?, ContactPerson = ?, Mobile = ? WHERE ChemistID = ?</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[DEPOT_SERVER]"
+                          connectionManagerRefId="Package.ConnectionManagers[DEPOT_SERVER]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT.Inputs[OLE DB Command Input]"
+                          errorOrTruncationOperation="Command Execution"
+                          errorRowDisposition="FailComponent"
+                          hasSideEffects="true"
+                          name="OLE DB Command Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT.Inputs[OLE DB Command Input].Columns[ChemistName]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="200"
+                              cachedName="ChemistName"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[ChemistName]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT.Inputs[OLE DB Command Input].Columns[ContactPerson]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="250"
+                              cachedName="ContactPerson"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[ContactPerson]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT.Inputs[OLE DB Command Input].Columns[Mobile]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="50"
+                              cachedName="Mobile"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[Mobile]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT.Inputs[OLE DB Command Input].Columns[ChemistID]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="10"
+                              cachedName="ChemistID"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[ChemistID]" />
+                          </inputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                              codePage="1252"
+                              dataType="str"
+                              length="200"
+                              name="Param_0">
+                              <properties>
+                                <property
+                                  dataType="System.Int32"
+                                  description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                                  name="DBParamInfoFlags">65</property>
+                              </properties>
+                            </externalMetadataColumn>
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                              codePage="1252"
+                              dataType="str"
+                              length="250"
+                              name="Param_1">
+                              <properties>
+                                <property
+                                  dataType="System.Int32"
+                                  description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                                  name="DBParamInfoFlags">65</property>
+                              </properties>
+                            </externalMetadataColumn>
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="Param_2">
+                              <properties>
+                                <property
+                                  dataType="System.Int32"
+                                  description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                                  name="DBParamInfoFlags">65</property>
+                              </properties>
+                            </externalMetadataColumn>
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                              codePage="1252"
+                              dataType="str"
+                              length="10"
+                              name="Param_3">
+                              <properties>
+                                <property
+                                  dataType="System.Int32"
+                                  description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                                  name="DBParamInfoFlags">65</property>
+                              </properties>
+                            </externalMetadataColumn>
+                          </externalMetadataColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT.Outputs[OLE DB Command Output]"
+                          exclusionGroup="1"
+                          name="OLE DB Command Output"
+                          synchronousInputId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT.Inputs[OLE DB Command Input]">
+                          <externalMetadataColumns />
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT.Outputs[OLE DB Command Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="OLE DB Command Error Output"
+                          synchronousInputId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT.Inputs[OLE DB Command Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO"
+                      componentClassID="Microsoft.OLEDBCommand"
+                      contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                      description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                      name="UPDATE TRANSFER STATUS | HO"
+                      usesDispositions="true"
+                      version="2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          expressionType="Notify"
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE SD_DMS.DBO.Chemist SET   IsTransferred = 1 WHERE  ChemistID = ?;</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[DB_SERVER]"
+                          connectionManagerRefId="Package.ConnectionManagers[DB_SERVER]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO.Inputs[OLE DB Command Input]"
+                          errorOrTruncationOperation="Command Execution"
+                          errorRowDisposition="FailComponent"
+                          hasSideEffects="true"
+                          name="OLE DB Command Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO.Inputs[OLE DB Command Input].Columns[ChemistID]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="10"
+                              cachedName="ChemistID"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[ChemistID]" />
+                          </inputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                              codePage="1252"
+                              dataType="str"
+                              length="10"
+                              name="Param_0">
+                              <properties>
+                                <property
+                                  dataType="System.Int32"
+                                  description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                                  name="DBParamInfoFlags">65</property>
+                              </properties>
+                            </externalMetadataColumn>
+                          </externalMetadataColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO.Outputs[OLE DB Command Output]"
+                          exclusionGroup="1"
+                          name="OLE DB Command Output"
+                          synchronousInputId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO.Inputs[OLE DB Command Input]">
+                          <externalMetadataColumns />
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO.Outputs[OLE DB Command Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="OLE DB Command Error Output"
+                          synchronousInputId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO.Inputs[OLE DB Command Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO 2"
+                      componentClassID="Microsoft.OLEDBCommand"
+                      contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                      description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                      name="UPDATE TRANSFER STATUS | HO 2"
+                      usesDispositions="true"
+                      version="2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          expressionType="Notify"
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE SD_DMS.DBO.Chemist SET   IsTransferred = 1 WHERE  ChemistID = ?;</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO 2.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[DB_SERVER]"
+                          connectionManagerRefId="Package.ConnectionManagers[DB_SERVER]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO 2.Inputs[OLE DB Command Input]"
+                          errorOrTruncationOperation="Command Execution"
+                          errorRowDisposition="FailComponent"
+                          hasSideEffects="true"
+                          name="OLE DB Command Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO 2.Inputs[OLE DB Command Input].Columns[ChemistID]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="10"
+                              cachedName="ChemistID"
+                              externalMetadataColumnId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO 2.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output].Columns[ChemistID]" />
+                          </inputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO 2.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                              codePage="1252"
+                              dataType="str"
+                              length="10"
+                              name="Param_0">
+                              <properties>
+                                <property
+                                  dataType="System.Int32"
+                                  description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                                  name="DBParamInfoFlags">65</property>
+                              </properties>
+                            </externalMetadataColumn>
+                          </externalMetadataColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO 2.Outputs[OLE DB Command Output]"
+                          exclusionGroup="1"
+                          name="OLE DB Command Output"
+                          synchronousInputId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO 2.Inputs[OLE DB Command Input]">
+                          <externalMetadataColumns />
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO 2.Outputs[OLE DB Command Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="OLE DB Command Error Output"
+                          synchronousInputId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO 2.Inputs[OLE DB Command Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO 2.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO 2.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO 2.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO 2.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                  </components>
+                  <paths>
+                    <path
+                      refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST.Paths[Lookup Match Output]"
+                      endId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT.Inputs[OLE DB Command Input]"
+                      name="Lookup Match Output"
+                      startId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\Lookup.Outputs[Lookup Match Output]" />
+                    <path
+                      refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST.Paths[Lookup No Match Output]"
+                      endId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Inputs[OLE DB Destination Input]"
+                      name="Lookup No Match Output"
+                      startId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\Lookup.Outputs[Lookup No Match Output]" />
+                    <path
+                      refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST.Paths[OLE DB Command Output]"
+                      endId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO.Inputs[OLE DB Command Input]"
+                      name="OLE DB Command Output"
+                      startId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT.Outputs[OLE DB Command Output]" />
+                    <path
+                      refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST.Paths[OLE DB Destination Error Output]"
+                      endId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO 2.Inputs[OLE DB Command Input]"
+                      name="OLE DB Destination Error Output"
+                      startId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT.Outputs[OLE DB Destination Error Output]" />
+                    <path
+                      refId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST.Paths[OLE DB Source Output]"
+                      endId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\Lookup.Inputs[Lookup Input]"
+                      name="OLE DB Source Output"
+                      startId="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source.Outputs[OLE DB Source Output]" />
+                  </paths>
+                </pipeline>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\LOG DATA SYNCED DETAIL"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{88351C34-E697-4908-9CC3-69D67F1A42C2}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="LOG DATA SYNCED DETAIL"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{6614016F-7693-4CAD-8649-4C98D0FBC071}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="INSERT INTO Maintenance.dbo.DataSyncLog (PackageName, ServerName, ServerStatus, NumberOfInvoice, NumberOfAllocation, NumberOfSummary)&#xA;VALUES('DATA_SYNC',?,'ONLINE',?,?,? );" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::LinkedServerName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::NumberOfInvoice"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::NumberOfAllocation"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="User::NumberOfSummary"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\LOG IF OFFLINE"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{98BAD00E-16AC-4A5D-A983-AFA76AAC5F0B}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="LOG IF OFFLINE"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{6614016F-7693-4CAD-8649-4C98D0FBC071}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="INSERT INTO Maintenance.dbo.DataSyncLog (PackageName, ServerName, ServerStatus)&#xA;VALUES('DATA_SYNC',?,'OFFLINE');" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::LinkedServerName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\SET SERVER OFFLINE"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{1C609052-5601-425F-A495-3DC0425B90E8}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SET SERVER OFFLINE"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{6614016F-7693-4CAD-8649-4C98D0FBC071}"
+              SQLTask:SqlStatementSource="UPDATE Maintenance.DBO.ServerList SET IsOnline = 0 WHERE LinkedServerName = ?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::LinkedServerName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\UPDATE ISTRANSFERRED TRUE"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{FE2C48AD-5730-412F-8175-050EEA51967D}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="UPDATE ISTRANSFERRED TRUE"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{00DB1A99-4F0C-45D0-9A26-AE3026D05EFB}"
+              SQLTask:SqlStatementSource="UPDATE A&#xA;SET A.IsTransferred = 1&#xA;FROM Invoice A&#xA;INNER JOIN Staging_Invoice B ON A.InvoiceCode = B.InvoiceCode;&#xA;&#xA;UPDATE  A &#xA;SET A.IsTransferred = 1&#xA;FROM InvoiceAllocation A&#xA;INNER JOIN Staging_InvoiceAllocation B ON A.AllocationCode = B.AllocationCode;&#xA;&#xA;&#xA;UPDATE A&#xA;SET A.IsTransferred = 1&#xA;FROM Summary A&#xA;INNER JOIN Staging_Summary B ON A.SummaryCode = B.SummaryCode;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{FE05C04E-1B12-4125-AEBB-89DC10474E66}"
+          DTS:From="Package\Foreach Loop Container\CHECK IS SERVER ONLINE"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Foreach Loop Container\LOG IF OFFLINE"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{FFFE52C3-F25B-4F46-B937-71D2A8FABE4F}"
+          DTS:From="Package\Foreach Loop Container\CHECK IS SERVER ONLINE"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Foreach Loop Container\CHEMIST GROUP" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 7]"
+          DTS:CreationName=""
+          DTS:DTSID="{A48CC157-542D-4ACA-B99A-B62ACC968C11}"
+          DTS:From="Package\Foreach Loop Container\UPDATE ISTRANSFERRED TRUE"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 7"
+          DTS:To="Package\Foreach Loop Container\LOG DATA SYNCED DETAIL" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 8]"
+          DTS:CreationName=""
+          DTS:DTSID="{A7A51722-CBE9-4F37-9EA1-D42B5EE7CDBF}"
+          DTS:From="Package\Foreach Loop Container\LOG IF OFFLINE"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 8"
+          DTS:To="Package\Foreach Loop Container\SET SERVER OFFLINE" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{20BF1700-D5BB-4F11-A0B8-032729F7B755}"
+          DTS:ObjectName="{20BF1700-D5BB-4F11-A0B8-032729F7B755}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::ServerList" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{08E43873-E759-4C9A-A6E4-7DBBCA9A8D60}"
+          DTS:ObjectName="{08E43873-E759-4C9A-A6E4-7DBBCA9A8D60}"
+          DTS:ValueIndex="2"
+          DTS:VariableName="User::LinkedServerName" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{28C813CA-3C6E-4F7A-9999-13F016F4544A}"
+          DTS:ObjectName="{28C813CA-3C6E-4F7A-9999-13F016F4544A}"
+          DTS:ValueIndex="1"
+          DTS:VariableName="User::IPAddress" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{C6F89749-07C2-42CB-A7A3-C1CDFE434C08}"
+          DTS:ObjectName="{C6F89749-07C2-42CB-A7A3-C1CDFE434C08}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::ServerName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\GET DEPOT SERVER LIST"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{DEB331DD-8F74-4861-BF7C-613C3A8D9AF0}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="GET DEPOT SERVER LIST"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{6614016F-7693-4CAD-8649-4C98D0FBC071}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="SELECT ServerName,IPAddress,LinkedServerName&#xA;FROM Maintenance.dbo.ServerList&#xA;WHERE ServerName = 'KLN'&#xA;ORDER BY ORDERNO"
+          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::ServerList" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{F1DB6074-AD07-467E-950D-AD15C3EAA3AB}"
+      DTS:From="Package\GET DEPOT SERVER LIST"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Foreach Loop Container" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="223,42"
+          Id="Package\Foreach Loop Container\CHECK IS SERVER ONLINE"
+          TopLeft="44.6666666666667,25.3333333333333" />
+        <NodeLayout
+          Size="129,42"
+          Id="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST"
+          TopLeft="60.75,50.7500000000001" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="270,186"
+          Size="270,229"
+          Id="Package\Foreach Loop Container\CHEMIST GROUP"
+          TopLeft="24,236.75" />
+        <NodeLayout
+          Size="209,42"
+          Id="Package\Foreach Loop Container\LOG DATA SYNCED DETAIL"
+          TopLeft="1480,647" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Foreach Loop Container\LOG IF OFFLINE"
+          TopLeft="423.444444444444,24.1111111111111" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Foreach Loop Container\SET SERVER OFFLINE"
+          TopLeft="640,28" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\Foreach Loop Container\UPDATE ISTRANSFERRED TRUE"
+          TopLeft="1464,533" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          TopLeft="267.666666666667,45.7222222222222">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="155.777777777778,0"
+              Start="0,0"
+              End="148.277777777778,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="148.277777777778,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="58.897541232639,5,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="157.583333333333,67.3333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,169.416666666667"
+              Start="0,0"
+              End="0,161.916666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,161.916666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 7]"
+          TopLeft="1581.75,575">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,72"
+              Start="0,0"
+              End="0,64.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 8]"
+          TopLeft="587.444444444444,47.0555555555556">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="52.555555555556,0"
+              Start="0,0"
+              End="45.055555555556,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="45.055555555556,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="1700,744"
+          Size="1700,787"
+          Id="Package\Foreach Loop Container"
+          TopLeft="140,188" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\GET DEPOT SERVER LIST"
+          TopLeft="886.083333333333,13.5555555555556" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="988.041666666667,55.5555555555556">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,132.444444444444"
+              Start="0,0"
+              End="0,124.944444444444">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,124.944444444444" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\Lookup"
+          TopLeft="340,215" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source"
+          TopLeft="321,98" />
+        <NodeLayout
+          Size="247,42"
+          Id="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO 2"
+          TopLeft="451.615384615385,524.846153846154" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE DEPOT"
+          TopLeft="214,406" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT"
+          TopLeft="491.384615384615,408.076923076923" />
+        <NodeLayout
+          Size="238,42"
+          Id="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\UPDATE TRANSFER STATUS | HO"
+          TopLeft="164.230769230769,522.769230769231" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST.Paths[OLE DB Source Output]"
+          TopLeft="396.25,140">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,75"
+              Start="0,0"
+              End="0,67.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST.Paths[OLE DB Destination Error Output]"
+          TopLeft="578,450.076923076923">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74.7692307692311"
+              Start="0,0"
+              End="0,67.2692307692311">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.2692307692311" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-73.20890625,27.9178185096155,146.4178125,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST.Paths[OLE DB Command Output]"
+          TopLeft="287.115384615385,448">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74.7692307692308"
+              Start="0,0"
+              End="0,67.2692307692308">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.2692307692308" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST.Paths[Lookup No Match Output]"
+          TopLeft="414,257">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="166.884615384615,151.076923076923"
+              Start="0,0"
+              End="166.884615384615,143.576923076923">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.696335078534" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,57.696335078534"
+                    Point2="0,61.696335078534"
+                    Point3="4,61.696335078534" />
+                  <mssgle:LineSegment
+                    End="162.884615384615,61.696335078534" />
+                  <mssgle:CubicBezierSegment
+                    Point1="162.884615384615,61.696335078534"
+                    Point2="166.884615384615,61.696335078534"
+                    Point3="166.884615384615,65.696335078534" />
+                  <mssgle:LineSegment
+                    End="166.884615384615,143.576923076923" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="27.6359209735575,66.696335078534,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST.Paths[Lookup Match Output]"
+          TopLeft="379,257">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-88,149"
+              Start="0,0"
+              End="-88,141.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.848167539267" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,56.848167539267"
+                    Point2="0,60.848167539267"
+                    Point3="-4,60.848167539267" />
+                  <mssgle:LineSegment
+                    End="-84,60.848167539267" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-84,60.848167539267"
+                    Point2="-88,60.848167539267"
+                    Point3="-88,64.848167539267" />
+                  <mssgle:LineSegment
+                    End="-88,141.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-92.19138671875,65.848167539267,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Chemist]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\CHEMIST GROUP\CHEMEIST\INSERT INTO DEPOT">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

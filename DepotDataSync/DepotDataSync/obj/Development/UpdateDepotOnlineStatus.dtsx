@@ -1,0 +1,412 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/17/2022 10:29:15 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SIAMIT"
+  DTS:CreatorName="SIAMIT\Jannat"
+  DTS:DTSID="{33661C10-1CD9-4534-A325-296B88D77ACA}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5228.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="UpdateDepotOnlineStatus"
+  DTS:PackageType="5"
+  DTS:VersionBuild="308"
+  DTS:VersionGUID="{06047823-0E45-4AA6-99A6-11C82A63530B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DB_SERVER]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{AB33D9EB-D90D-4E64-A9DE-E9E39BAC263C}"
+      DTS:ObjectName="DB_SERVER">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.4;User ID=sa;Initial Catalog=SD_DMS;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-UpdateDepotOnlineStatus-{AB33D9EB-D90D-4E64-A9DE-E9E39BAC263C}DB_SERVER;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4o4Lzv7alUWR3nBt0Y/yKQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABKDHP5zyE5ufXvyZ8HfqbAwfmqy7osEu2/EDdQ7cgbtQAAAAAOgAAAAAIAACAAAADzGVtXHUIFqUhw9LOijuIkYZ6RjE3aaCi07Op8Ke0QozAAAABrIRg7d7tNJKN0fyoPxejjTkzgo9PwvM072vEzIIbkni6hWZMF/BeTFP81Sv7K7a9AAAAAsavKumZX0QI2yyO4B/ZtqOzjnEfQaNvjqqk7zp4JeVEdFuHRdUMZu/g26pm+wElM6HCzF10zOv/MJqvjP/1wow</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DEPOT_SERVER]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{213FD061-0996-4C20-AF4C-1EC6A422C6BD}"
+      DTS:ObjectName="DEPOT_SERVER">
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::IPAddress]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.4\DEPOT_CLONE;User ID=sa;Initial Catalog=SD_DMS;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-UpdateDepotOnlineStatus-{213FD061-0996-4C20-AF4C-1EC6A422C6BD}DEPOT_SERVER;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4o4Lzv7alUWR3nBt0Y/yKQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAjSBbKJrSqxT/O4kXC+69Nq+ZGTpYVuV7ZEuwdkj3SXAAAAAAOgAAAAAIAACAAAACgbMxkP3ww36/aEN1q9nNU1I+4nwZOZCAIuQUK0OStizAAAAD64CJJdb7d+Aem4g+Q15TM1TdRRj8NDEQEAkSr4puu0ll1p+5363irZX6qoWKR5GNAAAAATcBIIq/N1D4iUNgQXbolikdBgSI2zaLmLarbGyI6BbvBwZlIyKPmw0HfkLLZ7Hy+YwNma09o+07AF7xqpVwJig</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E42B1705-ACC3-4925-9ACD-AA3C08B3E630}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::IPAddress]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="IPAddress">
+      <DTS:VariableValue
+        DTS:DataType="8">192.168.42.4\DEPOT_CLONE</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FE6BCDA3-6D56-4111-8E8E-E51CE950BB9A}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::LinkedServerName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LinkedServerName">
+      <DTS:VariableValue
+        DTS:DataType="8">BOG_SRV</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{89FBF8E9-8B53-4A9A-B5C2-5620AA339F36}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="NumberOfAllocation">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D72B58A7-BDFB-4774-9C72-91C840371AB5}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="NumberOfInvoice">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1DB00727-AE75-4FB1-830F-0BCCB7454A6A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="NumberOfRows">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{249E8BEE-02D4-4B47-BA7A-339947575B7E}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="NumberOfSummary">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{394196C4-443B-482A-B3E8-5322126BFE07}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ServerList">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{E33BBE3D-BF1C-47D4-A992-C1CF73C24DED}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:ForceExecutionResult="0"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachADOEnumerator"
+        DTS:DTSID="{64CFE8E7-B90E-4424-9B9A-FA11E0A95FCA}"
+        DTS:ObjectName="{64CFE8E7-B90E-4424-9B9A-FA11E0A95FCA}">
+        <DTS:ObjectData>
+          <FEEADO
+            EnumType="EnumerateRowsInFirstTable"
+            VarName="User::ServerList" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\CHECK IS SERVER ONLINE"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:DelayValidation="True"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{4A791759-A242-436D-ADE2-32CAAE6CA1A5}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CHECK IS SERVER ONLINE"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{AB33D9EB-D90D-4E64-A9DE-E9E39BAC263C}"
+              SQLTask:TimeOut="5"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="DECLARE   @sysservername sysname;&#xA;SELECT  @sysservername = CONVERT(sysname, ?);&#xA;exec&#x9; sys.sp_testlinkedserver @sysservername;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::LinkedServerName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\SET SERVER OFFLINE"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{7E015175-548F-41A2-BD21-FC80E7E69AE8}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SET SERVER OFFLINE"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{AB33D9EB-D90D-4E64-A9DE-E9E39BAC263C}"
+              SQLTask:SqlStatementSource="UPDATE Maintenance.DBO.ServerList SET IsOnline = 0 WHERE LinkedServerName = ?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::LinkedServerName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\SET SERVER ONLINE"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{020A8B64-1B98-441A-99E8-3C9D6255A278}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:ForceExecutionResult="0"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SET SERVER ONLINE"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{AB33D9EB-D90D-4E64-A9DE-E9E39BAC263C}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="UPDATE Maintenance.DBO.ServerList SET IsOnline = 1 WHERE LinkedServerName = ?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::LinkedServerName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{6FE0B120-D23A-4DD9-8EAF-70648ED7E446}"
+          DTS:From="Package\Foreach Loop Container\CHECK IS SERVER ONLINE"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Foreach Loop Container\SET SERVER ONLINE" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{4420198E-6701-48BE-A16F-B168DA807F42}"
+          DTS:From="Package\Foreach Loop Container\SET SERVER OFFLINE"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Foreach Loop Container\CHECK IS SERVER ONLINE" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{7B47756A-C415-4205-9D27-17AC3EECEE93}"
+          DTS:ObjectName="{7B47756A-C415-4205-9D27-17AC3EECEE93}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::ServerList" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{5FE59C5F-EA71-4553-B4CC-940B72A7A238}"
+          DTS:ObjectName="{5FE59C5F-EA71-4553-B4CC-940B72A7A238}"
+          DTS:ValueIndex="2"
+          DTS:VariableName="User::LinkedServerName" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{AEBB28EE-3037-4103-9F1E-062DBB451100}"
+          DTS:ObjectName="{AEBB28EE-3037-4103-9F1E-062DBB451100}"
+          DTS:ValueIndex="1"
+          DTS:VariableName="User::IPAddress" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\GET DEPOT SERVER LIST"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{B0365A0F-86A2-4149-9CC9-FFF7BB57685E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="GET DEPOT SERVER LIST"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{AB33D9EB-D90D-4E64-A9DE-E9E39BAC263C}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="SELECT ServerName,IPAddress,LinkedServerName&#xA;FROM Maintenance.dbo.ServerList&#xA;WHERE  IsActive = 1&#xA;ORDER BY IsOnline DESC"
+          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::ServerList" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{3482DA5D-A1EF-4899-98D0-1B46D0DDF33A}"
+      DTS:From="Package\GET DEPOT SERVER LIST"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Foreach Loop Container" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="223,42"
+          Id="Package\Foreach Loop Container\CHECK IS SERVER ONLINE"
+          TopLeft="137.666666666667,159.333333333333" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Foreach Loop Container\SET SERVER OFFLINE"
+          TopLeft="165,42" />
+        <NodeLayout
+          Size="178,42"
+          Id="Package\Foreach Loop Container\SET SERVER ONLINE"
+          TopLeft="162.444444444444,261.111111111111" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          TopLeft="250.305555555555,201.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.7777777777778"
+              Start="0,0"
+              End="0,52.2777777777778">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.2777777777778" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="252.583333333333,84">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,75.3333333333333"
+              Start="0,0"
+              End="0,67.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="518,363"
+          Size="518,406"
+          Id="Package\Foreach Loop Container"
+          TopLeft="394,247.5" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\GET DEPOT SERVER LIST"
+          TopLeft="551.333333333333,126.555555555556" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="652.166666666667,168.555555555556">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,78.9444444444444"
+              Start="0,0"
+              End="0,71.4444444444444">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,71.4444444444444" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

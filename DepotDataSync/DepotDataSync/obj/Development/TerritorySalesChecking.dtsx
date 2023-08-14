@@ -1,0 +1,1709 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/6/2022 4:16:11 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SPC-3"
+  DTS:CreatorName="SPC-3\Jannat"
+  DTS:DTSID="{9A1384C4-AF1A-4F1A-8146-CBC24F479850}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="TerritorySalesChecking"
+  DTS:PackageType="5"
+  DTS:VersionBuild="410"
+  DTS:VersionGUID="{26E81775-20C2-41AB-A30E-6333CCE332C5}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DB_SERVER]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{84862AD8-0220-4D43-BF79-37D5BBE19455}"
+      DTS:ObjectName="DB_SERVER">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.4;User ID=sa;Initial Catalog=SD_DMS;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPiYp7VNS+06RYKbTPrxzeQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAUxgD7w1CwcKTX6C3YJmjGqsvNM6AOJzFLDYUzSYp2fwAAAAAOgAAAAAIAACAAAABnexHddLhliA+o1fqbQPVniClYhkEKt0WH/s4Vd4gP1TAAAABWIYA7mlemzzKlwmZ0sDKJJ8HEE1Fpk5arxPYuqxBFnuqzbFPLgUtJjQJkf6Fk5SxAAAAAJFJUqegmzwdsC51P8zze1mEV8jHm0+x7MLNPEem+ipuyc8gK8OeL6oPeUo3hL93dmEYlcj9+zrBlRDYkTtjZwg</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DEPOT_SERVER]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1FA53E9D-84EF-4968-B66E-3A89068217E4}"
+      DTS:ObjectName="DEPOT_SERVER">
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::IPAddress]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.6\TEST_DEPOT;User ID=sa;Initial Catalog=SD_DMS;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPiYp7VNS+06RYKbTPrxzeQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADtYigBQD9oopkbq8ltsWVo19jTwHWynPWEUskK5S3BCAAAAAAOgAAAAAIAACAAAABT6StGae0DO5EnkMINZads9YwlBHk8r1Q3pX10/mEUWSAAAAAFkvK9XP2YCy7Y8OPN1Ysd9PXLuYo+jLzUukijKczzA0AAAADD/Qi8trBl51qmFXFotLQSVkSWj8M/HE5VvVY8qy/JJUAPtLbKwqJwkQSwh0T2Eo9AfmkuIBpyMkds3zJri+Sj</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{269DDA79-FE3D-4347-80A0-28CA98B936B5}"
+      DTS:ObjectName="CHEMIST_LOOKUPSqlCommand">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">select * from [dbo].[Chemist]</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C505BD9A-A745-4502-9521-C459363DB20A}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::IPAddress]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="IPAddress">
+      <DTS:VariableValue
+        DTS:DataType="8">192.168.42.6\TEST_DEPOT</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{42235B93-4F53-41B5-86D3-AD24CE320F8C}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::LinkedServerName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LinkedServerName">
+      <DTS:VariableValue
+        DTS:DataType="8">COM_SRV</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CA622167-A4A0-4B73-8FA9-389DE2F9F34E}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="NumberOfRows">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3A3A8726-877A-426C-9318-734BA01C0651}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ServerList">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2997DB75-411D-46BC-B888-0EF34A08BB71}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::ServerName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ServerName">
+      <DTS:VariableValue
+        DTS:DataType="8">COM</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{8BF21B6B-37EA-4A1C-AD8F-FBD0E5D79FF7}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:ForceExecutionResult="0"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachADOEnumerator"
+        DTS:DTSID="{E5DAAB77-6FAE-4815-8472-2806F0734E2C}"
+        DTS:ObjectName="{E5DAAB77-6FAE-4815-8472-2806F0734E2C}">
+        <DTS:ObjectData>
+          <FEEADO
+            EnumType="EnumerateRowsInFirstTable"
+            VarName="User::ServerList" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\CHECK_SERVER_ONLINE"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{C9F15071-E815-4472-BB7C-5903D4F8E0C4}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CHECK_SERVER_ONLINE"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{84862AD8-0220-4D43-BF79-37D5BBE19455}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="DECLARE   @sysservername sysname;&#xA;SELECT  @sysservername = CONVERT(sysname, ?);&#xA;exec&#x9; sys.sp_testlinkedserver @sysservername;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::LinkedServerName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Invoice"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{FB6BC0A5-69FB-4DA3-82C6-C5C4076F2C0D}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Invoice">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES"
+              DTS:CreationName="Microsoft.Pipeline"
+              DTS:Description="Data Flow Task"
+              DTS:DTSID="{2f080e72-546d-45ca-9c42-eb9bc6e66a32}"
+              DTS:ExecutableType="Microsoft.Pipeline"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="FIND UNSYNCED TRANSIT INVOICES"
+              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <pipeline
+                  version="1">
+                  <components>
+                    <component
+                      refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO"
+                      componentClassID="Microsoft.OLEDBSource"
+                      contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                      description="OLE DB Source"
+                      name="LOAD DEPOT INVOICES FROM HO"
+                      usesDispositions="true"
+                      version="7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the database object used to open a rowset."
+                          name="OpenRowset"></property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the name of the database object used to open a rowset."
+                          name="OpenRowsetVariable"></property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Declare @DateFrom as varchar(11)= SD_DMS.DBO.getLastMonthFirstDate(GETDATE()) , @DateTo  as varchar(11)=  GETDATE();
+
+
+SELECT A.*, I.IsActive FROM
+(
+	SELECT  I.InvoiceCode,  SUM(ID.Amount) AS InvoiceValue
+			
+	FROM  SD_DMS.DBO.Invoice I   WITH(NOLOCK) 
+	INNER JOIN SD_DMS.DBO.InvoiceDetail ID WITH(NOLOCK)  ON I.InvoiceCode = ID.InvoiceCode 
+	INNER JOIN v_ChemistAndLocation CL ON I.ChemistCode = CL.ChemistCode
+	INNER JOIN DepotAreaMapping DA ON CL.AreaCode = DA.AreaCode
+	LEFT JOIN SD_DMS.DBO.SummaryInvoice SI  WITH(NOLOCK) ON SI.InvoiceCode = I.InvoiceCode 
+
+	WHERE  InvoiceDate BETWEEN @DateFrom AND @DateTo
+	AND I.IsActive = 1 
+	AND SI.SummaryCode IS NULL
+	AND ID.IsActive = 1
+	AND DA.DepotCode = ?
+	GROUP BY I.InvoiceCode
+
+	
+
+) AS A 
+INNER JOIN SD_DMS.DBO.Invoice I ON A.InvoiceCode = I.InvoiceCode</property>
+                        <property
+                          dataType="System.String"
+                          description="The variable that contains the SQL command to be executed."
+                          name="SqlCommandVariable"></property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Forces the use of the DefaultCodePage property value when describing character data."
+                          name="AlwaysUseDefaultCodePage">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the mode used to access the database."
+                          name="AccessMode"
+                          typeConverter="AccessMode">2</property>
+                        <property
+                          dataType="System.String"
+                          description="The mappings between the parameters in the SQL command and variables."
+                          name="ParameterMapping">"Parameter0:Input",{2997DB75-411D-46BC-B888-0EF34A08BB71};</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[DB_SERVER]"
+                          connectionManagerRefId="Package.ConnectionManagers[DB_SERVER]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output]"
+                          name="OLE DB Source Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].Columns[InvoiceCode]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].ExternalColumns[InvoiceCode]"
+                              length="17"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].Columns[InvoiceCode]"
+                              name="InvoiceCode"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].Columns[InvoiceValue]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].ExternalColumns[InvoiceValue]"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].Columns[InvoiceValue]"
+                              name="InvoiceValue"
+                              precision="38"
+                              scale="2"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].Columns[IsActive]"
+                              dataType="bool"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].ExternalColumns[IsActive]"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].Columns[IsActive]"
+                              name="IsActive"
+                              truncationRowDisposition="FailComponent" />
+                          </outputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].ExternalColumns[InvoiceCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="17"
+                              name="InvoiceCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].ExternalColumns[InvoiceValue]"
+                              dataType="numeric"
+                              name="InvoiceValue"
+                              precision="38"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].ExternalColumns[IsActive]"
+                              dataType="bool"
+                              name="IsActive" />
+                          </externalMetadataColumns>
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Error Output]"
+                          isErrorOut="true"
+                          name="OLE DB Source Error Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Error Output].Columns[InvoiceCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="17"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Error Output].Columns[InvoiceCode]"
+                              name="InvoiceCode" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Error Output].Columns[InvoiceValue]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Error Output].Columns[InvoiceValue]"
+                              name="InvoiceValue"
+                              precision="38"
+                              scale="2" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Error Output].Columns[IsActive]"
+                              dataType="bool"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Error Output].Columns[IsActive]"
+                              name="IsActive" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\Lookup"
+                      componentClassID="Microsoft.Lookup"
+                      contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                      description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                      name="Lookup"
+                      usesDispositions="true"
+                      version="6">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the SQL statement that generates the lookup table."
+                          expressionType="Notify"
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Declare @DateFrom as varchar(11)= SD_DMS.DBO.getLastMonthFirstDate(GETDATE()) , @DateTo  as varchar(11)=  GETDATE();
+
+
+
+
+SELECT A.*, I.IsActive FROM
+(
+	SELECT  I.InvoiceCode,  SUM(ID.Amount) AS InvoiceValue
+			
+	FROM  SD_DMS.DBO.Invoice I   WITH(NOLOCK) 
+	INNER JOIN SD_DMS.DBO.InvoiceDetail ID WITH(NOLOCK)  ON I.InvoiceCode = ID.InvoiceCode 
+	LEFT JOIN SD_DMS.DBO.SummaryInvoice SI  WITH(NOLOCK) ON SI.InvoiceCode = I.InvoiceCode 
+
+	WHERE  InvoiceDate BETWEEN @DateFrom AND @DateTo
+	AND I.IsActive = 1 
+	AND SI.SummaryCode IS NULL
+	AND ID.IsActive = 1
+	GROUP BY I.InvoiceCode
+) AS A
+INNER JOIN SD_DMS.DBO.Invoice I ON A.InvoiceCode = I.InvoiceCode</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                          expressionType="Notify"
+                          name="SqlCommandParam"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (Declare @DateFrom as varchar(11)= SD_DMS.DBO.getLastMonthFirstDate(GETDATE()) , @DateTo  as varchar(11)=  GETDATE();
+
+
+
+
+SELECT A.*, I.IsActive FROM
+(
+	SELECT  I.InvoiceCode,  SUM(ID.Amount) AS InvoiceValue
+			
+	FROM  SD_DMS.DBO.Invoice I   WITH(NOLOCK) 
+	INNER JOIN SD_DMS.DBO.InvoiceDetail ID WITH(NOLOCK)  ON I.InvoiceCode = ID.InvoiceCode 
+	LEFT JOIN SD_DMS.DBO.SummaryInvoice SI  WITH(NOLOCK) ON SI.InvoiceCode = I.InvoiceCode 
+
+	WHERE  InvoiceDate BETWEEN @DateFrom AND @DateTo
+	AND I.IsActive = 1 
+	AND SI.SummaryCode IS NULL
+	AND ID.IsActive = 1
+	GROUP BY I.InvoiceCode
+) AS A
+INNER JOIN SD_DMS.DBO.Invoice I ON A.InvoiceCode = I.InvoiceCode) [refTable]
+where [refTable].[InvoiceCode] = ? and [refTable].[InvoiceValue] = ? and [refTable].[IsActive] = ?</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of connection used to access the reference dataset."
+                          name="ConnectionType"
+                          typeConverter="LookupConnectionType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the cache type of the lookup table."
+                          name="CacheType"
+                          typeConverter="CacheType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                          name="NoMatchBehavior"
+                          typeConverter="LookupNoMatchBehavior">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                          name="NoMatchCachePercentage">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                          name="MaxMemoryUsage">25</property>
+                        <property
+                          dataType="System.Int64"
+                          description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                          name="MaxMemoryUsage64">25</property>
+                        <property
+                          dataType="System.String"
+                          description="Indicates whether to reference metadata in an XML format."
+                          name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="InvoiceCode" dataType="DT_STR" length="17" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InvoiceValue" dataType="DT_NUMERIC" length="0" precision="38" scale="2" codePage="0"/&gt;&lt;referenceColumn name="IsActive" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                          name="ParameterMap">#{Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].Columns[InvoiceCode]};#{Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].Columns[InvoiceValue]};#{Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].Columns[IsActive]};</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                          name="TreatDuplicateKeysAsError">false</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\Lookup.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[DEPOT_SERVER]"
+                          connectionManagerRefId="Package.ConnectionManagers[DEPOT_SERVER]"
+                          description="Connection manager used to access lookup data."
+                          name="OleDbConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\Lookup.Inputs[Lookup Input]"
+                          name="Lookup Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\Lookup.Inputs[Lookup Input].Columns[InvoiceCode]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="17"
+                              cachedName="InvoiceCode"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].Columns[InvoiceCode]">
+                              <properties>
+                                <property
+                                  dataType="System.String"
+                                  description="Specifies the column in the reference table that a column joins."
+                                  name="JoinToReferenceColumn">InvoiceCode</property>
+                                <property
+                                  dataType="System.Null"
+                                  description="Specifies the column in the reference table from which a column is copied."
+                                  name="CopyFromReferenceColumn" />
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\Lookup.Inputs[Lookup Input].Columns[InvoiceValue]"
+                              cachedDataType="numeric"
+                              cachedName="InvoiceValue"
+                              cachedPrecision="38"
+                              cachedScale="2"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].Columns[InvoiceValue]">
+                              <properties>
+                                <property
+                                  dataType="System.String"
+                                  description="Specifies the column in the reference table that a column joins."
+                                  name="JoinToReferenceColumn">InvoiceValue</property>
+                                <property
+                                  dataType="System.Null"
+                                  description="Specifies the column in the reference table from which a column is copied."
+                                  name="CopyFromReferenceColumn" />
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\Lookup.Inputs[Lookup Input].Columns[IsActive]"
+                              cachedDataType="bool"
+                              cachedName="IsActive"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].Columns[IsActive]">
+                              <properties>
+                                <property
+                                  dataType="System.String"
+                                  description="Specifies the column in the reference table that a column joins."
+                                  name="JoinToReferenceColumn">IsActive</property>
+                                <property
+                                  dataType="System.Null"
+                                  description="Specifies the column in the reference table from which a column is copied."
+                                  name="CopyFromReferenceColumn" />
+                              </properties>
+                            </inputColumn>
+                          </inputColumns>
+                          <externalMetadataColumns />
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\Lookup.Outputs[Lookup Match Output]"
+                          errorOrTruncationOperation="Lookup"
+                          exclusionGroup="1"
+                          name="Lookup Match Output"
+                          synchronousInputId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\Lookup.Inputs[Lookup Input]">
+                          <externalMetadataColumns />
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\Lookup.Outputs[Lookup No Match Output]"
+                          description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                          exclusionGroup="1"
+                          name="Lookup No Match Output"
+                          synchronousInputId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\Lookup.Inputs[Lookup Input]">
+                          <externalMetadataColumns />
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\Lookup.Outputs[Lookup Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="Lookup Error Output"
+                          synchronousInputId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\Lookup.Inputs[Lookup Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\OLE DB Command"
+                      componentClassID="Microsoft.OLEDBCommand"
+                      contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                      description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                      name="OLE DB Command"
+                      usesDispositions="true"
+                      version="2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          expressionType="Notify"
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">
+UPDATE SD_DMS.DBO.Invoice SET IsTransferred = 0   WHERE InvoiceCode = ?
+</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\OLE DB Command.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[DEPOT_SERVER]"
+                          connectionManagerRefId="Package.ConnectionManagers[DEPOT_SERVER]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\OLE DB Command.Inputs[OLE DB Command Input]"
+                          errorOrTruncationOperation="Command Execution"
+                          errorRowDisposition="FailComponent"
+                          hasSideEffects="true"
+                          name="OLE DB Command Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\OLE DB Command.Inputs[OLE DB Command Input].Columns[InvoiceCode]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="17"
+                              cachedName="InvoiceCode"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].Columns[InvoiceCode]" />
+                          </inputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                              codePage="1252"
+                              dataType="str"
+                              length="17"
+                              name="Param_0">
+                              <properties>
+                                <property
+                                  dataType="System.Int32"
+                                  description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                                  name="DBParamInfoFlags">65</property>
+                              </properties>
+                            </externalMetadataColumn>
+                          </externalMetadataColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\OLE DB Command.Outputs[OLE DB Command Output]"
+                          exclusionGroup="1"
+                          name="OLE DB Command Output"
+                          synchronousInputId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\OLE DB Command.Inputs[OLE DB Command Input]">
+                          <externalMetadataColumns />
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="OLE DB Command Error Output"
+                          synchronousInputId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\OLE DB Command.Inputs[OLE DB Command Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                  </components>
+                  <paths>
+                    <path
+                      refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES.Paths[Lookup No Match Output]"
+                      endId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\OLE DB Command.Inputs[OLE DB Command Input]"
+                      name="Lookup No Match Output"
+                      startId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\Lookup.Outputs[Lookup No Match Output]" />
+                    <path
+                      refId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES.Paths[OLE DB Source Output]"
+                      endId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\Lookup.Inputs[Lookup Input]"
+                      name="OLE DB Source Output"
+                      startId="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output]" />
+                  </paths>
+                </pipeline>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES"
+              DTS:CreationName="Microsoft.Pipeline"
+              DTS:Description="Data Flow Task"
+              DTS:DTSID="{6C8C0670-5196-4371-8C08-C85C3AED90A3}"
+              DTS:ExecutableType="Microsoft.Pipeline"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="FIND UPDATED SUMMARY INVOICES"
+              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <pipeline
+                  version="1">
+                  <components>
+                    <component
+                      refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO"
+                      componentClassID="Microsoft.OLEDBSource"
+                      contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                      description="OLE DB Source"
+                      name="LOAD DEPOT INVOICES FROM HO"
+                      usesDispositions="true"
+                      version="7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the database object used to open a rowset."
+                          name="OpenRowset"></property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the name of the database object used to open a rowset."
+                          name="OpenRowsetVariable"></property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Declare @DateFrom as varchar(11)= SD_DMS.DBO.getLastMonthFirstDate(GETDATE()) , @DateTo  as varchar(11)=  GETDATE();
+
+
+
+
+SELECT  I.InvoiceCode, SUM(SID.Amount) AS InvoiceValue
+			
+FROM  SD_DMS.DBO.Invoice I   WITH(NOLOCK) 
+INNER JOIN SD_DMS.DBO.SummaryInvoice SI  WITH(NOLOCK) ON SI.InvoiceCode = I.InvoiceCode 
+INNER JOIN SD_DMS.DBO.Summary S ON SI.SummaryCode = S.SummaryCode
+INNER JOIN SD_DMS.DBO.SummaryInvoiceDetail SID WITH(NOLOCK)  ON SI.InvoiceCode = SID.InvoiceCode 
+INNER JOIN v_ChemistAndLocation CL ON I.ChemistCode = CL.ChemistCode
+INNER JOIN DepotAreaMapping DA ON CL.AreaCode = DA.AreaCode
+
+WHERE  InvoiceDate BETWEEN  @DateFrom AND @DateTo
+AND I.IsActive = 1 
+AND SI.IsActive = 1
+AND SID.IsActive = 1
+AND DA.DepotCode = ?
+GROUP BY I.InvoiceCode</property>
+                        <property
+                          dataType="System.String"
+                          description="The variable that contains the SQL command to be executed."
+                          name="SqlCommandVariable"></property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Forces the use of the DefaultCodePage property value when describing character data."
+                          name="AlwaysUseDefaultCodePage">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the mode used to access the database."
+                          name="AccessMode"
+                          typeConverter="AccessMode">2</property>
+                        <property
+                          dataType="System.String"
+                          description="The mappings between the parameters in the SQL command and variables."
+                          name="ParameterMapping">"Parameter0:Input",{2997DB75-411D-46BC-B888-0EF34A08BB71};</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[DB_SERVER]"
+                          connectionManagerRefId="Package.ConnectionManagers[DB_SERVER]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output]"
+                          name="OLE DB Source Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].Columns[InvoiceCode]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].ExternalColumns[InvoiceCode]"
+                              length="17"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].Columns[InvoiceCode]"
+                              name="InvoiceCode"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].Columns[InvoiceValue]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].ExternalColumns[InvoiceValue]"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].Columns[InvoiceValue]"
+                              name="InvoiceValue"
+                              precision="38"
+                              scale="2"
+                              truncationRowDisposition="FailComponent" />
+                          </outputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].ExternalColumns[InvoiceCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="17"
+                              name="InvoiceCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].ExternalColumns[InvoiceValue]"
+                              dataType="numeric"
+                              name="InvoiceValue"
+                              precision="38"
+                              scale="2" />
+                          </externalMetadataColumns>
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Error Output]"
+                          isErrorOut="true"
+                          name="OLE DB Source Error Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Error Output].Columns[InvoiceCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="17"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Error Output].Columns[InvoiceCode]"
+                              name="InvoiceCode" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Error Output].Columns[InvoiceValue]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Error Output].Columns[InvoiceValue]"
+                              name="InvoiceValue"
+                              precision="38"
+                              scale="2" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\Lookup"
+                      componentClassID="Microsoft.Lookup"
+                      contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                      description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                      name="Lookup"
+                      usesDispositions="true"
+                      version="6">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the SQL statement that generates the lookup table."
+                          expressionType="Notify"
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Declare @DateFrom as varchar(11)= SD_DMS.DBO.getLastMonthFirstDate(GETDATE()) , @DateTo  as varchar(11)=  GETDATE();
+
+
+SELECT  I.InvoiceCode, SUM(SID.Amount) AS InvoiceValue
+			
+FROM  SD_DMS.DBO.Invoice I   WITH(NOLOCK) 
+INNER JOIN SD_DMS.DBO.SummaryInvoice SI  WITH(NOLOCK) ON SI.InvoiceCode = I.InvoiceCode 
+INNER JOIN SD_DMS.DBO.Summary S ON SI.SummaryCode = S.SummaryCode
+INNER JOIN SD_DMS.DBO.SummaryInvoiceDetail SID WITH(NOLOCK)  ON SI.InvoiceCode = SID.InvoiceCode 
+
+WHERE  InvoiceDate BETWEEN @DateFrom AND @DateTo
+AND I.IsActive = 1 
+AND SI.IsActive = 1
+AND SID.IsActive = 1
+GROUP BY I.InvoiceCode</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                          expressionType="Notify"
+                          name="SqlCommandParam"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (Declare @DateFrom as varchar(11)= SD_DMS.DBO.getLastMonthFirstDate(GETDATE()) , @DateTo  as varchar(11)=  GETDATE();
+
+
+SELECT  I.InvoiceCode, SUM(SID.Amount) AS InvoiceValue
+			
+FROM  SD_DMS.DBO.Invoice I   WITH(NOLOCK) 
+INNER JOIN SD_DMS.DBO.SummaryInvoice SI  WITH(NOLOCK) ON SI.InvoiceCode = I.InvoiceCode 
+INNER JOIN SD_DMS.DBO.Summary S ON SI.SummaryCode = S.SummaryCode
+INNER JOIN SD_DMS.DBO.SummaryInvoiceDetail SID WITH(NOLOCK)  ON SI.InvoiceCode = SID.InvoiceCode 
+
+WHERE  InvoiceDate BETWEEN @DateFrom AND @DateTo
+AND I.IsActive = 1 
+AND SI.IsActive = 1
+AND SID.IsActive = 1
+GROUP BY I.InvoiceCode) [refTable]
+where [refTable].[InvoiceCode] = ? and [refTable].[InvoiceValue] = ?</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of connection used to access the reference dataset."
+                          name="ConnectionType"
+                          typeConverter="LookupConnectionType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the cache type of the lookup table."
+                          name="CacheType"
+                          typeConverter="CacheType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                          name="NoMatchBehavior"
+                          typeConverter="LookupNoMatchBehavior">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                          name="NoMatchCachePercentage">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                          name="MaxMemoryUsage">25</property>
+                        <property
+                          dataType="System.Int64"
+                          description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                          name="MaxMemoryUsage64">25</property>
+                        <property
+                          dataType="System.String"
+                          description="Indicates whether to reference metadata in an XML format."
+                          name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="InvoiceCode" dataType="DT_STR" length="17" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InvoiceValue" dataType="DT_NUMERIC" length="0" precision="38" scale="2" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                          name="ParameterMap">#{Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].Columns[InvoiceCode]};#{Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].Columns[InvoiceValue]};</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                          name="TreatDuplicateKeysAsError">false</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\Lookup.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[DEPOT_SERVER]"
+                          connectionManagerRefId="Package.ConnectionManagers[DEPOT_SERVER]"
+                          description="Connection manager used to access lookup data."
+                          name="OleDbConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\Lookup.Inputs[Lookup Input]"
+                          name="Lookup Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\Lookup.Inputs[Lookup Input].Columns[InvoiceCode]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="17"
+                              cachedName="InvoiceCode"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].Columns[InvoiceCode]">
+                              <properties>
+                                <property
+                                  dataType="System.String"
+                                  description="Specifies the column in the reference table that a column joins."
+                                  name="JoinToReferenceColumn">InvoiceCode</property>
+                                <property
+                                  dataType="System.Null"
+                                  description="Specifies the column in the reference table from which a column is copied."
+                                  name="CopyFromReferenceColumn" />
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\Lookup.Inputs[Lookup Input].Columns[InvoiceValue]"
+                              cachedDataType="numeric"
+                              cachedName="InvoiceValue"
+                              cachedPrecision="38"
+                              cachedScale="2"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].Columns[InvoiceValue]">
+                              <properties>
+                                <property
+                                  dataType="System.String"
+                                  description="Specifies the column in the reference table that a column joins."
+                                  name="JoinToReferenceColumn">InvoiceValue</property>
+                                <property
+                                  dataType="System.Null"
+                                  description="Specifies the column in the reference table from which a column is copied."
+                                  name="CopyFromReferenceColumn" />
+                              </properties>
+                            </inputColumn>
+                          </inputColumns>
+                          <externalMetadataColumns />
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\Lookup.Outputs[Lookup Match Output]"
+                          errorOrTruncationOperation="Lookup"
+                          exclusionGroup="1"
+                          name="Lookup Match Output"
+                          synchronousInputId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\Lookup.Inputs[Lookup Input]">
+                          <externalMetadataColumns />
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\Lookup.Outputs[Lookup No Match Output]"
+                          description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                          exclusionGroup="1"
+                          name="Lookup No Match Output"
+                          synchronousInputId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\Lookup.Inputs[Lookup Input]">
+                          <externalMetadataColumns />
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\Lookup.Outputs[Lookup Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="Lookup Error Output"
+                          synchronousInputId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\Lookup.Inputs[Lookup Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\OLE DB Command"
+                      componentClassID="Microsoft.OLEDBCommand"
+                      contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                      description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                      name="OLE DB Command"
+                      usesDispositions="true"
+                      version="2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          expressionType="Notify"
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">
+UPDATE SD_DMS.DBO.Summary SET IsTransferred = 0  WHERE SummaryCode IN
+(
+	SELECT SummaryCode FROM SD_DMS.DBO.SummaryInvoice WHERE InvoiceCode = ?
+)
+</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\OLE DB Command.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[DEPOT_SERVER]"
+                          connectionManagerRefId="Package.ConnectionManagers[DEPOT_SERVER]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\OLE DB Command.Inputs[OLE DB Command Input]"
+                          errorOrTruncationOperation="Command Execution"
+                          errorRowDisposition="FailComponent"
+                          hasSideEffects="true"
+                          name="OLE DB Command Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\OLE DB Command.Inputs[OLE DB Command Input].Columns[InvoiceCode]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="17"
+                              cachedName="InvoiceCode"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output].Columns[InvoiceCode]" />
+                          </inputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                              codePage="1252"
+                              dataType="str"
+                              length="17"
+                              name="Param_0">
+                              <properties>
+                                <property
+                                  dataType="System.Int32"
+                                  description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                                  name="DBParamInfoFlags">65</property>
+                              </properties>
+                            </externalMetadataColumn>
+                          </externalMetadataColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\OLE DB Command.Outputs[OLE DB Command Output]"
+                          exclusionGroup="1"
+                          name="OLE DB Command Output"
+                          synchronousInputId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\OLE DB Command.Inputs[OLE DB Command Input]">
+                          <externalMetadataColumns />
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="OLE DB Command Error Output"
+                          synchronousInputId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\OLE DB Command.Inputs[OLE DB Command Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                  </components>
+                  <paths>
+                    <path
+                      refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES.Paths[Lookup No Match Output]"
+                      endId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\OLE DB Command.Inputs[OLE DB Command Input]"
+                      name="Lookup No Match Output"
+                      startId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\Lookup.Outputs[Lookup No Match Output]" />
+                    <path
+                      refId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES.Paths[OLE DB Source Output]"
+                      endId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\Lookup.Inputs[Lookup Input]"
+                      name="OLE DB Source Output"
+                      startId="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO.Outputs[OLE DB Source Output]" />
+                  </paths>
+                </pipeline>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Foreach Loop Container\Invoice.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{773EC80D-FA04-47CD-8622-AFBC4D004BDD}"
+              DTS:From="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES" />
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\LOG_IF_OFFLINE"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{CA18A791-70FF-4D97-8F79-43BFC21DFEAB}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="LOG_IF_OFFLINE"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{84862AD8-0220-4D43-BF79-37D5BBE19455}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="INSERT INTO Maintenance.dbo.MasterDataSyncLog (PackageName, ServerName, ServerStatus)&#xA;VALUES('MasterDataSynce_ConsolidationStyle',?,'OFFLINE');" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::LinkedServerName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\SET_SERVER_OFFLINE"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{0800E62B-A8F2-46EB-AFFD-39E9D52AD799}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SET_SERVER_OFFLINE"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{84862AD8-0220-4D43-BF79-37D5BBE19455}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="UPDATE Maintenance.DBO.ServerList SET IsOnline = 0 WHERE ServerName = ?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::LinkedServerName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{13B18F25-15E6-438C-9435-B386CAFFD6A9}"
+          DTS:From="Package\Foreach Loop Container\CHECK_SERVER_ONLINE"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Foreach Loop Container\LOG_IF_OFFLINE"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{30CD1539-A0E3-49E1-9342-BC1F5611F3DB}"
+          DTS:From="Package\Foreach Loop Container\LOG_IF_OFFLINE"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Foreach Loop Container\SET_SERVER_OFFLINE" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{ED08EF68-934F-40DD-A1F8-67D554AB3754}"
+          DTS:From="Package\Foreach Loop Container\CHECK_SERVER_ONLINE"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Foreach Loop Container\Invoice" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{76D8E6D3-AE25-4CF9-AE6F-1AFE4C8D6A64}"
+          DTS:ObjectName="{76D8E6D3-AE25-4CF9-AE6F-1AFE4C8D6A64}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::ServerList" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{B091F0A2-44E6-4AC0-BE06-D7DE7225F602}"
+          DTS:ObjectName="{B091F0A2-44E6-4AC0-BE06-D7DE7225F602}"
+          DTS:ValueIndex="1"
+          DTS:VariableName="User::IPAddress" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{D7C4FB52-7D48-4504-A962-A9B709977BCB}"
+          DTS:ObjectName="{D7C4FB52-7D48-4504-A962-A9B709977BCB}"
+          DTS:ValueIndex="2"
+          DTS:VariableName="User::LinkedServerName" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{7689E2B9-8756-4C61-8BAD-1B5641AD5BC3}"
+          DTS:ObjectName="{7689E2B9-8756-4C61-8BAD-1B5641AD5BC3}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::ServerName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\GET_ALL_SERVER"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{E5AEC69D-2C52-46F5-A1AB-26F24F3F9C89}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="GET_ALL_SERVER"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{84862AD8-0220-4D43-BF79-37D5BBE19455}"
+          SQLTask:SqlStatementSource="SELECT ServerName, IPAddress, LinkedServerName&#xA;FROM Maintenance.dbo.ServerList &#xA;WHERE IsActive = 1&#xA;AND IsOnline = 1 &#xA;AND IsSSISOnly = 1&#xA;ORDER BY OrderNo;"
+          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::ServerList" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{F17F4787-48F1-4F81-86D1-FE27801C8CD1}"
+      DTS:From="Package\GET_ALL_SERVER"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Foreach Loop Container" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="216,42"
+          Id="Package\Foreach Loop Container\CHECK_SERVER_ONLINE"
+          TopLeft="50.4285714285714,30.4285714285714" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Foreach Loop Container\LOG_IF_OFFLINE"
+          TopLeft="377,28.8571428571429" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\Foreach Loop Container\SET_SERVER_OFFLINE"
+          TopLeft="619.857142857143,26.8571428571428" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          TopLeft="266.428571428571,50.6428571428571">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="110.571428571429,0"
+              Start="0,0"
+              End="103.071428571429,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="103.071428571429,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="36.2943666294645,5,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="548,48.8571428571428">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="71.857142857143,0"
+              Start="0,0"
+              End="64.357142857143,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="64.357142857143,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="255,42"
+          Id="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES"
+          TopLeft="13,112" />
+        <NodeLayout
+          Size="256,42"
+          Id="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES"
+          TopLeft="14,21" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Invoice.PrecedenceConstraints[Constraint]"
+          TopLeft="141.25,63">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="280,209"
+          Size="280,252"
+          Id="Package\Foreach Loop Container\Invoice"
+          TopLeft="37,143" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 2]"
+          TopLeft="158.428571428571,72.4285714285714">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.5714285714286,70.5714285714286"
+              Start="0,0"
+              End="18.5714285714286,63.0714285714286">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.2857142857143" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.2857142857143"
+                    Point2="0,35.2857142857143"
+                    Point3="4,35.2857142857143" />
+                  <mssgle:LineSegment
+                    End="14.5714285714286,35.2857142857143" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.5714285714286,35.2857142857143"
+                    Point2="18.5714285714286,35.2857142857143"
+                    Point3="18.5714285714286,39.2857142857143" />
+                  <mssgle:LineSegment
+                    End="18.5714285714286,63.0714285714286" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="894,501"
+          Size="894,544"
+          Id="Package\Foreach Loop Container"
+          TopLeft="108.142857142858,327.015873015873" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\GET_ALL_SERVER"
+          TopLeft="461,197.857142857143" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="552.821428571429,239.857142857143">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,87.1587301587301"
+              Start="0,0"
+              End="0,79.6587301587301">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,79.6587301587301" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="242,42"
+          Id="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO"
+          TopLeft="398,126" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\Lookup"
+          TopLeft="465,251" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES.Paths[OLE DB Source Output]"
+          TopLeft="520.25,168">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,83"
+              Start="0,0"
+              End="0,75.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,75.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\OLE DB Command"
+          TopLeft="438,436" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES.Paths[Lookup No Match Output]"
+          TopLeft="521.25,293">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,143"
+              Start="0,0"
+              End="0,135.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,135.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,61.9453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\LOAD DEPOT INVOICES FROM HO">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\Invoice\FIND UPDATED SUMMARY INVOICES\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\OLE DB Command"
+          TopLeft="438,436" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\Lookup"
+          TopLeft="467,302" />
+        <NodeLayout
+          Size="242,42"
+          Id="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO"
+          TopLeft="398,126" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES.Paths[Lookup No Match Output]"
+          TopLeft="522.25,344">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,92"
+              Start="0,0"
+              End="0,84.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,84.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,36.4453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES.Paths[OLE DB Source Output]"
+          TopLeft="521.25,168">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,134"
+              Start="0,0"
+              End="0,126.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,126.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\Invoice\FIND UNSYNCED TRANSIT INVOICES\LOAD DEPOT INVOICES FROM HO">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

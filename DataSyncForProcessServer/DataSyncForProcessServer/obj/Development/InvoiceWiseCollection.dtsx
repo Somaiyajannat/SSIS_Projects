@@ -1,0 +1,2699 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/13/2022 4:05:55 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SPC-3"
+  DTS:CreatorName="SPC-3\Jannat"
+  DTS:DTSID="{D2D22BF3-7B68-4AE3-BAC9-F28D998012CE}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="InvoiceWiseCollection"
+  DTS:PackageType="5"
+  DTS:VersionBuild="342"
+  DTS:VersionGUID="{AF54F988-B97E-4CD0-B19F-EC5EB71659CF}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DB_SERVER]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A86ECF72-E254-4400-91DB-EE305CC93607}"
+      DTS:ObjectName="DB_SERVER">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.4;User ID=sa;Initial Catalog=SD_DMS;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAZCwLT/uql0+f0k019B0lFwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADehGJ7GGlFcdwxoJI3jNrzJVbhVSkfruuMcOBhP0hVkgAAAAAOgAAAAAIAACAAAAAGFeT/tvobvjX/w64xPkpuiikxc5qMlVaS3h61hm5RKDAAAACZoPuwV4gl4vorUm6qkFdMpvqDfGQyYFcdqtnuJioy6PHHM+oh+9zIbNZuqdafY5xAAAAAlyx/Xvp5zMm24/XHmAOLW7QppzzSZRgCciWp1pNMqGgI21+7TS3G8PxAqEEqxyvXXVevd/85JVs+O4Pv8kf7Iw</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PROCESS_SERVER]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{601BE29D-2F77-4EEB-9556-ACCD7A7B51D9}"
+      DTS:ObjectName="PROCESS_SERVER">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.5;User ID=sa;Initial Catalog=SALES;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAZCwLT/uql0+f0k019B0lFwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADCVHlGKvMuUj9SU1lwXOla7ZJFzhTbp93gP6iiYHLEGgAAAAAOgAAAAAIAACAAAABip4o3dsP/fpvgv2Iw1zzK/FmakU7FvqoGsbBfeqKLCzAAAAAVKM6EPP2NuDMOi0KvdCU1myspCEgpGPRJJSQILXcDAqd1NfF6xGg9kDGNtAWnTvdAAAAA3PVtkp3ZVP5anELlghPykCBdZNUQ7sPDp+rWEyUoiXdj52VI0Lc3/JIPsAO95Bwu1KVHXj2r1gNroNLBbzKhWA</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PROCESS_SERVER_MAINTENANCE]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{e48148ea-b25c-46ae-9885-313dca29ad08}"
+      DTS:ObjectName="PROCESS_SERVER_MAINTENANCE">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.5;User ID=sa;Initial Catalog=Maintenance;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAZCwLT/uql0+f0k019B0lFwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAVoiK8TwCC/vs+dVUJlIw95JPkrnEWqilTRY+fjE/04wAAAAAOgAAAAAIAACAAAAAL3QEZ9WGhUXvi0bscJFd9NcblavdQF+8tZ8HjaLeUczAAAABSiJwB74ZzCrZaLplxvWf95kOVpIhSRsvj5pnoH7XUj+AU8hcMhx3IlrNGRmcV/yxAAAAAE3awG5mCgEBAWl+sIFhqgXFx1J7YB6RXZLj568EATp9Nk5EqtpzEFafMBSkPi5sf/RZ/RzF1BVp8pCt69caIwQ</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="PROCESS_SERVER_MAINTENANCE"
+      DTS:CreationName="Microsoft.LogProviderSQLServer"
+      DTS:Description="Writes log entries for events to a SQL Server database"
+      DTS:DTSID="{97EAD0E0-6E8B-427B-9D11-12946E79A54F}"
+      DTS:ObjectName="SSIS log provider for SQL Server">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{517BFAF7-BB04-4974-AE09-371FCBF9C289}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="NumberOfRows">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{97EAD0E0-6E8B-427B-9D11-12946E79A54F}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\INVOICE WISE Collection"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{8E95A175-20BF-45E8-B84C-1CD2433E054A}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="INVOICE WISE Collection">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\INVOICE WISE Collection\DELETE EXISTING DATA FROM DESTINATION"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{CC6B030D-E2B6-4CFA-9652-9B9395464A29}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DELETE EXISTING DATA FROM DESTINATION"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{601BE29D-2F77-4EEB-9556-ACCD7A7B51D9}"
+              SQLTask:SqlStatementSource="DELETE IC FROM  SALES.DBO.Staging_InvoiceWiseCollection C&#xA;INNER JOIN SALES.DBO.InvoiceWiseCollection IC ON C.InvoiceCode = IC.InvoiceCode&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\INVOICE WISE Collection\EMPTY STAGING TABLE"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{2967BA75-BDAA-454C-9B47-3F20EFC3B515}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EMPTY STAGING TABLE"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{601BE29D-2F77-4EEB-9556-ACCD7A7B51D9}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE Staging_InvoiceWiseCollection;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{27FF669F-6A75-4602-B8EE-0E25F2531D30}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="LOAD INTO DESTINATION"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="InvoiceWiseCollection"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[InvoiceWiseCollection]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input].Columns[InvoiceCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="17"
+                          cachedName="InvoiceCode"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceCode]"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[InvoiceCode]" />
+                        <inputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input].Columns[InvoiceDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="InvoiceDate"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[InvoiceDate]" />
+                        <inputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input].Columns[ChemistCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="ChemistCode"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[ChemistCode]"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[ChemistCode]" />
+                        <inputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input].Columns[MPOCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="MPOCode"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[MPOCode]"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[MPOCode]" />
+                        <inputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input].Columns[DepotCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="DepotCode"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[DepotCode]"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[DepotCode]" />
+                        <inputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input].Columns[PaymentMode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="PaymentMode"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[PaymentMode]"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[PaymentMode]" />
+                        <inputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input].Columns[TerritoryCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="TerritoryCode"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryCode]"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[TerritoryCode]" />
+                        <inputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input].Columns[PaidAmount]"
+                          cachedDataType="numeric"
+                          cachedName="PaidAmount"
+                          cachedPrecision="18"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[PaidAmount]"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[PaidAmount]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="TerritoryCode" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceCode]"
+                          codePage="1252"
+                          dataType="text"
+                          name="InvoiceCode" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          dataType="dbTimeStamp"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[ChemistCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="ChemistCode" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[MPOCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="MPOCode" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[DepotCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="DepotCode" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[PaymentMode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="PaymentMode" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOn]"
+                          dataType="dbDate"
+                          name="CreatedOn" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[PaidAmount]"
+                          dataType="numeric"
+                          name="PaidAmount"
+                          precision="18"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\Row Count"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="Row Count">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::NumberOfRows</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\Row Count.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\Row Count.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\Row Count.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="STAGING_INVOICE_WISE_SALES"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Staging_InvoiceWiseCollection]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[InvoiceCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].ExternalColumns[InvoiceCode]"
+                          length="17"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[InvoiceCode]"
+                          name="InvoiceCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          name="InvoiceDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[ChemistCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].ExternalColumns[ChemistCode]"
+                          length="20"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[ChemistCode]"
+                          name="ChemistCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[MPOCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].ExternalColumns[MPOCode]"
+                          length="10"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[MPOCode]"
+                          name="MPOCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[TerritoryCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].ExternalColumns[TerritoryCode]"
+                          length="10"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[TerritoryCode]"
+                          name="TerritoryCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[DepotCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].ExternalColumns[DepotCode]"
+                          length="5"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[DepotCode]"
+                          name="DepotCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[PaymentMode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].ExternalColumns[PaymentMode]"
+                          length="10"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[PaymentMode]"
+                          name="PaymentMode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[CreatedOn]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].ExternalColumns[CreatedOn]"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[CreatedOn]"
+                          name="CreatedOn"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[PaidAmount]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].ExternalColumns[PaidAmount]"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].Columns[PaidAmount]"
+                          name="PaidAmount"
+                          precision="18"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].ExternalColumns[InvoiceCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="17"
+                          name="InvoiceCode" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          dataType="dbTimeStamp"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].ExternalColumns[ChemistCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="ChemistCode" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].ExternalColumns[MPOCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="MPOCode" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].ExternalColumns[TerritoryCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="TerritoryCode" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].ExternalColumns[DepotCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="DepotCode" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].ExternalColumns[PaymentMode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="PaymentMode" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].ExternalColumns[CreatedOn]"
+                          dataType="dbDate"
+                          name="CreatedOn" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output].ExternalColumns[PaidAmount]"
+                          dataType="numeric"
+                          name="PaidAmount"
+                          precision="18"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Error Output].Columns[InvoiceCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="17"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Error Output].Columns[InvoiceCode]"
+                          name="InvoiceCode" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          name="InvoiceDate" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Error Output].Columns[ChemistCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Error Output].Columns[ChemistCode]"
+                          name="ChemistCode" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Error Output].Columns[MPOCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Error Output].Columns[MPOCode]"
+                          name="MPOCode" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Error Output].Columns[TerritoryCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Error Output].Columns[TerritoryCode]"
+                          name="TerritoryCode" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Error Output].Columns[DepotCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Error Output].Columns[DepotCode]"
+                          name="DepotCode" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Error Output].Columns[PaymentMode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Error Output].Columns[PaymentMode]"
+                          name="PaymentMode" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Error Output].Columns[PaidAmount]"
+                          dataType="numeric"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Error Output].Columns[PaidAmount]"
+                          name="PaidAmount"
+                          precision="18"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Error Output].Columns[CreatedOn]"
+                          dataType="dbDate"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Error Output].Columns[CreatedOn]"
+                          name="CreatedOn" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION.Paths[OLE DB Source Output]"
+                  endId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\Row Count.Inputs[Row Count Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION.Paths[Row Count Output 1]"
+                  endId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\Row Count.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{96B114A6-402D-4F88-8D62-0E827A1044DF}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="LOAD THE UNSYNC DATA"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Lookup"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Declare @DateFrom as varchar(11), @DateTo  as varchar(11);
+SELECT @DateFrom = DateFrom, @DateTo = DateTo  FROM DBO.getSyncDateDuration(0);
+
+
+SELECT * FROM SALES.DBO.InvoiceWiseCollection 
+WHERE InvoiceDate BETWEEN @DateFrom AND @DateTo;</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (Declare @DateFrom as varchar(11), @DateTo  as varchar(11);
+SELECT @DateFrom = DateFrom, @DateTo = DateTo  FROM DBO.getSyncDateDuration(0);
+
+
+SELECT * FROM SALES.DBO.InvoiceWiseCollection 
+WHERE InvoiceDate BETWEEN @DateFrom AND @DateTo;) [refTable]
+where [refTable].[InvoiceCode] = ? and [refTable].[InvoiceDate] = ? and [refTable].[ChemistCode] = ? and [refTable].[TerritoryCode] = ? and [refTable].[PaidAmount] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="InvoiceCode" dataType="DT_STR" length="17" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InvoiceDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ChemistCode" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MPOCode" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TerritoryCode" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DepotCode" dataType="DT_STR" length="5" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="PaymentMode" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="PaidAmount" dataType="DT_NUMERIC" length="0" precision="18" scale="2" codePage="0"/&gt;&lt;referenceColumn name="CreatedOn" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceCode]};#{Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceDate]};#{Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[ChemistCode]};#{Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[TerritoryCode]};#{Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[PaidAmount]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Lookup.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Lookup.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Lookup.Inputs[Lookup Input].Columns[PaidAmount]"
+                          cachedDataType="numeric"
+                          cachedName="PaidAmount"
+                          cachedPrecision="18"
+                          cachedScale="2"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[PaidAmount]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">PaidAmount</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Lookup.Inputs[Lookup Input].Columns[InvoiceCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="17"
+                          cachedName="InvoiceCode"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceCode]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">InvoiceCode</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Lookup.Inputs[Lookup Input].Columns[InvoiceDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="InvoiceDate"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceDate]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">InvoiceDate</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Lookup.Inputs[Lookup Input].Columns[ChemistCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="ChemistCode"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[ChemistCode]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">ChemistCode</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Lookup.Inputs[Lookup Input].Columns[TerritoryCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="TerritoryCode"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[TerritoryCode]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">TerritoryCode</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Lookup.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Lookup.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Lookup.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Lookup.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Lookup.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Declare @DateFrom as varchar(11), @DateTo  as varchar(11);
+SELECT @DateFrom = DateFrom, @DateTo = DateTo  FROM DBO.getSyncDateDuration();
+
+
+
+
+EXEC SD_DMS.DBO.SSIS_getInvoiceWiseCollection  @DateFrom, @DateTo;</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DB_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[DB_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InvoiceCode]"
+                          length="17"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceCode]"
+                          name="InvoiceCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          name="InvoiceDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[ChemistCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ChemistCode]"
+                          length="20"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[ChemistCode]"
+                          name="ChemistCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[TerritoryCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TerritoryCode]"
+                          length="5"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[TerritoryCode]"
+                          name="TerritoryCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepotCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepotCode]"
+                          length="3"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepotCode]"
+                          name="DepotCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[PaymentMode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PaymentMode]"
+                          length="10"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[PaymentMode]"
+                          name="PaymentMode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[MPOID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MPOID]"
+                          length="50"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[MPOID]"
+                          name="MPOID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[PaidAmount]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PaidAmount]"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[PaidAmount]"
+                          name="PaidAmount"
+                          precision="18"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InvoiceCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="17"
+                          name="InvoiceCode" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          dataType="dbTimeStamp"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ChemistCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="ChemistCode" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TerritoryCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="TerritoryCode" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepotCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          name="DepotCode" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PaymentMode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="PaymentMode" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MPOID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="MPOID" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PaidAmount]"
+                          dataType="numeric"
+                          name="PaidAmount"
+                          precision="18"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InvoiceCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="17"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InvoiceCode]"
+                          name="InvoiceCode" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          name="InvoiceDate" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ChemistCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ChemistCode]"
+                          name="ChemistCode" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MPOID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MPOID]"
+                          name="MPOID" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TerritoryCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TerritoryCode]"
+                          name="TerritoryCode" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepotCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepotCode]"
+                          name="DepotCode" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PaymentMode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PaymentMode]"
+                          name="PaymentMode" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PaidAmount]"
+                          dataType="numeric"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PaidAmount]"
+                          name="PaidAmount"
+                          precision="18"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Staging_InvoiceWiseCollection"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Staging_InvoiceWiseCollection]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].Columns[TerritoryCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="TerritoryCode"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryCode]"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[TerritoryCode]" />
+                        <inputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].Columns[InvoiceCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="17"
+                          cachedName="InvoiceCode"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceCode]"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceCode]" />
+                        <inputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].Columns[InvoiceDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="InvoiceDate"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceDate]" />
+                        <inputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].Columns[ChemistCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="ChemistCode"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[ChemistCode]"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[ChemistCode]" />
+                        <inputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].Columns[DepotCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3"
+                          cachedName="DepotCode"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[DepotCode]"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepotCode]" />
+                        <inputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].Columns[PaymentMode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="PaymentMode"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[PaymentMode]"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[PaymentMode]" />
+                        <inputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].Columns[MPOID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="MPOID"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[MPOCode]"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[MPOID]" />
+                        <inputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].Columns[PaidAmount]"
+                          cachedDataType="numeric"
+                          cachedName="PaidAmount"
+                          cachedPrecision="18"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[PaidAmount]"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output].Columns[PaidAmount]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="17"
+                          name="InvoiceCode" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          dataType="dbTimeStamp"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[ChemistCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="ChemistCode" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[MPOCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="MPOCode" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="TerritoryCode" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[DepotCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="DepotCode" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[PaymentMode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="PaymentMode" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOn]"
+                          dataType="dbDate"
+                          name="CreatedOn" />
+                        <externalMetadataColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input].ExternalColumns[PaidAmount]"
+                          dataType="numeric"
+                          name="PaidAmount"
+                          precision="18"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA.Paths[Lookup No Match Output]"
+                  endId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection.Inputs[OLE DB Destination Input]"
+                  name="Lookup No Match Output"
+                  startId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Lookup.Outputs[Lookup No Match Output]" />
+                <path
+                  refId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA.Paths[OLE DB Source Output]"
+                  endId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Lookup.Inputs[Lookup Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\INVOICE WISE Collection\LOG SYNC STATUS"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{12ABECDD-8F2C-4FA7-A077-5ECE2BE51DC7}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="LOG SYNC STATUS"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{601BE29D-2F77-4EEB-9556-ACCD7A7B51D9}"
+              SQLTask:SqlStatementSource="INSERT INTO Maintenance.dbo.DataSyncLog (PackageName, TaskName, NumberOfRows)&#xA;VALUES(?,'Invoice Wise Collection',?);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::NumberOfRows"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\INVOICE WISE Collection.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{E9B53016-7CEE-4D2F-9ADA-D544DB7A9967}"
+          DTS:From="Package\INVOICE WISE Collection\EMPTY STAGING TABLE"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\INVOICE WISE Collection.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{D75A8C55-316E-4E10-9554-F9140414048B}"
+          DTS:From="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\INVOICE WISE Collection\DELETE EXISTING DATA FROM DESTINATION" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\INVOICE WISE Collection.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{EDA3F9C9-6927-4983-8F6B-F6C5AFD2C0AA}"
+          DTS:From="Package\INVOICE WISE Collection\DELETE EXISTING DATA FROM DESTINATION"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\INVOICE WISE Collection\LOAD INTO DESTINATION" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\INVOICE WISE Collection.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{9808A110-D2F1-44F6-9B27-64E87BC4FAB3}"
+          DTS:From="Package\INVOICE WISE Collection\LOAD INTO DESTINATION"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\INVOICE WISE Collection\LOG SYNC STATUS" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\REMOVE EXTRA COLLECTION"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8F2446AB-F4E3-4B14-84F3-7CB6C0ABFB60}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="REMOVE EXTRA COLLECTION"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\REMOVE EXTRA COLLECTION\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Declare @DateFrom as varchar(11), @DateTo  as varchar(11);
+SELECT @DateFrom = DateFrom, @DateTo = DateTo  FROM DBO.getSyncDateDuration();
+
+
+
+
+EXEC SD_DMS.DBO.SSIS_getInvoiceWiseCollection  @DateFrom, @DateTo;</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (Declare @DateFrom as varchar(11), @DateTo  as varchar(11);
+SELECT @DateFrom = DateFrom, @DateTo = DateTo  FROM DBO.getSyncDateDuration();
+
+
+
+
+EXEC SD_DMS.DBO.SSIS_getInvoiceWiseCollection  @DateFrom, @DateTo;) [refTable]
+where [refTable].[InvoiceCode] = ? and [refTable].[InvoiceDate] = ? and [refTable].[ChemistCode] = ? and [refTable].[TerritoryCode] = ? and [refTable].[PaidAmount] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="InvoiceCode" dataType="DT_STR" length="17" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InvoiceDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ChemistCode" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MPOID" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TerritoryCode" dataType="DT_STR" length="5" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DepotCode" dataType="DT_STR" length="3" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="PaymentMode" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="PaidAmount" dataType="DT_NUMERIC" length="0" precision="18" scale="2" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceCode]};#{Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceDate]};#{Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[ChemistCode]};#{Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[TerritoryCode]};#{Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[PaidAmount]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\REMOVE EXTRA COLLECTION\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DB_SERVER]"
+                  connectionManagerRefId="Package.ConnectionManagers[DB_SERVER]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\REMOVE EXTRA COLLECTION\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\Lookup.Inputs[Lookup Input].Columns[InvoiceCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="17"
+                      cachedName="InvoiceCode"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceCode]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">InvoiceCode</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\Lookup.Inputs[Lookup Input].Columns[InvoiceDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="InvoiceDate"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceDate]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">InvoiceDate</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\Lookup.Inputs[Lookup Input].Columns[ChemistCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="ChemistCode"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[ChemistCode]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ChemistCode</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\Lookup.Inputs[Lookup Input].Columns[TerritoryCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="TerritoryCode"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[TerritoryCode]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">TerritoryCode</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\Lookup.Inputs[Lookup Input].Columns[PaidAmount]"
+                      cachedDataType="numeric"
+                      cachedName="PaidAmount"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[PaidAmount]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">PaidAmount</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\REMOVE EXTRA COLLECTION\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\REMOVE EXTRA COLLECTION\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\REMOVE EXTRA COLLECTION\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\REMOVE EXTRA COLLECTION\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\REMOVE EXTRA COLLECTION\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\REMOVE EXTRA COLLECTION\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\REMOVE EXTRA COLLECTION\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DELETE InvoiceWiseCollection WHERE InvoiceCode = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\REMOVE EXTRA COLLECTION\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                  connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\REMOVE EXTRA COLLECTION\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Command.Inputs[OLE DB Command Input].Columns[InvoiceCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="17"
+                      cachedName="InvoiceCode"
+                      externalMetadataColumnId="Package\REMOVE EXTRA COLLECTION\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceCode]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      codePage="1252"
+                      dataType="str"
+                      length="17"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\REMOVE EXTRA COLLECTION\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\REMOVE EXTRA COLLECTION\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\REMOVE EXTRA COLLECTION\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\REMOVE EXTRA COLLECTION\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Declare @DateFrom as varchar(11), @DateTo  as varchar(11);
+SELECT @DateFrom = DateFrom, @DateTo = DateTo  FROM DBO.getSyncDateDuration(0);
+
+
+SELECT * FROM SALES.DBO.InvoiceWiseCollection 
+WHERE InvoiceDate BETWEEN @DateFrom AND @DateTo;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                  connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InvoiceCode]"
+                      length="17"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceCode]"
+                      name="InvoiceCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                      name="InvoiceDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[ChemistCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ChemistCode]"
+                      length="20"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[ChemistCode]"
+                      name="ChemistCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[MPOCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MPOCode]"
+                      length="10"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[MPOCode]"
+                      name="MPOCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[TerritoryCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TerritoryCode]"
+                      length="10"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[TerritoryCode]"
+                      name="TerritoryCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepotCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepotCode]"
+                      length="5"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepotCode]"
+                      name="DepotCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[PaymentMode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PaymentMode]"
+                      length="10"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[PaymentMode]"
+                      name="PaymentMode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[PaidAmount]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PaidAmount]"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[PaidAmount]"
+                      name="PaidAmount"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedOn]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedOn]"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedOn]"
+                      name="CreatedOn"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InvoiceCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="17"
+                      name="InvoiceCode" />
+                    <externalMetadataColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                      dataType="dbTimeStamp"
+                      name="InvoiceDate" />
+                    <externalMetadataColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ChemistCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="ChemistCode" />
+                    <externalMetadataColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MPOCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="MPOCode" />
+                    <externalMetadataColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TerritoryCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="TerritoryCode" />
+                    <externalMetadataColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepotCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="DepotCode" />
+                    <externalMetadataColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PaymentMode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="PaymentMode" />
+                    <externalMetadataColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PaidAmount]"
+                      dataType="numeric"
+                      name="PaidAmount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedOn]"
+                      dataType="dbDate"
+                      name="CreatedOn" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InvoiceCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="17"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InvoiceCode]"
+                      name="InvoiceCode" />
+                    <outputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                      name="InvoiceDate" />
+                    <outputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ChemistCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ChemistCode]"
+                      name="ChemistCode" />
+                    <outputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MPOCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MPOCode]"
+                      name="MPOCode" />
+                    <outputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TerritoryCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TerritoryCode]"
+                      name="TerritoryCode" />
+                    <outputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepotCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepotCode]"
+                      name="DepotCode" />
+                    <outputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PaymentMode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PaymentMode]"
+                      name="PaymentMode" />
+                    <outputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PaidAmount]"
+                      dataType="numeric"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PaidAmount]"
+                      name="PaidAmount"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedOn]"
+                      dataType="dbDate"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedOn]"
+                      name="CreatedOn" />
+                    <outputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\REMOVE EXTRA COLLECTION.Paths[Lookup No Match Output]"
+              endId="Package\REMOVE EXTRA COLLECTION\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Lookup No Match Output"
+              startId="Package\REMOVE EXTRA COLLECTION\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\REMOVE EXTRA COLLECTION.Paths[OLE DB Source Output]"
+              endId="Package\REMOVE EXTRA COLLECTION\Lookup.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\REMOVE EXTRA COLLECTION\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{E3B65424-3665-4644-BDD0-54204A40E296}"
+      DTS:From="Package\REMOVE EXTRA COLLECTION"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\INVOICE WISE Collection" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="320,42"
+          Id="Package\INVOICE WISE Collection\DELETE EXISTING DATA FROM DESTINATION"
+          TopLeft="20,165" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\INVOICE WISE Collection\EMPTY STAGING TABLE"
+          TopLeft="76,22" />
+        <NodeLayout
+          Size="215,42"
+          Id="Package\INVOICE WISE Collection\LOAD INTO DESTINATION"
+          TopLeft="73,242" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA"
+          TopLeft="70,92" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\INVOICE WISE Collection\LOG SYNC STATUS"
+          TopLeft="86,310.916666666666" />
+        <EdgeLayout
+          Id="Package\INVOICE WISE Collection.PrecedenceConstraints[Constraint]"
+          TopLeft="171.25,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28"
+              Start="0,0"
+              End="0,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INVOICE WISE Collection.PrecedenceConstraints[Constraint 1]"
+          TopLeft="170.5,134">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9.5,31"
+              Start="0,0"
+              End="9.5,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.5"
+                    Point2="0,15.5"
+                    Point3="4,15.5" />
+                  <mssgle:LineSegment
+                    End="5.5,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.5,15.5"
+                    Point2="9.5,15.5"
+                    Point3="9.5,19.5" />
+                  <mssgle:LineSegment
+                    End="9.5,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INVOICE WISE Collection.PrecedenceConstraints[Constraint 2]"
+          TopLeft="180.25,207">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INVOICE WISE Collection.PrecedenceConstraints[Constraint 3]"
+          TopLeft="180.75,284">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26.916666666666"
+              Start="0,0"
+              End="0,19.416666666666">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.416666666666" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="388,408"
+          Size="388,451"
+          Id="Package\INVOICE WISE Collection"
+          TopLeft="134,168" />
+        <NodeLayout
+          Size="220,42"
+          Id="Package\REMOVE EXTRA COLLECTION"
+          TopLeft="231,53" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="341,95">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-13,73"
+              Start="0,0"
+              End="-13,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.5"
+                    Point2="0,36.5"
+                    Point3="-4,36.5" />
+                  <mssgle:LineSegment
+                    End="-9,36.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-9,36.5"
+                    Point2="-13,36.5"
+                    Point3="-13,40.5" />
+                  <mssgle:LineSegment
+                    End="-13,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\INVOICE WISE Collection\LOAD INTO DESTINATION">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="237,42"
+          Id="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES"
+          TopLeft="255,42" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\Row Count"
+          TopLeft="313,146" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection"
+          TopLeft="294,259" />
+        <EdgeLayout
+          Id="Package\INVOICE WISE Collection\LOAD INTO DESTINATION.Paths[OLE DB Source Output]"
+          TopLeft="376.5,84">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62"
+              Start="0,0"
+              End="0,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INVOICE WISE Collection\LOAD INTO DESTINATION.Paths[Row Count Output 1]"
+          TopLeft="382,188">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71"
+              Start="0,0"
+              End="0,63.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\STAGING_INVOICE_WISE_SALES">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\INVOICE WISE Collection\LOAD INTO DESTINATION\InvoiceWiseCollection">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="222,42"
+          Id="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection"
+          TopLeft="324,321" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Lookup"
+          TopLeft="378,165" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source"
+          TopLeft="358,28" />
+        <EdgeLayout
+          Id="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA.Paths[OLE DB Source Output]"
+          TopLeft="433.75,70">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,95"
+              Start="0,0"
+              End="0,87.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,87.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA.Paths[Lookup No Match Output]"
+          TopLeft="434.75,207">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,114"
+              Start="0,0"
+              End="0,106.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,106.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,47.4453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Staging_InvoiceWiseCollection">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\INVOICE WISE Collection\LOAD THE UNSYNC DATA\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\REMOVE EXTRA COLLECTION">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\REMOVE EXTRA COLLECTION\OLE DB Source"
+          TopLeft="410,67" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\REMOVE EXTRA COLLECTION\Lookup"
+          TopLeft="427,184" />
+        <EdgeLayout
+          Id="Package\REMOVE EXTRA COLLECTION.Paths[OLE DB Source Output]"
+          TopLeft="484.25,109">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,75"
+              Start="0,0"
+              End="0,67.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="166,42"
+          Id="Package\REMOVE EXTRA COLLECTION\OLE DB Command"
+          TopLeft="398,303" />
+        <EdgeLayout
+          Id="Package\REMOVE EXTRA COLLECTION.Paths[Lookup No Match Output]"
+          TopLeft="482.25,226">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,77"
+              Start="0,0"
+              End="0,69.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,28.9453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\REMOVE EXTRA COLLECTION\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\REMOVE EXTRA COLLECTION\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

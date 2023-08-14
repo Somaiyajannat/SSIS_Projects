@@ -1,0 +1,3057 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/13/2022 4:05:55 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SPC-3"
+  DTS:CreatorName="SPC-3\Jannat"
+  DTS:DTSID="{B88DC756-E7A3-4A62-B196-AF68932173C7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="SalesSync_ProductLocation"
+  DTS:PackageType="5"
+  DTS:VersionBuild="67"
+  DTS:VersionGUID="{B600B7A4-C984-4D74-BDA2-A495E6C1CD16}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DB_SERVER]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{23947FC6-04A5-4450-9561-FBA3856E3367}"
+      DTS:ObjectName="DB_SERVER">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.4;User ID=sa;Initial Catalog=SD_DMS;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPiYp7VNS+06RYKbTPrxzeQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACLfsI6C36v+zJVkYZ2wQtgCwRykczl44ez2EDOwDukugAAAAAOgAAAAAIAACAAAABX6HYXjTvo9qm2pkTRoV7Itx/0L7uXpSjrsrePic7OQzAAAAA0R4fx0OvAYUH+UZDkkgZC8xL39eYblvR4mRcebVz+89hO7N86cqFs1mT48v4gnYxAAAAAzqrkL9WUSLb7RKFwC/ntML4GAkKw4E6CyZj+LVsy6UGyoyUMcB6JgZT3k7V03eLexJpx/EDCsxMJpJm77FwE0g</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PROCESS_SERVER]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E5355B28-C7D6-438C-B7B4-126409A62755}"
+      DTS:ObjectName="PROCESS_SERVER">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.5;User ID=sa;Initial Catalog=SALES;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPiYp7VNS+06RYKbTPrxzeQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADstKI48ZH1yASHU0uAmBC5EcA77FsZhdIXeHQR6YjHhQAAAAAOgAAAAAIAACAAAAB/xTdcVYwKaFKfS9aS0EknKdh2ca9dRm6CkUXzJRSAyTAAAABc5K0jOTnGDM0b5P5/qDg9K3oJbo4ekkyBM636Ri6zBd6fWdpn1WWRAiAnxxJj27dAAAAAjgPS6H7/GzadzCb8nJKX2zYkAWh9qEdoiVDZ6mfaQ4B9fFUC+kZhVYbIY1yaoiAvMnrJ8WdJlmZMe0VAD38nvg</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\AREA"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:Disabled="True"
+      DTS:DTSID="{C880CCEE-34A1-4B3D-828E-ECAAF648E738}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="AREA">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{1DE191C8-E232-4487-B9A0-E5F42A836143}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="PRODUCT AREA  WISE DAILY SALES"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="INSERT PRODUCT AREA WISE SALES DAILY"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[ProductLocation_AreaSalesDaily]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Inputs[OLE DB Destination Input].Columns[InvoiceDate]"
+                          cachedDataType="dbDate"
+                          cachedName="InvoiceDate"
+                          externalMetadataColumnId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]" />
+                        <inputColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Inputs[OLE DB Destination Input].Columns[TP]"
+                          cachedDataType="numeric"
+                          cachedName="TP"
+                          cachedPrecision="18"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Inputs[OLE DB Destination Input].ExternalColumns[TP]"
+                          lineageId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[TP]" />
+                        <inputColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Inputs[OLE DB Destination Input].Columns[SoldQuantity]"
+                          cachedDataType="numeric"
+                          cachedName="SoldQuantity"
+                          cachedPrecision="38"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Inputs[OLE DB Destination Input].ExternalColumns[SoldQuantity]"
+                          lineageId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]" />
+                        <inputColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Inputs[OLE DB Destination Input].Columns[SoldValue]"
+                          cachedDataType="numeric"
+                          cachedName="SoldValue"
+                          cachedPrecision="38"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Inputs[OLE DB Destination Input].ExternalColumns[SoldValue]"
+                          lineageId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]" />
+                        <inputColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Inputs[OLE DB Destination Input].Columns[AreaCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="AreaCode"
+                          externalMetadataColumnId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Inputs[OLE DB Destination Input].ExternalColumns[AreaCode]"
+                          lineageId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[AreaCode]" />
+                        <inputColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ProductID"
+                          externalMetadataColumnId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                          lineageId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          dataType="dbTimeStamp"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Inputs[OLE DB Destination Input].ExternalColumns[AreaCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="AreaCode" />
+                        <externalMetadataColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ProductCode" />
+                        <externalMetadataColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Inputs[OLE DB Destination Input].ExternalColumns[TP]"
+                          dataType="numeric"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Inputs[OLE DB Destination Input].ExternalColumns[SoldQuantity]"
+                          dataType="numeric"
+                          name="SoldQuantity"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Inputs[OLE DB Destination Input].ExternalColumns[SoldValue]"
+                          dataType="numeric"
+                          name="SoldValue"
+                          precision="18"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="LOAD DATA FROM TRANSACTION SERVER"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Declare @DateFrom as varchar(11) = SALES.DBO.getCurrentMonthFirstDate(GETDATE());
+--Declare @DateTo  as varchar(11) =  GETDATE();
+
+--Declare @DateFrom as varchar(11) = '2022-01-01';
+Declare @DateTo  as varchar(11) =  '2022-12-30';
+
+
+
+EXEC  SALES.DBO.getProductAreaDailySales @DateFrom, @DateTo;</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          name="InvoiceDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          length="50"
+                          lineageId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          name="ProductID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[TP]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[TP]"
+                          lineageId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[TP]"
+                          name="TP"
+                          precision="18"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldQuantity]"
+                          lineageId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]"
+                          name="SoldQuantity"
+                          precision="38"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                          lineageId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                          name="SoldValue"
+                          precision="38"
+                          scale="4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[AreaCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[AreaCode]"
+                          length="5"
+                          lineageId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[AreaCode]"
+                          name="AreaCode"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          dataType="dbDate"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[TP]"
+                          dataType="numeric"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldQuantity]"
+                          dataType="numeric"
+                          name="SoldQuantity"
+                          precision="38"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                          dataType="numeric"
+                          name="SoldValue"
+                          precision="38"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[AreaCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="AreaCode" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          dataType="dbDate"
+                          lineageId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          name="InvoiceDate" />
+                        <outputColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[AreaCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          lineageId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[AreaCode]"
+                          name="AreaCode" />
+                        <outputColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          name="ProductID" />
+                        <outputColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[TP]"
+                          dataType="numeric"
+                          lineageId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[TP]"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldQuantity]"
+                          dataType="numeric"
+                          lineageId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldQuantity]"
+                          name="SoldQuantity"
+                          precision="38"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                          dataType="numeric"
+                          lineageId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                          name="SoldValue"
+                          precision="38"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\AREA\PRODUCT AREA  WISE DAILY SALES.Paths[OLE DB Source Output]"
+                  endId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\AREA\REMOVE EXISTING DATA"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{A1D6F5F7-2A68-4CDC-9732-535D53344D77}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="REMOVE EXISTING DATA"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{E5355B28-C7D6-438C-B7B4-126409A62755}"
+              SQLTask:SqlStatementSource="DELETE SALES.DBO.ProductLocation_AreaSalesDaily&#xA;WHERE InvoiceDate&gt;= SALES.DBO.getCurrentMonthFirstDate(GETDATE());&#xA;&#xA;&#xA;--DELETE SALES.DBO.ProductLocation_AreaSalesDaily&#xA;--WHERE InvoiceDate BETWEEN '2022-12-01' AND '2022-12-30';&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\AREA.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{FD288EF0-889F-4DE5-B63D-84E82A418683}"
+          DTS:From="Package\AREA\REMOVE EXISTING DATA"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\AREA\PRODUCT AREA  WISE DAILY SALES" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\OA GROUP"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:Disabled="True"
+      DTS:DTSID="{42FDC92D-4FC9-409A-AC41-F52C9CB976B9}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="OA GROUP">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{D0035037-AFF5-4D44-B17E-D1CDFDFA82BC}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="PRODUCT ZONE  WISE DAILY SALES"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="LOAD DATA FROM TRANSACTION SERVER"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">--Declare @DateFrom as varchar(11) = SD_DMS.DBO.getCurrentMonthFirstDate(GETDATE());
+--Declare @DateTo  as varchar(11) =  GETDATE();
+
+Declare @DateFrom as varchar(11) = '2022-01-01';
+Declare @DateTo  as varchar(11) =  '2022-12-30';
+
+
+
+EXEC  SD_DMS.DBO.SSIS_getProductZoneDailySales @DateFrom, @DateTo;</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DB_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[DB_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          name="InvoiceDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          length="50"
+                          lineageId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          name="ProductID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[TP]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[TP]"
+                          lineageId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[TP]"
+                          name="TP"
+                          precision="18"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldQuantity]"
+                          lineageId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]"
+                          name="SoldQuantity"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                          lineageId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                          name="SoldValue"
+                          precision="29"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[ZoneCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[ZoneCode]"
+                          length="5"
+                          lineageId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[ZoneCode]"
+                          name="ZoneCode"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          dataType="dbDate"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[TP]"
+                          dataType="numeric"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldQuantity]"
+                          dataType="i4"
+                          name="SoldQuantity" />
+                        <externalMetadataColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                          dataType="numeric"
+                          name="SoldValue"
+                          precision="29"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[ZoneCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="ZoneCode" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          dataType="dbDate"
+                          lineageId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          name="InvoiceDate" />
+                        <outputColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ZoneCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          lineageId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ZoneCode]"
+                          name="ZoneCode" />
+                        <outputColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          name="ProductID" />
+                        <outputColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[TP]"
+                          dataType="numeric"
+                          lineageId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[TP]"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldQuantity]"
+                          dataType="i4"
+                          lineageId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldQuantity]"
+                          name="SoldQuantity" />
+                        <outputColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                          dataType="numeric"
+                          lineageId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                          name="SoldValue"
+                          precision="29"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="PRODUCT_ZONE_DAILY_SALES"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[ProductZoneWiseDailySales]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].Columns[InvoiceDate]"
+                          cachedDataType="dbDate"
+                          cachedName="InvoiceDate"
+                          externalMetadataColumnId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]" />
+                        <inputColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].Columns[TP]"
+                          cachedDataType="numeric"
+                          cachedName="TP"
+                          cachedPrecision="18"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[TP]"
+                          lineageId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[TP]" />
+                        <inputColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].Columns[SoldQuantity]"
+                          cachedDataType="i4"
+                          cachedName="SoldQuantity"
+                          externalMetadataColumnId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[SoldQuantity]"
+                          lineageId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]" />
+                        <inputColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].Columns[SoldValue]"
+                          cachedDataType="numeric"
+                          cachedName="SoldValue"
+                          cachedPrecision="29"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[SoldValue]"
+                          lineageId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]" />
+                        <inputColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ProductID"
+                          externalMetadataColumnId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                          lineageId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          dataType="dbTimeStamp"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ProductCode" />
+                        <externalMetadataColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[TP]"
+                          dataType="numeric"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[SoldQuantity]"
+                          dataType="numeric"
+                          name="SoldQuantity"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[SoldValue]"
+                          dataType="numeric"
+                          name="SoldValue"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[ZoneCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="ZoneCode" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES.Paths[OLE DB Source Output]"
+                  endId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\OA GROUP\REMOVE EXISTING DATA"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{89DC53CC-0E68-44E5-A3CF-4CD7DBB262A0}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="REMOVE EXISTING DATA"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{E5355B28-C7D6-438C-B7B4-126409A62755}"
+              SQLTask:SqlStatementSource="--DELETE SALES.DBO.ProductTerritoryWiseDailySales&#xA;--WHERE InvoiceDate&gt;= SALES.DBO.getCurrentMonthFirstDate(GETDATE());&#xA;&#xA;&#xA;DELETE SALES.DBO.ProductZoneWiseDailySales&#xA;WHERE InvoiceDate BETWEEN '2022-01-01' AND '2022-12-30';&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\OA GROUP.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{5EFC1B38-2D20-4FF7-A272-5D2C814276FB}"
+          DTS:From="Package\OA GROUP\REMOVE EXISTING DATA"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\REGION"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:Disabled="True"
+      DTS:DTSID="{66F49B4C-C3EC-482B-B618-8AA68BB0190D}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="REGION">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{7E02CE5C-711F-492F-ABA8-53F051463134}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="PRODUCT REGION  WISE DAILY SALES"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="LOAD DATA FROM TRANSACTION SERVER"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">--Declare @DateFrom as varchar(11) = SD_DMS.DBO.getCurrentMonthFirstDate(GETDATE());
+--Declare @DateTo  as varchar(11) =  GETDATE();
+
+Declare @DateFrom as varchar(11) = '2022-01-01';
+Declare @DateTo  as varchar(11) =  '2022-12-30';
+
+
+
+EXEC  SD_DMS.DBO.SSIS_getProductRegionDailySales @DateFrom, @DateTo;</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DB_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[DB_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          name="InvoiceDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          length="50"
+                          lineageId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          name="ProductID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[TP]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[TP]"
+                          lineageId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[TP]"
+                          name="TP"
+                          precision="18"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldQuantity]"
+                          lineageId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]"
+                          name="SoldQuantity"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                          lineageId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                          name="SoldValue"
+                          precision="29"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[RegionCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[RegionCode]"
+                          length="5"
+                          lineageId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[RegionCode]"
+                          name="RegionCode"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          dataType="dbDate"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[TP]"
+                          dataType="numeric"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldQuantity]"
+                          dataType="i4"
+                          name="SoldQuantity" />
+                        <externalMetadataColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                          dataType="numeric"
+                          name="SoldValue"
+                          precision="29"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[RegionCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="RegionCode" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          dataType="dbDate"
+                          lineageId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          name="InvoiceDate" />
+                        <outputColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[RegionCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          lineageId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[RegionCode]"
+                          name="RegionCode" />
+                        <outputColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          name="ProductID" />
+                        <outputColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[TP]"
+                          dataType="numeric"
+                          lineageId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[TP]"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldQuantity]"
+                          dataType="i4"
+                          lineageId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldQuantity]"
+                          name="SoldQuantity" />
+                        <outputColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                          dataType="numeric"
+                          lineageId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                          name="SoldValue"
+                          precision="29"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="PRODUCT_REGION_DAILY_SALES"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[ProductRegionWiseDailySales]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES.Inputs[OLE DB Destination Input].Columns[InvoiceDate]"
+                          cachedDataType="dbDate"
+                          cachedName="InvoiceDate"
+                          externalMetadataColumnId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]" />
+                        <inputColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES.Inputs[OLE DB Destination Input].Columns[TP]"
+                          cachedDataType="numeric"
+                          cachedName="TP"
+                          cachedPrecision="18"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[TP]"
+                          lineageId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[TP]" />
+                        <inputColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES.Inputs[OLE DB Destination Input].Columns[SoldQuantity]"
+                          cachedDataType="i4"
+                          cachedName="SoldQuantity"
+                          externalMetadataColumnId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[SoldQuantity]"
+                          lineageId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]" />
+                        <inputColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES.Inputs[OLE DB Destination Input].Columns[SoldValue]"
+                          cachedDataType="numeric"
+                          cachedName="SoldValue"
+                          cachedPrecision="29"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[SoldValue]"
+                          lineageId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]" />
+                        <inputColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ProductID"
+                          externalMetadataColumnId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                          lineageId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          dataType="dbTimeStamp"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ProductCode" />
+                        <externalMetadataColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[TP]"
+                          dataType="numeric"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[SoldQuantity]"
+                          dataType="numeric"
+                          name="SoldQuantity"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[SoldValue]"
+                          dataType="numeric"
+                          name="SoldValue"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[RegionCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="RegionCode" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\REGION\PRODUCT REGION  WISE DAILY SALES.Paths[OLE DB Source Output]"
+                  endId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\REGION\REMOVE EXISTING DATA"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{B820CDCF-9457-4B6A-9074-7C17FF2B540D}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="REMOVE EXISTING DATA"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{E5355B28-C7D6-438C-B7B4-126409A62755}"
+              SQLTask:SqlStatementSource="--DELETE SALES.DBO.ProductTerritoryWiseDailySales&#xA;--WHERE InvoiceDate&gt;= SALES.DBO.getCurrentMonthFirstDate(GETDATE());&#xA;&#xA;&#xA;DELETE SALES.DBO.ProductRegionWiseDailySales&#xA;WHERE InvoiceDate BETWEEN '2022-01-01' AND '2022-12-30';&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\REGION.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{541BA3A6-A607-49D0-A894-E684115FFFDE}"
+          DTS:From="Package\REGION\REMOVE EXISTING DATA"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\REGION\PRODUCT REGION  WISE DAILY SALES" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TERRITORY"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{C414F233-AE84-4447-AB6F-7B438E7185CD}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TERRITORY">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{447F2848-9114-49A8-A2B2-B0CAF9CF4D32}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="PRODUCT TERRITORY  WISE DAILY SALES"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="LOAD DATA FROM TRANSACTION SERVER"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">--Declare @DateFrom as varchar(11) = SD_DMS.DBO.getCurrentMonthFirstDate(GETDATE());
+--Declare @DateTo  as varchar(11) =  GETDATE();
+
+Declare @DateFrom as varchar(11) = '2021-01-01';
+Declare @DateTo  as varchar(11) =  '2022-12-31';
+
+
+
+EXEC  SD_DMS.DBO.SSIS_getProductTerritoryDailySales @DateFrom, @DateTo;</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DB_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[DB_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          name="InvoiceDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          length="50"
+                          lineageId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          name="ProductID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[TP]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[TP]"
+                          lineageId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[TP]"
+                          name="TP"
+                          precision="18"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldQuantity]"
+                          lineageId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]"
+                          name="SoldQuantity"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                          lineageId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                          name="SoldValue"
+                          precision="29"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[TerritoryCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[TerritoryCode]"
+                          length="5"
+                          lineageId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[TerritoryCode]"
+                          name="TerritoryCode"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          dataType="dbDate"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[TP]"
+                          dataType="numeric"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldQuantity]"
+                          dataType="i4"
+                          name="SoldQuantity" />
+                        <externalMetadataColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                          dataType="numeric"
+                          name="SoldValue"
+                          precision="29"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[TerritoryCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="TerritoryCode" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          dataType="dbDate"
+                          lineageId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          name="InvoiceDate" />
+                        <outputColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[TerritoryCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          lineageId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[TerritoryCode]"
+                          name="TerritoryCode" />
+                        <outputColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          name="ProductID" />
+                        <outputColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[TP]"
+                          dataType="numeric"
+                          lineageId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[TP]"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldQuantity]"
+                          dataType="i4"
+                          lineageId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldQuantity]"
+                          name="SoldQuantity" />
+                        <outputColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                          dataType="numeric"
+                          lineageId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                          name="SoldValue"
+                          precision="29"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="PRODUCT_TERRITORY_DAILY_SALES"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[ProductLocation_TerritorySalesDaily]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Inputs[OLE DB Destination Input].Columns[InvoiceDate]"
+                          cachedDataType="dbDate"
+                          cachedName="InvoiceDate"
+                          externalMetadataColumnId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]" />
+                        <inputColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Inputs[OLE DB Destination Input].Columns[TP]"
+                          cachedDataType="numeric"
+                          cachedName="TP"
+                          cachedPrecision="18"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[TP]"
+                          lineageId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[TP]" />
+                        <inputColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Inputs[OLE DB Destination Input].Columns[SoldQuantity]"
+                          cachedDataType="i4"
+                          cachedName="SoldQuantity"
+                          externalMetadataColumnId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[SoldQuantity]"
+                          lineageId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]" />
+                        <inputColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Inputs[OLE DB Destination Input].Columns[SoldValue]"
+                          cachedDataType="numeric"
+                          cachedName="SoldValue"
+                          cachedPrecision="29"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[SoldValue]"
+                          lineageId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]" />
+                        <inputColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ProductID"
+                          externalMetadataColumnId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                          lineageId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]" />
+                        <inputColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Inputs[OLE DB Destination Input].Columns[TerritoryCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="TerritoryCode"
+                          externalMetadataColumnId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryCode]"
+                          lineageId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[TerritoryCode]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          dataType="dbTimeStamp"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ProductCode" />
+                        <externalMetadataColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[TP]"
+                          dataType="numeric"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[SoldQuantity]"
+                          dataType="numeric"
+                          name="SoldQuantity"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[SoldValue]"
+                          dataType="numeric"
+                          name="SoldValue"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="TerritoryCode" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES.Paths[OLE DB Source Output]"
+                  endId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\TERRITORY\REMOVE EXISTING DATA"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{D9139C07-DF6C-4A1A-8B77-E44BE8C52400}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="REMOVE EXISTING DATA"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{E5355B28-C7D6-438C-B7B4-126409A62755}"
+              SQLTask:SqlStatementSource="--DELETE SALES.DBO.ProductLocation_TerritorySalesDaily&#xA;--WHERE InvoiceDate&gt;= --SALES.DBO.getCurrentMonthFirstDate(GETDATE());&#xA;&#xA;&#xA;DELETE SALES.DBO.ProductLocation_TerritorySalesDaily&#xA;WHERE InvoiceDate BETWEEN '2021-01-01' AND '2022-12-31';&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\TERRITORY.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{9A95F5D2-0692-4DD5-9DBE-240B5F6BB55B}"
+          DTS:From="Package\TERRITORY\REMOVE EXISTING DATA"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ZONE"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:Disabled="True"
+      DTS:DTSID="{CE91392B-E8C9-4CEB-B003-CB66BE51B56C}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ZONE">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{A06FF500-AE64-4562-A1AD-86F57FBDA685}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="PRODUCT ZONE  WISE DAILY SALES"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="LOAD DATA FROM TRANSACTION SERVER"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">--Declare @DateFrom as varchar(11) = SD_DMS.DBO.getCurrentMonthFirstDate(GETDATE());
+--Declare @DateTo  as varchar(11) =  GETDATE();
+
+Declare @DateFrom as varchar(11) = '2022-01-01';
+Declare @DateTo  as varchar(11) =  '2022-12-30';
+
+
+
+EXEC  SD_DMS.DBO.SSIS_getProductZoneDailySales @DateFrom, @DateTo;</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DB_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[DB_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          name="InvoiceDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          length="50"
+                          lineageId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          name="ProductID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[TP]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[TP]"
+                          lineageId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[TP]"
+                          name="TP"
+                          precision="18"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldQuantity]"
+                          lineageId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]"
+                          name="SoldQuantity"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                          lineageId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                          name="SoldValue"
+                          precision="29"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[ZoneCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[ZoneCode]"
+                          length="5"
+                          lineageId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[ZoneCode]"
+                          name="ZoneCode"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          dataType="dbDate"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[TP]"
+                          dataType="numeric"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldQuantity]"
+                          dataType="i4"
+                          name="SoldQuantity" />
+                        <externalMetadataColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                          dataType="numeric"
+                          name="SoldValue"
+                          precision="29"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].ExternalColumns[ZoneCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="ZoneCode" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          dataType="dbDate"
+                          lineageId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          name="InvoiceDate" />
+                        <outputColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ZoneCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          lineageId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ZoneCode]"
+                          name="ZoneCode" />
+                        <outputColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          name="ProductID" />
+                        <outputColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[TP]"
+                          dataType="numeric"
+                          lineageId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[TP]"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldQuantity]"
+                          dataType="i4"
+                          lineageId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldQuantity]"
+                          name="SoldQuantity" />
+                        <outputColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                          dataType="numeric"
+                          lineageId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                          name="SoldValue"
+                          precision="29"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="PRODUCT_ZONE_DAILY_SALES"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[ProductZoneWiseDailySales]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].Columns[InvoiceDate]"
+                          cachedDataType="dbDate"
+                          cachedName="InvoiceDate"
+                          externalMetadataColumnId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]" />
+                        <inputColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].Columns[TP]"
+                          cachedDataType="numeric"
+                          cachedName="TP"
+                          cachedPrecision="18"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[TP]"
+                          lineageId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[TP]" />
+                        <inputColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].Columns[SoldQuantity]"
+                          cachedDataType="i4"
+                          cachedName="SoldQuantity"
+                          externalMetadataColumnId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[SoldQuantity]"
+                          lineageId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]" />
+                        <inputColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].Columns[SoldValue]"
+                          cachedDataType="numeric"
+                          cachedName="SoldValue"
+                          cachedPrecision="29"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[SoldValue]"
+                          lineageId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]" />
+                        <inputColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ProductID"
+                          externalMetadataColumnId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                          lineageId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          dataType="dbTimeStamp"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ProductCode" />
+                        <externalMetadataColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[TP]"
+                          dataType="numeric"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[SoldQuantity]"
+                          dataType="numeric"
+                          name="SoldQuantity"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[SoldValue]"
+                          dataType="numeric"
+                          name="SoldValue"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input].ExternalColumns[ZoneCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="ZoneCode" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES.Paths[OLE DB Source Output]"
+                  endId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\ZONE\REMOVE EXISTING DATA"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{AC412BEF-4FC4-4253-BEEC-4E48D26A7007}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="REMOVE EXISTING DATA"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{E5355B28-C7D6-438C-B7B4-126409A62755}"
+              SQLTask:SqlStatementSource="--DELETE SALES.DBO.ProductTerritoryWiseDailySales&#xA;--WHERE InvoiceDate&gt;= SALES.DBO.getCurrentMonthFirstDate(GETDATE());&#xA;&#xA;&#xA;DELETE SALES.DBO.ProductZoneWiseDailySales&#xA;WHERE InvoiceDate BETWEEN '2022-01-01' AND '2022-12-30';&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\ZONE.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{30E058AD-52D7-4076-94D4-5D20123D58CC}"
+          DTS:From="Package\ZONE\REMOVE EXISTING DATA"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{97D8DD82-494C-468E-ACAD-365701610EDF}"
+      DTS:From="Package\TERRITORY"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\AREA" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{3DD7CB33-C8D4-4620-9BBB-CF9D854C37E7}"
+      DTS:From="Package\AREA"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\REGION" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{80D858CA-55FA-46C6-ADEE-EA114B05C61F}"
+      DTS:From="Package\REGION"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\ZONE" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="273,42"
+          Id="Package\AREA\PRODUCT AREA  WISE DAILY SALES"
+          TopLeft="35,166" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\AREA\REMOVE EXISTING DATA"
+          TopLeft="66,34" />
+        <EdgeLayout
+          Id="Package\AREA.PrecedenceConstraints[Constraint]"
+          TopLeft="172,76">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,90"
+              Start="0,0"
+              End="0,82.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,82.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="347,318"
+          Size="347,361"
+          Id="Package\AREA"
+          TopLeft="431,69" />
+        <NodeLayout
+          Size="274,42"
+          Id="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES"
+          TopLeft="35,166" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\OA GROUP\REMOVE EXISTING DATA"
+          TopLeft="69,54" />
+        <EdgeLayout
+          Id="Package\OA GROUP.PrecedenceConstraints[Constraint]"
+          TopLeft="173.75,96">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,70"
+              Start="0,0"
+              End="0,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="347,318"
+          Size="347,361"
+          Id="Package\OA GROUP"
+          TopLeft="432,460.444444444444" />
+        <NodeLayout
+          Size="287,42"
+          Id="Package\REGION\PRODUCT REGION  WISE DAILY SALES"
+          TopLeft="35,166" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\REGION\REMOVE EXISTING DATA"
+          TopLeft="79,32" />
+        <EdgeLayout
+          Id="Package\REGION.PrecedenceConstraints[Constraint]"
+          TopLeft="182,74">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,92"
+              Start="0,0"
+              End="0,84.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,84.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="347,318"
+          Size="347,361"
+          Id="Package\REGION"
+          TopLeft="804,68" />
+        <NodeLayout
+          Size="283,42"
+          Id="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES"
+          TopLeft="20,165" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\TERRITORY\REMOVE EXISTING DATA"
+          TopLeft="67,35" />
+        <EdgeLayout
+          Id="Package\TERRITORY.PrecedenceConstraints[Constraint]"
+          TopLeft="173.5,77">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12,88"
+              Start="0,0"
+              End="-12,80.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40"
+                    Point2="0,44"
+                    Point3="-4,44" />
+                  <mssgle:LineSegment
+                    End="-8,44" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8,44"
+                    Point2="-12,44"
+                    Point3="-12,48" />
+                  <mssgle:LineSegment
+                    End="-12,80.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="347,318"
+          Size="347,361"
+          Id="Package\TERRITORY"
+          TopLeft="53,65" />
+        <NodeLayout
+          Size="274,42"
+          Id="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES"
+          TopLeft="35,166" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\ZONE\REMOVE EXISTING DATA"
+          TopLeft="79,32" />
+        <EdgeLayout
+          Id="Package\ZONE.PrecedenceConstraints[Constraint]"
+          TopLeft="185.5,74">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-13.5,92"
+              Start="0,0"
+              End="-13.5,84.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42"
+                    Point2="0,46"
+                    Point3="-4,46" />
+                  <mssgle:LineSegment
+                    End="-9.5,46" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-9.5,46"
+                    Point2="-13.5,46"
+                    Point3="-13.5,50" />
+                  <mssgle:LineSegment
+                    End="-13.5,84.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="347,318"
+          Size="347,361"
+          Id="Package\ZONE"
+          TopLeft="809,464" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="400,247.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="31,0"
+              Start="0,0"
+              End="23.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="23.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="778,249">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="26,0"
+              Start="0,0"
+              End="18.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="18.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="980,429">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\AREA\PRODUCT AREA  WISE DAILY SALES">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="306,42"
+          Id="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER"
+          TopLeft="412,137" />
+        <NodeLayout
+          Size="314,42"
+          Id="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY"
+          TopLeft="487,288" />
+        <EdgeLayout
+          Id="Package\AREA\PRODUCT AREA  WISE DAILY SALES.Paths[OLE DB Source Output]"
+          TopLeft="565,179">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="79,109"
+              Start="0,0"
+              End="79,101.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,50.5"
+                    Point2="0,54.5"
+                    Point3="4,54.5" />
+                  <mssgle:LineSegment
+                    End="75,54.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="75,54.5"
+                    Point2="79,54.5"
+                    Point3="79,58.5" />
+                  <mssgle:LineSegment
+                    End="79,101.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\AREA\PRODUCT AREA  WISE DAILY SALES\INSERT PRODUCT AREA WISE SALES DAILY">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\AREA\PRODUCT AREA  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="306,42"
+          Id="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER"
+          TopLeft="412,137" />
+        <NodeLayout
+          Size="249,42"
+          Id="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES"
+          TopLeft="457,337" />
+        <EdgeLayout
+          Id="Package\OA GROUP\PRODUCT ZONE  WISE DAILY SALES.Paths[OLE DB Source Output]"
+          TopLeft="565,179">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="16.5,158"
+              Start="0,0"
+              End="16.5,150.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,75"
+                    Point2="0,79"
+                    Point3="4,79" />
+                  <mssgle:LineSegment
+                    End="12.5,79" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12.5,79"
+                    Point2="16.5,79"
+                    Point3="16.5,83" />
+                  <mssgle:LineSegment
+                    End="16.5,150.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\REGION\PRODUCT REGION  WISE DAILY SALES">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="306,42"
+          Id="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER"
+          TopLeft="412,137" />
+        <NodeLayout
+          Size="262,42"
+          Id="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES"
+          TopLeft="457,337" />
+        <EdgeLayout
+          Id="Package\REGION\PRODUCT REGION  WISE DAILY SALES.Paths[OLE DB Source Output]"
+          TopLeft="565,179">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23,158"
+              Start="0,0"
+              End="23,150.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,75"
+                    Point2="0,79"
+                    Point3="4,79" />
+                  <mssgle:LineSegment
+                    End="19,79" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19,79"
+                    Point2="23,79"
+                    Point3="23,83" />
+                  <mssgle:LineSegment
+                    End="23,150.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\REGION\PRODUCT REGION  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\REGION\PRODUCT REGION  WISE DAILY SALES\PRODUCT_REGION_DAILY_SALES">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="306,42"
+          Id="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER"
+          TopLeft="400,138" />
+        <NodeLayout
+          Size="282,42"
+          Id="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES"
+          TopLeft="413,335" />
+        <EdgeLayout
+          Id="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES.Paths[OLE DB Source Output]"
+          TopLeft="553.5,180">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,155"
+              Start="0,0"
+              End="0,147.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,147.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\TERRITORY\PRODUCT TERRITORY  WISE DAILY SALES\PRODUCT_TERRITORY_DAILY_SALES">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="306,42"
+          Id="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER"
+          TopLeft="412,137" />
+        <NodeLayout
+          Size="249,42"
+          Id="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES"
+          TopLeft="457,337" />
+        <EdgeLayout
+          Id="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES.Paths[OLE DB Source Output]"
+          TopLeft="565,179">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="16.5,158"
+              Start="0,0"
+              End="16.5,150.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,75"
+                    Point2="0,79"
+                    Point3="4,79" />
+                  <mssgle:LineSegment
+                    End="12.5,79" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12.5,79"
+                    Point2="16.5,79"
+                    Point3="16.5,83" />
+                  <mssgle:LineSegment
+                    End="16.5,150.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\LOAD DATA FROM TRANSACTION SERVER">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ZONE\PRODUCT ZONE  WISE DAILY SALES\PRODUCT_ZONE_DAILY_SALES">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

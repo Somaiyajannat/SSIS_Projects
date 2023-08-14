@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1972
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "DepotDataSync", "DepotDataSync\DepotDataSync.dtproj", "{88342D8E-5679-4ECB-B243-D4D908D7CD46}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88342D8E-5679-4ECB-B243-D4D908D7CD46}.Development|Default.ActiveCfg = Development
+		{88342D8E-5679-4ECB-B243-D4D908D7CD46}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB6E9387-576C-4610-AC87-4ED8B466CC62}
+	EndGlobalSection
+EndGlobal

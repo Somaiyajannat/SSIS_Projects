@@ -1,0 +1,2711 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/17/2022 10:29:15 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SIAMIT"
+  DTS:CreatorName="SIAMIT\Jannat"
+  DTS:DTSID="{931967F8-A259-4AA3-9488-224D9E3E7C31}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="RetransferUnsyncedData"
+  DTS:PackageType="5"
+  DTS:VersionBuild="441"
+  DTS:VersionGUID="{43F7D42C-8EEC-4FFD-94C4-7E8A513ECA1D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DB_SERVER]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{68CB3892-1D5D-409B-8002-1A0F9CDCFCFD}"
+      DTS:ObjectName="DB_SERVER">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.4;User ID=sa;Initial Catalog=SD_DMS;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPiYp7VNS+06RYKbTPrxzeQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACpRsDXGTkdJOvQoqi72D9g11tIdnhif0+YrbkDGZ307wAAAAAOgAAAAAIAACAAAABo5oImxdC6mE5XVoKy57w4xrIC8ndkRmIN2XmSg9f1uDAAAADUwIDMWauIn/1S3uCAWGrrWaeI+qCOmTx+UBbzu4Hy5I78e9Rz22w1AtOVM4/czNxAAAAAC1vH47lo1CX2GGZK3vH9B5z8Z5tp1/fsGGV0mymhqmdRBC/DQT1/4YsetaHNCfbUHRJu/jGr8xX8/1x1y8tChQ</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DEPOT_SERVER]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{6A82B7D4-B52C-41A2-9AA7-A7175A34F6CA}"
+      DTS:ObjectName="DEPOT_SERVER">
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::IPAddress]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.4\DEPOT_CLONE;User ID=sa;Initial Catalog=SD_DMS;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPiYp7VNS+06RYKbTPrxzeQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADQQpKwRl/NYPLtHv5nrt4FWXuD6uy4Frcp5Ze1xGaU1AAAAAAOgAAAAAIAACAAAADfUZ3DHbgagV+bYtVzdGUR/qovIjA0dkEc3XLI8yjPhSAAAACieBvy646v0v50UYTKpbN0gVC/Dmc2A8zs7QndvMhMXUAAAACC6GIzmwyFTJREnoDJ+AWNAd9fJkyZyi+vgVjWzJCLxWkemGYW22h4xj2mbkdYnPBSj1T11jvLjeOm2zkntr2Z</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{946F106D-C2D0-44EB-B466-376EAF913819}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DepotCode">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{78472675-08A8-4D49-ACEF-4E941B1BAF53}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::IPAddress]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="IPAddress">
+      <DTS:VariableValue
+        DTS:DataType="8">192.168.42.4\DEPOT_CLONE</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F1ED66C6-F538-4955-B3FF-3B5295A1783E}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::LinkedServerName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LinkedServerName">
+      <DTS:VariableValue
+        DTS:DataType="8">BOG_SRV</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F3D668FA-9EA7-4267-81CC-723183836021}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="NumberOfAllocation">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CFD77A7A-42B9-4C0C-B2B8-8909C402EE1B}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="NumberOfInvoice">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FE63C8E3-DF94-4722-83C3-A9E73AD0BF6A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="NumberOfRows">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AE10E64E-48FB-43C2-B015-F2334983F3C0}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="NumberOfSummary">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B3DE8B53-21BA-472F-B1BF-AF8C5781E635}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ServerList">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{506D3E07-A4CB-42CF-98F6-68EA4E60D2FB}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:ForceExecutionResult="0"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachADOEnumerator"
+        DTS:DTSID="{453460E8-21BD-4F80-8DB5-A94563826221}"
+        DTS:ObjectName="{453460E8-21BD-4F80-8DB5-A94563826221}">
+        <DTS:ObjectData>
+          <FEEADO
+            EnumType="EnumerateRowsInFirstTable"
+            VarName="User::ServerList" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\CHECK IS SERVER ONLINE"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:DelayValidation="True"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{EEC9C29B-0325-4DCD-97A2-94312D9BC408}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CHECK IS SERVER ONLINE"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{68CB3892-1D5D-409B-8002-1A0F9CDCFCFD}"
+              SQLTask:TimeOut="5"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="DECLARE   @sysservername sysname;&#xA;SELECT  @sysservername = CONVERT(sysname, ?);&#xA;exec&#x9; sys.sp_testlinkedserver @sysservername;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::LinkedServerName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\INVOICE GROUP"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{71781172-88DF-4449-B444-EEC661A2A943}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="INVOICE GROUP">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Foreach Loop Container\INVOICE GROUP\Execute SQL Task"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:Disabled="True"
+              DTS:DTSID="{3AB6ED3D-D9A7-4760-94F9-05B5D7FFE03B}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Execute SQL Task"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{68CB3892-1D5D-409B-8002-1A0F9CDCFCFD}"
+                  SQLTask:SqlStatementSource="TRUNCATE TABLE Staging_InvoiceDetail;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL"
+              DTS:CreationName="Microsoft.Pipeline"
+              DTS:Description="Data Flow Task"
+              DTS:DTSID="{CF1B6E61-48A4-4AC0-8DCF-57CA91CA9306}"
+              DTS:ExecutableType="Microsoft.Pipeline"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="INVOICE DETAIL"
+              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <pipeline
+                  version="1">
+                  <components>
+                    <component
+                      refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\Lookup"
+                      componentClassID="Microsoft.Lookup"
+                      contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                      description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                      name="Lookup"
+                      usesDispositions="true"
+                      version="6">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the SQL statement that generates the lookup table."
+                          expressionType="Notify"
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Staging_InvoiceDetail]</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                          expressionType="Notify"
+                          name="SqlCommandParam"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Staging_InvoiceDetail]) [refTable]
+where [refTable].[InvoiceCode] = ?</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of connection used to access the reference dataset."
+                          name="ConnectionType"
+                          typeConverter="LookupConnectionType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the cache type of the lookup table."
+                          name="CacheType"
+                          typeConverter="CacheType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                          name="NoMatchBehavior"
+                          typeConverter="LookupNoMatchBehavior">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                          name="NoMatchCachePercentage">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                          name="MaxMemoryUsage">25</property>
+                        <property
+                          dataType="System.Int64"
+                          description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                          name="MaxMemoryUsage64">25</property>
+                        <property
+                          dataType="System.String"
+                          description="Indicates whether to reference metadata in an XML format."
+                          name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="InvoiceCode" dataType="DT_STR" length="17" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ProductCode" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SalesCode" dataType="DT_STR" length="7" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="PackSize" dataType="DT_STR" length="15" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SPS" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TP" dataType="DT_NUMERIC" length="0" precision="18" scale="2" codePage="0"/&gt;&lt;referenceColumn name="Vat" dataType="DT_NUMERIC" length="0" precision="18" scale="2" codePage="0"/&gt;&lt;referenceColumn name="DiscountCode" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DiscountDetailID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="InvoiceQty" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="BonusQty" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProductDiscount" dataType="DT_NUMERIC" length="0" precision="18" scale="2" codePage="0"/&gt;&lt;referenceColumn name="TotalTP" dataType="DT_NUMERIC" length="0" precision="18" scale="2" codePage="0"/&gt;&lt;referenceColumn name="TotalVat" dataType="DT_NUMERIC" length="0" precision="18" scale="2" codePage="0"/&gt;&lt;referenceColumn name="TotalAmountDiscount" dataType="DT_NUMERIC" length="0" precision="18" scale="2" codePage="0"/&gt;&lt;referenceColumn name="TotalProductDiscount" dataType="DT_NUMERIC" length="0" precision="18" scale="2" codePage="0"/&gt;&lt;referenceColumn name="Amount" dataType="DT_NUMERIC" length="0" precision="18" scale="2" codePage="0"/&gt;&lt;referenceColumn name="IsInvoiceDiscountApplicable" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MachineID" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IsActive" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CreatedByID" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CreatedOn" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UpdatedByID" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="UpdatedOn" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsTransferred" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                          name="ParameterMap">#{Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceCode]};</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                          name="TreatDuplicateKeysAsError">false</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\Lookup.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[DB_SERVER]"
+                          connectionManagerRefId="Package.ConnectionManagers[DB_SERVER]"
+                          description="Connection manager used to access lookup data."
+                          name="OleDbConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\Lookup.Inputs[Lookup Input]"
+                          name="Lookup Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\Lookup.Inputs[Lookup Input].Columns[InvoiceCode]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="17"
+                              cachedName="InvoiceCode"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceCode]">
+                              <properties>
+                                <property
+                                  dataType="System.String"
+                                  description="Specifies the column in the reference table that a column joins."
+                                  name="JoinToReferenceColumn">InvoiceCode</property>
+                                <property
+                                  dataType="System.Null"
+                                  description="Specifies the column in the reference table from which a column is copied."
+                                  name="CopyFromReferenceColumn" />
+                              </properties>
+                            </inputColumn>
+                          </inputColumns>
+                          <externalMetadataColumns />
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\Lookup.Outputs[Lookup Match Output]"
+                          errorOrTruncationOperation="Lookup"
+                          exclusionGroup="1"
+                          name="Lookup Match Output"
+                          synchronousInputId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\Lookup.Inputs[Lookup Input]">
+                          <externalMetadataColumns />
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\Lookup.Outputs[Lookup No Match Output]"
+                          description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                          exclusionGroup="1"
+                          name="Lookup No Match Output"
+                          synchronousInputId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\Lookup.Inputs[Lookup Input]">
+                          <externalMetadataColumns />
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\Lookup.Outputs[Lookup Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="Lookup Error Output"
+                          synchronousInputId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\Lookup.Inputs[Lookup Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source"
+                      componentClassID="Microsoft.OLEDBSource"
+                      contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                      description="OLE DB Source"
+                      name="OLE DB Source"
+                      usesDispositions="true"
+                      version="7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the database object used to open a rowset."
+                          name="OpenRowset"></property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the name of the database object used to open a rowset."
+                          name="OpenRowsetVariable"></property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT ID.* FROM Invoice I
+	INNER JOIN InvoiceDetail ID ON I.InvoiceCode = ID.InvoiceCode
+	WHERE I.InvoiceDate BETWEEN '2022-12-01' AND '2022-12-09'</property>
+                        <property
+                          dataType="System.String"
+                          description="The variable that contains the SQL command to be executed."
+                          name="SqlCommandVariable"></property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Forces the use of the DefaultCodePage property value when describing character data."
+                          name="AlwaysUseDefaultCodePage">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the mode used to access the database."
+                          name="AccessMode"
+                          typeConverter="AccessMode">2</property>
+                        <property
+                          dataType="System.String"
+                          description="The mappings between the parameters in the SQL command and variables."
+                          name="ParameterMapping"></property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[DEPOT_SERVER]"
+                          connectionManagerRefId="Package.ConnectionManagers[DEPOT_SERVER]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output]"
+                          name="OLE DB Source Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[ID]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[ID]"
+                              name="ID"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceCode]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InvoiceCode]"
+                              length="17"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceCode]"
+                              name="InvoiceCode"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductCode]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductCode]"
+                              length="10"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductCode]"
+                              name="ProductCode"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesCode]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalesCode]"
+                              length="7"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesCode]"
+                              name="SalesCode"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[PackSize]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PackSize]"
+                              length="15"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[PackSize]"
+                              name="PackSize"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[SPS]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SPS]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[SPS]"
+                              name="SPS"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[TP]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TP]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[TP]"
+                              name="TP"
+                              precision="18"
+                              scale="2"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[Vat]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Vat]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[Vat]"
+                              name="Vat"
+                              precision="18"
+                              scale="2"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[DiscountCode]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DiscountCode]"
+                              length="20"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[DiscountCode]"
+                              name="DiscountCode"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[DiscountDetailID]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DiscountDetailID]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[DiscountDetailID]"
+                              name="DiscountDetailID"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceQty]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InvoiceQty]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceQty]"
+                              name="InvoiceQty"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[BonusQty]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BonusQty]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[BonusQty]"
+                              name="BonusQty"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductDiscount]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductDiscount]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductDiscount]"
+                              name="ProductDiscount"
+                              precision="18"
+                              scale="2"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalTP]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalTP]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalTP]"
+                              name="TotalTP"
+                              precision="18"
+                              scale="2"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalVat]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalVat]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalVat]"
+                              name="TotalVat"
+                              precision="18"
+                              scale="2"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalAmountDiscount]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalAmountDiscount]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalAmountDiscount]"
+                              name="TotalAmountDiscount"
+                              precision="18"
+                              scale="2"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalProductDiscount]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalProductDiscount]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalProductDiscount]"
+                              name="TotalProductDiscount"
+                              precision="18"
+                              scale="2"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[Amount]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[Amount]"
+                              name="Amount"
+                              precision="18"
+                              scale="2"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsInvoiceDiscountApplicable]"
+                              dataType="bool"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsInvoiceDiscountApplicable]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsInvoiceDiscountApplicable]"
+                              name="IsInvoiceDiscountApplicable"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[MachineID]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MachineID]"
+                              length="200"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[MachineID]"
+                              name="MachineID"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsActive]"
+                              dataType="bool"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsActive]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsActive]"
+                              name="IsActive"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedByID]"
+                              length="10"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedByID]"
+                              name="CreatedByID"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedOn]"
+                              dataType="dbTimeStamp"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedOn]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedOn]"
+                              name="CreatedOn"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[UpdatedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[UpdatedByID]"
+                              length="10"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[UpdatedByID]"
+                              name="UpdatedByID"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[UpdatedOn]"
+                              dataType="dbTimeStamp"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[UpdatedOn]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[UpdatedOn]"
+                              name="UpdatedOn"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsTransferred]"
+                              dataType="bool"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsTransferred]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsTransferred]"
+                              name="IsTransferred"
+                              truncationRowDisposition="FailComponent" />
+                          </outputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                              dataType="i4"
+                              name="ID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InvoiceCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="17"
+                              name="InvoiceCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="10"
+                              name="ProductCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalesCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="7"
+                              name="SalesCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PackSize]"
+                              codePage="1252"
+                              dataType="str"
+                              length="15"
+                              name="PackSize" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SPS]"
+                              dataType="i4"
+                              name="SPS" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TP]"
+                              dataType="numeric"
+                              name="TP"
+                              precision="18"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Vat]"
+                              dataType="numeric"
+                              name="Vat"
+                              precision="18"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DiscountCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="20"
+                              name="DiscountCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DiscountDetailID]"
+                              dataType="i4"
+                              name="DiscountDetailID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InvoiceQty]"
+                              dataType="i4"
+                              name="InvoiceQty" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BonusQty]"
+                              dataType="i4"
+                              name="BonusQty" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductDiscount]"
+                              dataType="numeric"
+                              name="ProductDiscount"
+                              precision="18"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalTP]"
+                              dataType="numeric"
+                              name="TotalTP"
+                              precision="18"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalVat]"
+                              dataType="numeric"
+                              name="TotalVat"
+                              precision="18"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalAmountDiscount]"
+                              dataType="numeric"
+                              name="TotalAmountDiscount"
+                              precision="18"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalProductDiscount]"
+                              dataType="numeric"
+                              name="TotalProductDiscount"
+                              precision="18"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
+                              dataType="numeric"
+                              name="Amount"
+                              precision="18"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsInvoiceDiscountApplicable]"
+                              dataType="bool"
+                              name="IsInvoiceDiscountApplicable" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MachineID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="200"
+                              name="MachineID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsActive]"
+                              dataType="bool"
+                              name="IsActive" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="10"
+                              name="CreatedByID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedOn]"
+                              dataType="dbTimeStamp"
+                              name="CreatedOn" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[UpdatedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="10"
+                              name="UpdatedByID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[UpdatedOn]"
+                              dataType="dbTimeStamp"
+                              name="UpdatedOn" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsTransferred]"
+                              dataType="bool"
+                              name="IsTransferred" />
+                          </externalMetadataColumns>
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                          isErrorOut="true"
+                          name="OLE DB Source Error Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ID]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ID]"
+                              name="ID" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InvoiceCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="17"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InvoiceCode]"
+                              name="InvoiceCode" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProductCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="10"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProductCode]"
+                              name="ProductCode" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalesCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="7"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalesCode]"
+                              name="SalesCode" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PackSize]"
+                              codePage="1252"
+                              dataType="str"
+                              length="15"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PackSize]"
+                              name="PackSize" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SPS]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SPS]"
+                              name="SPS" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TP]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TP]"
+                              name="TP"
+                              precision="18"
+                              scale="2" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Vat]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Vat]"
+                              name="Vat"
+                              precision="18"
+                              scale="2" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DiscountCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="20"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DiscountCode]"
+                              name="DiscountCode" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DiscountDetailID]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DiscountDetailID]"
+                              name="DiscountDetailID" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InvoiceQty]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InvoiceQty]"
+                              name="InvoiceQty" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BonusQty]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BonusQty]"
+                              name="BonusQty" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProductDiscount]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProductDiscount]"
+                              name="ProductDiscount"
+                              precision="18"
+                              scale="2" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalTP]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalTP]"
+                              name="TotalTP"
+                              precision="18"
+                              scale="2" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalVat]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalVat]"
+                              name="TotalVat"
+                              precision="18"
+                              scale="2" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalAmountDiscount]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalAmountDiscount]"
+                              name="TotalAmountDiscount"
+                              precision="18"
+                              scale="2" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalProductDiscount]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalProductDiscount]"
+                              name="TotalProductDiscount"
+                              precision="18"
+                              scale="2" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Amount]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Amount]"
+                              name="Amount"
+                              precision="18"
+                              scale="2" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsInvoiceDiscountApplicable]"
+                              dataType="bool"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsInvoiceDiscountApplicable]"
+                              name="IsInvoiceDiscountApplicable" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MachineID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="200"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MachineID]"
+                              name="MachineID" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsActive]"
+                              dataType="bool"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsActive]"
+                              name="IsActive" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="10"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedByID]"
+                              name="CreatedByID" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedOn]"
+                              dataType="dbTimeStamp"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedOn]"
+                              name="CreatedOn" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UpdatedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="10"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UpdatedByID]"
+                              name="UpdatedByID" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UpdatedOn]"
+                              dataType="dbTimeStamp"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UpdatedOn]"
+                              name="UpdatedOn" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsTransferred]"
+                              dataType="bool"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsTransferred]"
+                              name="IsTransferred" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\Row Count"
+                      componentClassID="Microsoft.RowCount"
+                      contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                      description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                      name="Row Count">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable to hold the row count."
+                          name="VariableName">User::NumberOfRows</property>
+                      </properties>
+                      <inputs>
+                        <input
+                          refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\Row Count.Inputs[Row Count Input 1]"
+                          hasSideEffects="true"
+                          name="Row Count Input 1">
+                          <externalMetadataColumns />
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\Row Count.Outputs[Row Count Output 1]"
+                          name="Row Count Output 1"
+                          synchronousInputId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\Row Count.Inputs[Row Count Input 1]">
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                  </components>
+                  <paths>
+                    <path
+                      refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL.Paths[Lookup No Match Output]"
+                      endId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\Row Count.Inputs[Row Count Input 1]"
+                      name="Lookup No Match Output"
+                      startId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\Lookup.Outputs[Lookup No Match Output]" />
+                    <path
+                      refId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL.Paths[OLE DB Source Output]"
+                      endId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\Lookup.Inputs[Lookup Input]"
+                      name="OLE DB Source Output"
+                      startId="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output]" />
+                  </paths>
+                </pipeline>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL"
+              DTS:CreationName="Microsoft.Pipeline"
+              DTS:Description="Data Flow Task"
+              DTS:Disabled="True"
+              DTS:DTSID="{4351FBB0-5BFC-48ED-B044-3A6679CF2803}"
+              DTS:ExecutableType="Microsoft.Pipeline"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="STAGE INVOICE DETAIL"
+              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <pipeline
+                  version="1">
+                  <components>
+                    <component
+                      refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination"
+                      componentClassID="Microsoft.OLEDBDestination"
+                      contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                      description="OLE DB Destination"
+                      name="OLE DB Destination"
+                      usesDispositions="true"
+                      version="4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the database object used to open a rowset."
+                          name="OpenRowset">[dbo].[Staging_InvoiceDetail]</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the name of the database object used to open a rowset."
+                          name="OpenRowsetVariable"></property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Forces the use of the DefaultCodePage property value when describing character data."
+                          name="AlwaysUseDefaultCodePage">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the mode used to access the database."
+                          name="AccessMode"
+                          typeConverter="AccessMode">3</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                          name="FastLoadKeepIdentity">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                          name="FastLoadKeepNulls">false</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                          name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                          name="FastLoadMaxInsertCommitSize">2147483647</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[DB_SERVER]"
+                          connectionManagerRefId="Package.ConnectionManagers[DB_SERVER]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                          errorOrTruncationOperation="Insert"
+                          errorRowDisposition="FailComponent"
+                          hasSideEffects="true"
+                          name="OLE DB Destination Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ID]"
+                              cachedDataType="i4"
+                              cachedName="ID"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[ID]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[InvoiceCode]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="17"
+                              cachedName="InvoiceCode"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceCode]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceCode]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ProductCode]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="10"
+                              cachedName="ProductCode"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductCode]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SalesCode]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="7"
+                              cachedName="SalesCode"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SalesCode]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesCode]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PackSize]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="15"
+                              cachedName="PackSize"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PackSize]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[PackSize]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SPS]"
+                              cachedDataType="i4"
+                              cachedName="SPS"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SPS]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[SPS]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TP]"
+                              cachedDataType="numeric"
+                              cachedName="TP"
+                              cachedPrecision="18"
+                              cachedScale="2"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TP]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[TP]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Vat]"
+                              cachedDataType="numeric"
+                              cachedName="Vat"
+                              cachedPrecision="18"
+                              cachedScale="2"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Vat]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[Vat]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DiscountCode]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="20"
+                              cachedName="DiscountCode"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DiscountCode]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[DiscountCode]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DiscountDetailID]"
+                              cachedDataType="i4"
+                              cachedName="DiscountDetailID"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DiscountDetailID]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[DiscountDetailID]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[InvoiceQty]"
+                              cachedDataType="i4"
+                              cachedName="InvoiceQty"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceQty]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceQty]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BonusQty]"
+                              cachedDataType="i4"
+                              cachedName="BonusQty"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BonusQty]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[BonusQty]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ProductDiscount]"
+                              cachedDataType="numeric"
+                              cachedName="ProductDiscount"
+                              cachedPrecision="18"
+                              cachedScale="2"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductDiscount]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductDiscount]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TotalTP]"
+                              cachedDataType="numeric"
+                              cachedName="TotalTP"
+                              cachedPrecision="18"
+                              cachedScale="2"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalTP]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalTP]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TotalVat]"
+                              cachedDataType="numeric"
+                              cachedName="TotalVat"
+                              cachedPrecision="18"
+                              cachedScale="2"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalVat]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalVat]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TotalAmountDiscount]"
+                              cachedDataType="numeric"
+                              cachedName="TotalAmountDiscount"
+                              cachedPrecision="18"
+                              cachedScale="2"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalAmountDiscount]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalAmountDiscount]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TotalProductDiscount]"
+                              cachedDataType="numeric"
+                              cachedName="TotalProductDiscount"
+                              cachedPrecision="18"
+                              cachedScale="2"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalProductDiscount]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalProductDiscount]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Amount]"
+                              cachedDataType="numeric"
+                              cachedName="Amount"
+                              cachedPrecision="18"
+                              cachedScale="2"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[Amount]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IsInvoiceDiscountApplicable]"
+                              cachedDataType="bool"
+                              cachedName="IsInvoiceDiscountApplicable"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsInvoiceDiscountApplicable]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsInvoiceDiscountApplicable]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MachineID]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="200"
+                              cachedName="MachineID"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MachineID]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[MachineID]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IsActive]"
+                              cachedDataType="bool"
+                              cachedName="IsActive"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsActive]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CreatedByID]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="10"
+                              cachedName="CreatedByID"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByID]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedByID]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CreatedOn]"
+                              cachedDataType="dbTimeStamp"
+                              cachedName="CreatedOn"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOn]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedOn]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[UpdatedByID]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="10"
+                              cachedName="UpdatedByID"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedByID]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[UpdatedByID]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[UpdatedOn]"
+                              cachedDataType="dbTimeStamp"
+                              cachedName="UpdatedOn"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedOn]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[UpdatedOn]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IsTransferred]"
+                              cachedDataType="bool"
+                              cachedName="IsTransferred"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsTransferred]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsTransferred]" />
+                          </inputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                              dataType="i4"
+                              name="ID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="17"
+                              name="InvoiceCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="10"
+                              name="ProductCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SalesCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="7"
+                              name="SalesCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PackSize]"
+                              codePage="1252"
+                              dataType="str"
+                              length="15"
+                              name="PackSize" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SPS]"
+                              dataType="i4"
+                              name="SPS" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TP]"
+                              dataType="numeric"
+                              name="TP"
+                              precision="18"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Vat]"
+                              dataType="numeric"
+                              name="Vat"
+                              precision="18"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DiscountCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="20"
+                              name="DiscountCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DiscountDetailID]"
+                              dataType="i4"
+                              name="DiscountDetailID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceQty]"
+                              dataType="i4"
+                              name="InvoiceQty" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BonusQty]"
+                              dataType="i4"
+                              name="BonusQty" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductDiscount]"
+                              dataType="numeric"
+                              name="ProductDiscount"
+                              precision="18"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalTP]"
+                              dataType="numeric"
+                              name="TotalTP"
+                              precision="18"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalVat]"
+                              dataType="numeric"
+                              name="TotalVat"
+                              precision="18"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalAmountDiscount]"
+                              dataType="numeric"
+                              name="TotalAmountDiscount"
+                              precision="18"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalProductDiscount]"
+                              dataType="numeric"
+                              name="TotalProductDiscount"
+                              precision="18"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
+                              dataType="numeric"
+                              name="Amount"
+                              precision="18"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsInvoiceDiscountApplicable]"
+                              dataType="bool"
+                              name="IsInvoiceDiscountApplicable" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MachineID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="200"
+                              name="MachineID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
+                              dataType="bool"
+                              name="IsActive" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="10"
+                              name="CreatedByID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOn]"
+                              dataType="dbTimeStamp"
+                              name="CreatedOn" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="10"
+                              name="UpdatedByID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedOn]"
+                              dataType="dbTimeStamp"
+                              name="UpdatedOn" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsTransferred]"
+                              dataType="bool"
+                              name="IsTransferred" />
+                          </externalMetadataColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="OLE DB Destination Error Output"
+                          synchronousInputId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source"
+                      componentClassID="Microsoft.OLEDBSource"
+                      contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                      description="OLE DB Source"
+                      name="OLE DB Source"
+                      usesDispositions="true"
+                      version="7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the database object used to open a rowset."
+                          name="OpenRowset"></property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the name of the database object used to open a rowset."
+                          name="OpenRowsetVariable"></property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT ID.* FROM Invoice I
+	INNER JOIN InvoiceDetail ID ON I.InvoiceCode = ID.InvoiceCode
+	INNER JOIN 
+	(
+		SELECT MC.ChemistCode, DA.DepotCode FROM MarketChemists MC
+		INNER JOIN TerritoryMarket TM ON MC.MarketCode = TM.MarketCode
+		INNER JOIN TerritoryMaster T ON TM.TerritoryCode = T.TerritoryCode
+		INNER JOIN DepotAreaMapping DA ON T.AreaCode =DA.AreaCode
+	) AS CD ON I.ChemistCode = CD.ChemistCode
+
+	WHERE I.InvoiceDate BETWEEN '2022-12-01' AND '2022-12-09'
+	AND CD.DepotCode = ?</property>
+                        <property
+                          dataType="System.String"
+                          description="The variable that contains the SQL command to be executed."
+                          name="SqlCommandVariable"></property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Forces the use of the DefaultCodePage property value when describing character data."
+                          name="AlwaysUseDefaultCodePage">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the mode used to access the database."
+                          name="AccessMode"
+                          typeConverter="AccessMode">2</property>
+                        <property
+                          dataType="System.String"
+                          description="The mappings between the parameters in the SQL command and variables."
+                          name="ParameterMapping">"Parameter0:Input",{946F106D-C2D0-44EB-B466-376EAF913819};</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[DB_SERVER]"
+                          connectionManagerRefId="Package.ConnectionManagers[DB_SERVER]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output]"
+                          name="OLE DB Source Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[ID]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[ID]"
+                              name="ID"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceCode]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InvoiceCode]"
+                              length="17"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceCode]"
+                              name="InvoiceCode"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductCode]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductCode]"
+                              length="10"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductCode]"
+                              name="ProductCode"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesCode]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalesCode]"
+                              length="7"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesCode]"
+                              name="SalesCode"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[PackSize]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PackSize]"
+                              length="15"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[PackSize]"
+                              name="PackSize"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[SPS]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SPS]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[SPS]"
+                              name="SPS"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[TP]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TP]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[TP]"
+                              name="TP"
+                              precision="18"
+                              scale="2"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[Vat]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Vat]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[Vat]"
+                              name="Vat"
+                              precision="18"
+                              scale="2"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[DiscountCode]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DiscountCode]"
+                              length="20"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[DiscountCode]"
+                              name="DiscountCode"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[DiscountDetailID]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DiscountDetailID]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[DiscountDetailID]"
+                              name="DiscountDetailID"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceQty]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InvoiceQty]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvoiceQty]"
+                              name="InvoiceQty"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[BonusQty]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BonusQty]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[BonusQty]"
+                              name="BonusQty"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductDiscount]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductDiscount]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductDiscount]"
+                              name="ProductDiscount"
+                              precision="18"
+                              scale="2"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalTP]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalTP]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalTP]"
+                              name="TotalTP"
+                              precision="18"
+                              scale="2"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalVat]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalVat]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalVat]"
+                              name="TotalVat"
+                              precision="18"
+                              scale="2"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalAmountDiscount]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalAmountDiscount]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalAmountDiscount]"
+                              name="TotalAmountDiscount"
+                              precision="18"
+                              scale="2"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalProductDiscount]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalProductDiscount]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalProductDiscount]"
+                              name="TotalProductDiscount"
+                              precision="18"
+                              scale="2"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[Amount]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[Amount]"
+                              name="Amount"
+                              precision="18"
+                              scale="2"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsInvoiceDiscountApplicable]"
+                              dataType="bool"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsInvoiceDiscountApplicable]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsInvoiceDiscountApplicable]"
+                              name="IsInvoiceDiscountApplicable"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[MachineID]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MachineID]"
+                              length="200"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[MachineID]"
+                              name="MachineID"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsActive]"
+                              dataType="bool"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsActive]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsActive]"
+                              name="IsActive"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedByID]"
+                              length="10"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedByID]"
+                              name="CreatedByID"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedOn]"
+                              dataType="dbTimeStamp"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedOn]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedOn]"
+                              name="CreatedOn"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[UpdatedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[UpdatedByID]"
+                              length="10"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[UpdatedByID]"
+                              name="UpdatedByID"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[UpdatedOn]"
+                              dataType="dbTimeStamp"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[UpdatedOn]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[UpdatedOn]"
+                              name="UpdatedOn"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsTransferred]"
+                              dataType="bool"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsTransferred]"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsTransferred]"
+                              name="IsTransferred"
+                              truncationRowDisposition="FailComponent" />
+                          </outputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                              dataType="i4"
+                              name="ID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InvoiceCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="17"
+                              name="InvoiceCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="10"
+                              name="ProductCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalesCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="7"
+                              name="SalesCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PackSize]"
+                              codePage="1252"
+                              dataType="str"
+                              length="15"
+                              name="PackSize" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SPS]"
+                              dataType="i4"
+                              name="SPS" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TP]"
+                              dataType="numeric"
+                              name="TP"
+                              precision="18"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Vat]"
+                              dataType="numeric"
+                              name="Vat"
+                              precision="18"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DiscountCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="20"
+                              name="DiscountCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DiscountDetailID]"
+                              dataType="i4"
+                              name="DiscountDetailID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InvoiceQty]"
+                              dataType="i4"
+                              name="InvoiceQty" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BonusQty]"
+                              dataType="i4"
+                              name="BonusQty" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductDiscount]"
+                              dataType="numeric"
+                              name="ProductDiscount"
+                              precision="18"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalTP]"
+                              dataType="numeric"
+                              name="TotalTP"
+                              precision="18"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalVat]"
+                              dataType="numeric"
+                              name="TotalVat"
+                              precision="18"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalAmountDiscount]"
+                              dataType="numeric"
+                              name="TotalAmountDiscount"
+                              precision="18"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalProductDiscount]"
+                              dataType="numeric"
+                              name="TotalProductDiscount"
+                              precision="18"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
+                              dataType="numeric"
+                              name="Amount"
+                              precision="18"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsInvoiceDiscountApplicable]"
+                              dataType="bool"
+                              name="IsInvoiceDiscountApplicable" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MachineID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="200"
+                              name="MachineID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsActive]"
+                              dataType="bool"
+                              name="IsActive" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="10"
+                              name="CreatedByID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedOn]"
+                              dataType="dbTimeStamp"
+                              name="CreatedOn" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[UpdatedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="10"
+                              name="UpdatedByID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[UpdatedOn]"
+                              dataType="dbTimeStamp"
+                              name="UpdatedOn" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsTransferred]"
+                              dataType="bool"
+                              name="IsTransferred" />
+                          </externalMetadataColumns>
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                          isErrorOut="true"
+                          name="OLE DB Source Error Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ID]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ID]"
+                              name="ID" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InvoiceCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="17"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InvoiceCode]"
+                              name="InvoiceCode" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProductCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="10"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProductCode]"
+                              name="ProductCode" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalesCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="7"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalesCode]"
+                              name="SalesCode" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PackSize]"
+                              codePage="1252"
+                              dataType="str"
+                              length="15"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PackSize]"
+                              name="PackSize" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SPS]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SPS]"
+                              name="SPS" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TP]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TP]"
+                              name="TP"
+                              precision="18"
+                              scale="2" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Vat]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Vat]"
+                              name="Vat"
+                              precision="18"
+                              scale="2" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DiscountCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="20"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DiscountCode]"
+                              name="DiscountCode" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DiscountDetailID]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DiscountDetailID]"
+                              name="DiscountDetailID" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InvoiceQty]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InvoiceQty]"
+                              name="InvoiceQty" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BonusQty]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BonusQty]"
+                              name="BonusQty" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProductDiscount]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProductDiscount]"
+                              name="ProductDiscount"
+                              precision="18"
+                              scale="2" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalTP]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalTP]"
+                              name="TotalTP"
+                              precision="18"
+                              scale="2" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalVat]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalVat]"
+                              name="TotalVat"
+                              precision="18"
+                              scale="2" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalAmountDiscount]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalAmountDiscount]"
+                              name="TotalAmountDiscount"
+                              precision="18"
+                              scale="2" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalProductDiscount]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalProductDiscount]"
+                              name="TotalProductDiscount"
+                              precision="18"
+                              scale="2" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Amount]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Amount]"
+                              name="Amount"
+                              precision="18"
+                              scale="2" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsInvoiceDiscountApplicable]"
+                              dataType="bool"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsInvoiceDiscountApplicable]"
+                              name="IsInvoiceDiscountApplicable" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MachineID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="200"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MachineID]"
+                              name="MachineID" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsActive]"
+                              dataType="bool"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsActive]"
+                              name="IsActive" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="10"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedByID]"
+                              name="CreatedByID" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedOn]"
+                              dataType="dbTimeStamp"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedOn]"
+                              name="CreatedOn" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UpdatedByID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="10"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UpdatedByID]"
+                              name="UpdatedByID" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UpdatedOn]"
+                              dataType="dbTimeStamp"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UpdatedOn]"
+                              name="UpdatedOn" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsTransferred]"
+                              dataType="bool"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsTransferred]"
+                              name="IsTransferred" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                  </components>
+                  <paths>
+                    <path
+                      refId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL.Paths[OLE DB Source Output]"
+                      endId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      name="OLE DB Source Output"
+                      startId="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source.Outputs[OLE DB Source Output]" />
+                  </paths>
+                </pipeline>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Foreach Loop Container\INVOICE GROUP.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{2510AB6E-9FD4-4CB8-A45F-B90E0DF65FB0}"
+              DTS:From="Package\Foreach Loop Container\INVOICE GROUP\Execute SQL Task"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Foreach Loop Container\INVOICE GROUP.PrecedenceConstraints[Constraint 1]"
+              DTS:CreationName=""
+              DTS:DTSID="{11E50FD3-CA48-4D39-AAB2-BA1709318DBD}"
+              DTS:From="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 1"
+              DTS:To="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL" />
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\LOG IF OFFLINE"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{42EA3493-A53B-46E0-8F22-D28C1DC43D34}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="LOG IF OFFLINE"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{68CB3892-1D5D-409B-8002-1A0F9CDCFCFD}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="INSERT INTO Maintenance.dbo.DataSyncLog (PackageName, ServerName, ServerStatus)&#xA;VALUES('DATA_SYNC',?,'OFFLINE');" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::LinkedServerName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\SET SERVER OFFLINE"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{2DFB85AF-90D2-4FCB-8600-A406A1E52958}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SET SERVER OFFLINE"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{68CB3892-1D5D-409B-8002-1A0F9CDCFCFD}"
+              SQLTask:SqlStatementSource="UPDATE Maintenance.DBO.ServerList SET IsOnline = 0 WHERE LinkedServerName = ?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::LinkedServerName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{C67589BE-47B3-4544-A78D-A952B72B5920}"
+          DTS:From="Package\Foreach Loop Container\CHECK IS SERVER ONLINE"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Foreach Loop Container\LOG IF OFFLINE"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{57B63EFF-51CE-48D6-B6FC-15F7BC9AC959}"
+          DTS:From="Package\Foreach Loop Container\CHECK IS SERVER ONLINE"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Foreach Loop Container\INVOICE GROUP" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 8]"
+          DTS:CreationName=""
+          DTS:DTSID="{A2DD7600-6441-4C26-80A6-CBEC796A8FF0}"
+          DTS:From="Package\Foreach Loop Container\LOG IF OFFLINE"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 8"
+          DTS:To="Package\Foreach Loop Container\SET SERVER OFFLINE" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{FEABC1B2-EFE9-4AC2-B29B-0A3D07947CC7}"
+          DTS:ObjectName="{FEABC1B2-EFE9-4AC2-B29B-0A3D07947CC7}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::ServerList" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{66FED142-A777-4787-980B-44E0EE641A35}"
+          DTS:ObjectName="{66FED142-A777-4787-980B-44E0EE641A35}"
+          DTS:ValueIndex="2"
+          DTS:VariableName="User::LinkedServerName" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{D4FDBB02-83C9-40C3-8B72-6B6C988EA69D}"
+          DTS:ObjectName="{D4FDBB02-83C9-40C3-8B72-6B6C988EA69D}"
+          DTS:ValueIndex="1"
+          DTS:VariableName="User::IPAddress" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{0D48EB54-1092-4A5C-96C9-A330522C25E3}"
+          DTS:ObjectName="{0D48EB54-1092-4A5C-96C9-A330522C25E3}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::DepotCode" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\GET DEPOT SERVER LIST"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{31524C44-2B07-4963-92F1-23C39C152D02}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="GET DEPOT SERVER LIST"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{68CB3892-1D5D-409B-8002-1A0F9CDCFCFD}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="SELECT ServerName,IPAddress,LinkedServerName&#xA;FROM Maintenance.dbo.ServerList&#xA;WHERE  IsActive = 1&#xA;AND IsOnline = 1&#xA;AND LinkedServerName = 'BSL_SRV'&#xA;&#xA;ORDER BY ORDERNO"
+          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::ServerList" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{86C14260-2755-40AB-9CEB-F1A154C26CEB}"
+      DTS:From="Package\GET DEPOT SERVER LIST"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Foreach Loop Container" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="223,42"
+          Id="Package\Foreach Loop Container\CHECK IS SERVER ONLINE"
+          TopLeft="60.3809523809524,18.1904761904761" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Foreach Loop Container\LOG IF OFFLINE"
+          TopLeft="423.444444444444,24.1111111111111" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Foreach Loop Container\SET SERVER OFFLINE"
+          TopLeft="640,28" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          TopLeft="283.380952380952,42.1507936507936">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="140.063492063492,0"
+              Start="0,0"
+              End="132.563492063492,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="132.563492063492,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="51.0403983754958,5,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 8]"
+          TopLeft="587.444444444444,47.0555555555556">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="52.555555555556,0"
+              Start="0,0"
+              End="45.055555555556,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="45.055555555556,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL"
+          TopLeft="37,173" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL"
+          TopLeft="18,94" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Foreach Loop Container\INVOICE GROUP\Execute SQL Task"
+          TopLeft="36,14" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\INVOICE GROUP.PrecedenceConstraints[Constraint]"
+          TopLeft="116.25,56">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\INVOICE GROUP.PrecedenceConstraints[Constraint 1]"
+          TopLeft="115.75,136">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37"
+              Start="0,0"
+              End="0,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="249,270"
+          Size="249,313"
+          Id="Package\Foreach Loop Container\INVOICE GROUP"
+          TopLeft="58,134" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="171.880952380952,60.1904761904761">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10.6190476190476,73.8095238095239"
+              Start="0,0"
+              End="10.6190476190476,66.3095238095239">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.9047619047619" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.9047619047619"
+                    Point2="0,36.9047619047619"
+                    Point3="4,36.9047619047619" />
+                  <mssgle:LineSegment
+                    End="6.61904761904759,36.9047619047619" />
+                  <mssgle:CubicBezierSegment
+                    Point1="6.61904761904759,36.9047619047619"
+                    Point2="10.6190476190476,36.9047619047619"
+                    Point3="10.6190476190476,40.9047619047619" />
+                  <mssgle:LineSegment
+                    End="10.6190476190476,66.3095238095239" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="1433,845"
+          Size="1433,888"
+          Id="Package\Foreach Loop Container"
+          TopLeft="86,168.571428571429" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\GET DEPOT SERVER LIST"
+          TopLeft="706.154761904762,37.1984126984127" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="804.327380952381,79.1984126984127">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,89.3730158730163"
+              Start="0,0"
+              End="0,81.8730158730163">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,81.8730158730163" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source"
+          TopLeft="344,103" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\Lookup"
+          TopLeft="360,272" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL.Paths[OLE DB Source Output]"
+          TopLeft="417.75,145">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,127"
+              Start="0,0"
+              End="0,119.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,119.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\Row Count"
+          TopLeft="358,439" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL.Paths[Lookup No Match Output]"
+          TopLeft="419.75,314">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,125"
+              Start="0,0"
+              End="0,117.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,117.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-64.6750390625,50.75,129.350078125,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\INVOICE GROUP\INVOICE DETAIL\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Staging_InvoiceDetail]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source"
+          TopLeft="371,172" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination"
+          TopLeft="358,307" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL.Paths[OLE DB Source Output]"
+          TopLeft="444.75,214">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,93"
+              Start="0,0"
+              End="0,85.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,85.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\INVOICE GROUP\STAGE INVOICE DETAIL\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

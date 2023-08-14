@@ -1,0 +1,3028 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/17/2022 2:46:56 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SPC-3"
+  DTS:CreatorName="SPC-3\Jannat"
+  DTS:DTSID="{10FFBEC7-C358-4A10-9B0A-31718DAB2621}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="BulkInsert_Product"
+  DTS:PackageType="5"
+  DTS:VersionBuild="49"
+  DTS:VersionGUID="{AAE6481E-1ED2-432D-ACA7-449B0276529C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DB_SERVER]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{8F1A86B8-1BD6-4CA1-AC5E-0B0928644586}"
+      DTS:ObjectName="DB_SERVER">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.4;User ID=sa;Initial Catalog=SD_DMS;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPiYp7VNS+06RYKbTPrxzeQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAB70aIjyhlhxoBn+ZCjPKLItR7JUVeqZfjF1/r5b3BZOwAAAAAOgAAAAAIAACAAAAAQvp4/6QoGwwDgL7/BzgEHzaxOLhwC0yWlwlnN6T2jrDAAAAA/XueFHQ/xbLVlYSHnU+WoQrdLFTwXFzLjiKGmb0kLccoPKqO6s8uim1NdkVu+JzFAAAAAw/xr6CsGHfn9ybwNmfXGi43XoZAMUuOHF4q05n5H+H+AXcNAlsYi23fMKC9zEfQSyIb5SwUYJM3wkMGy8Drxvw</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PROCESS_SERVER]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D03CE31B-87FA-46BC-BFB7-57C4829C33D1}"
+      DTS:ObjectName="PROCESS_SERVER">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.5;User ID=sa;Initial Catalog=SALES;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPiYp7VNS+06RYKbTPrxzeQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAsW+ESburLj8KvrxOZxx5ZFsXeDKN1s1QO3rdU0Sy81QAAAAAOgAAAAAIAACAAAADIhkd0o+QbR4clyyfUtaMdKpf1DwtFnP1EB2pCTZTM2TAAAADfvocIFy6fZm9bSaVM/N12Krhya8iY7owfplzcbs6O4AXJ6PNpwywSl//TtpJGly1AAAAAVEkHZUTh6UCrrAoFAcEATGXQFn3zEDk7otfRTC4zuveSdj7h8PJI8AKN5Ux9qUerTnfVVDnFg9HTpyxP7OyhEA</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3D92E34E-C235-4C11-BB75-F9551BDFFC24}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="NumberOfRows">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\PRODUCT DAILY"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{F8D4F004-205B-47C6-96A6-7385722BAD9A}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="PRODUCT DAILY">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\PRODUCT DAILY\LOG SYNC STATUS"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{6D8D2ACB-71E1-482C-9AAC-2697E01D4FBC}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="LOG SYNC STATUS"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D03CE31B-87FA-46BC-BFB7-57C4829C33D1}"
+              SQLTask:SqlStatementSource="INSERT INTO Maintenance.dbo.DataSyncLog (PackageName, TaskName, NumberOfRows)&#xA;VALUES('SalesSync_Product','PRODUCT DAILY',?);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::NumberOfRows"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{D3A6D729-6D99-4EE6-BC4E-BA0058B0DC43}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="PRODUCT DAILY SALES"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="LOAD FROM TRANSCATION SERVER"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Declare @DateFrom as varchar(11) = SD_DMS.DBO.getCurrentMonthFirstDate(GETDATE());
+Declare @DateTo  as varchar(11) = GETDATE();
+
+
+--Declare @DateFrom as varchar(11) = '2021-01-01';
+--Declare @DateTo  as varchar(11) =  '2022-12-31';
+
+EXEC  SD_DMS.DBO.SSIS_getProductDailySales @DateFrom, @DateTo;</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DB_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[DB_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          name="InvoiceDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          length="50"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          name="ProductID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[TP]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[TP]"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[TP]"
+                          name="TP"
+                          precision="18"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldQuantity]"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]"
+                          name="SoldQuantity"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                          name="SoldValue"
+                          precision="29"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          dataType="dbDate"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[TP]"
+                          dataType="numeric"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldQuantity]"
+                          dataType="i4"
+                          name="SoldQuantity" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                          dataType="numeric"
+                          name="SoldValue"
+                          precision="29"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          dataType="dbDate"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          name="InvoiceDate" />
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          name="ProductID" />
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[TP]"
+                          dataType="numeric"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[TP]"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldQuantity]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldQuantity]"
+                          name="SoldQuantity" />
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                          dataType="numeric"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                          name="SoldValue"
+                          precision="29"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="PRODUCT DAILY SALES"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[ProductSales_Daily]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].Columns[InvoiceDate]"
+                          cachedDataType="dbDate"
+                          cachedName="InvoiceDate"
+                          externalMetadataColumnId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]" />
+                        <inputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].Columns[TP]"
+                          cachedDataType="numeric"
+                          cachedName="TP"
+                          cachedPrecision="18"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].ExternalColumns[TP]"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[TP]" />
+                        <inputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].Columns[SoldQuantity]"
+                          cachedDataType="i4"
+                          cachedName="SoldQuantity"
+                          externalMetadataColumnId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].ExternalColumns[SoldQuantity]"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]" />
+                        <inputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].Columns[SoldValue]"
+                          cachedDataType="numeric"
+                          cachedName="SoldValue"
+                          cachedPrecision="29"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].ExternalColumns[SoldValue]"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]" />
+                        <inputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ProductID"
+                          externalMetadataColumnId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          dataType="dbTimeStamp"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ProductCode" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].ExternalColumns[TP]"
+                          dataType="numeric"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].ExternalColumns[SoldQuantity]"
+                          dataType="numeric"
+                          name="SoldQuantity"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].ExternalColumns[SoldValue]"
+                          dataType="numeric"
+                          name="SoldValue"
+                          precision="18"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\Row Count"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="Row Count">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::NumberOfRows</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\Row Count.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\Row Count.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\Row Count.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES.Paths[OLE DB Source Output]"
+                  endId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\Row Count.Inputs[Row Count Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES.Paths[Row Count Output 1]"
+                  endId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\PRODUCT DAILY\PRODUCT DAILY SALES\Row Count.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{2896B6BD-C7B5-456C-B985-84391E29CDE5}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="PRODUCT DAILY SALES | LOOKUP"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\DELETE EXISTING ROWS"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                  name="DELETE EXISTING ROWS"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DELETE SALES.DBO.ProductSales_Daily WHERE InvoiceDate = ? AND ProductCode = ? ;</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\DELETE EXISTING ROWS.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\DELETE EXISTING ROWS.Inputs[OLE DB Command Input]"
+                      errorOrTruncationOperation="Command Execution"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Command Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\DELETE EXISTING ROWS.Inputs[OLE DB Command Input].Columns[InvoiceDate]"
+                          cachedDataType="dbDate"
+                          cachedName="InvoiceDate"
+                          externalMetadataColumnId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\DELETE EXISTING ROWS.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]" />
+                        <inputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\DELETE EXISTING ROWS.Inputs[OLE DB Command Input].Columns[ProductID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ProductID"
+                          externalMetadataColumnId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\DELETE EXISTING ROWS.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\DELETE EXISTING ROWS.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          dataType="dbDate"
+                          name="Param_0">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\DELETE EXISTING ROWS.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="12"
+                          name="Param_1">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\DELETE EXISTING ROWS.Outputs[OLE DB Command Output]"
+                      exclusionGroup="1"
+                      name="OLE DB Command Output"
+                      synchronousInputId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\DELETE EXISTING ROWS.Inputs[OLE DB Command Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\DELETE EXISTING ROWS.Outputs[OLE DB Command Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Command Error Output"
+                      synchronousInputId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\DELETE EXISTING ROWS.Inputs[OLE DB Command Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\DELETE EXISTING ROWS.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\DELETE EXISTING ROWS.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\DELETE EXISTING ROWS.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\DELETE EXISTING ROWS.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="LOAD FROM TRANSCATION SERVER"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Declare @DateFrom as varchar(11) = SD_DMS.DBO.getCurrentMonthFirstDate(GETDATE());
+Declare @DateTo  as varchar(11) = GETDATE();
+
+
+--Declare @DateFrom as varchar(11) = '2021-01-01';
+--Declare @DateTo  as varchar(11) =  '2022-12-31';
+
+EXEC  SD_DMS.DBO.SSIS_getProductDailySales @DateFrom, @DateTo;</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DB_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[DB_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          name="InvoiceDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          length="50"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          name="ProductID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[TP]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[TP]"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[TP]"
+                          name="TP"
+                          precision="18"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldQuantity]"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]"
+                          name="SoldQuantity"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                          name="SoldValue"
+                          precision="29"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          dataType="dbDate"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[TP]"
+                          dataType="numeric"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldQuantity]"
+                          dataType="i4"
+                          name="SoldQuantity" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                          dataType="numeric"
+                          name="SoldValue"
+                          precision="29"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          dataType="dbDate"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          name="InvoiceDate" />
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          name="ProductID" />
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[TP]"
+                          dataType="numeric"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[TP]"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldQuantity]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldQuantity]"
+                          name="SoldQuantity" />
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                          dataType="numeric"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                          name="SoldValue"
+                          precision="29"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Lookup"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Declare @DateFrom as varchar(11) = SALES.DBO.getCurrentMonthFirstDate(GETDATE());
+Declare @DateTo  as varchar(11) = GETDATE();
+
+
+SELECT * FROM SALES.DBO.ProductSales_Daily WHERE InvoiceDate BETWEEN @DateFrom AND @DateTo</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (Declare @DateFrom as varchar(11) = SALES.DBO.getCurrentMonthFirstDate(GETDATE());
+Declare @DateTo  as varchar(11) = GETDATE();
+
+
+SELECT * FROM SALES.DBO.ProductSales_Daily WHERE InvoiceDate BETWEEN @DateFrom AND @DateTo) [refTable]
+where [refTable].[InvoiceDate] = ? and [refTable].[ProductCode] = ? and [refTable].[SoldQuantity] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="InvoiceDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProductCode" dataType="DT_STR" length="12" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TP" dataType="DT_NUMERIC" length="0" precision="18" scale="4" codePage="0"/&gt;&lt;referenceColumn name="SoldQuantity" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SoldValue" dataType="DT_NUMERIC" length="0" precision="18" scale="2" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]};#{Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]};#{Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Lookup.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Lookup.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Lookup.Inputs[Lookup Input].Columns[ProductID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ProductID"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">ProductCode</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Lookup.Inputs[Lookup Input].Columns[InvoiceDate]"
+                          cachedDataType="dbDate"
+                          cachedName="InvoiceDate"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">InvoiceDate</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Lookup.Inputs[Lookup Input].Columns[SoldQuantity]"
+                          cachedDataType="i4"
+                          cachedName="SoldQuantity"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">SoldQuantity</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Lookup.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Lookup.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Lookup.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Lookup.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Lookup.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="PRODUCT DAILY SALES"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[ProductSales_Daily]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].Columns[InvoiceDate]"
+                          cachedDataType="dbDate"
+                          cachedName="InvoiceDate"
+                          externalMetadataColumnId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]" />
+                        <inputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].Columns[TP]"
+                          cachedDataType="numeric"
+                          cachedName="TP"
+                          cachedPrecision="18"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].ExternalColumns[TP]"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[TP]" />
+                        <inputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].Columns[SoldQuantity]"
+                          cachedDataType="i4"
+                          cachedName="SoldQuantity"
+                          externalMetadataColumnId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].ExternalColumns[SoldQuantity]"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]" />
+                        <inputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].Columns[SoldValue]"
+                          cachedDataType="numeric"
+                          cachedName="SoldValue"
+                          cachedPrecision="29"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].ExternalColumns[SoldValue]"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]" />
+                        <inputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ProductID"
+                          externalMetadataColumnId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          dataType="dbTimeStamp"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ProductCode" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].ExternalColumns[TP]"
+                          dataType="numeric"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].ExternalColumns[SoldQuantity]"
+                          dataType="numeric"
+                          name="SoldQuantity"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input].ExternalColumns[SoldValue]"
+                          dataType="numeric"
+                          name="SoldValue"
+                          precision="18"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Row Count"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="Row Count">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::NumberOfRows</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Row Count.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Row Count.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Row Count.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP.Paths[Lookup No Match Output]"
+                  endId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Row Count.Inputs[Row Count Input 1]"
+                  name="Lookup No Match Output"
+                  startId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Lookup.Outputs[Lookup No Match Output]" />
+                <path
+                  refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP.Paths[OLE DB Command Output]"
+                  endId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Command Output"
+                  startId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\DELETE EXISTING ROWS.Outputs[OLE DB Command Output]" />
+                <path
+                  refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP.Paths[OLE DB Source Output]"
+                  endId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Lookup.Inputs[Lookup Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP.Paths[Row Count Output 1]"
+                  endId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\DELETE EXISTING ROWS.Inputs[OLE DB Command Input]"
+                  name="Row Count Output 1"
+                  startId="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Row Count.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\PRODUCT DAILY\REMOVE EXISTING DATA"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{4091083C-278B-4427-8487-75C4CFA22280}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="REMOVE EXISTING DATA"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D03CE31B-87FA-46BC-BFB7-57C4829C33D1}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="--DELETE SALES.DBO.ProductSales_Daily&#xA;--WHERE InvoiceDate BETWEEN '2021-01-01' AND '2022-12-31';&#xA;&#xA;&#xA;&#xA;DELETE SALES.DBO.ProductSales_Daily&#xA;WHERE InvoiceDate BETWEEN SALES.DBO.getCurrentMonthFirstDate(GETDATE()) &#xA; AND GETDATE()" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\PRODUCT DAILY.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{D8A03816-D0A8-4CC1-9606-B0EB79D000E3}"
+          DTS:From="Package\PRODUCT DAILY\REMOVE EXISTING DATA"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\PRODUCT DAILY\PRODUCT DAILY SALES" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\PRODUCT DAILY.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{05C13918-9361-4752-BACE-70C6C55AC314}"
+          DTS:From="Package\PRODUCT DAILY\PRODUCT DAILY SALES"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\PRODUCT DAILY\LOG SYNC STATUS" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\PRODUCT MONTHLY"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:Disabled="True"
+      DTS:DTSID="{48F63AD0-B7D4-42A0-9610-587474F69658}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="PRODUCT MONTHLY">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\PRODUCT MONTHLY\LOG SYNC STATUS"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{87AFDE84-7245-4945-9B02-110867DB0D25}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="LOG SYNC STATUS"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D03CE31B-87FA-46BC-BFB7-57C4829C33D1}"
+              SQLTask:SqlStatementSource="INSERT INTO Maintenance.dbo.DataSyncLog (PackageName, TaskName, NumberOfRows)&#xA;VALUES('SalesSync_Product','PRODUCT MONTHLY',?);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::NumberOfRows"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{2FCE5608-E2E5-4377-B6F3-544D8811CCFD}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="PRODUCT MONTHLY SALES"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="LOAD FROM TRANSCATION SERVER"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Declare @DateFrom as varchar(11) = SALES.DBO.getCurrentMonthFirstDate(GETDATE());
+Declare @DateTo  as varchar(11) = GETDATE();
+
+
+--Declare @DateFrom as varchar(11) = '2021-01-01';
+--Declare @DateTo  as varchar(11) =  '2022-12-31';
+
+EXEC  SALES.DBO.getProductMonthlySales  @DateFrom, @DateTo;</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                          name="InvoiceDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          length="50"
+                          lineageId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          name="ProductID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[TP]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[TP]"
+                          lineageId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[TP]"
+                          name="TP"
+                          precision="18"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldQuantity]"
+                          lineageId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]"
+                          name="SoldQuantity"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                          lineageId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                          name="SoldValue"
+                          precision="29"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                          dataType="dbDate"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[TP]"
+                          dataType="numeric"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldQuantity]"
+                          dataType="numeric"
+                          name="SoldQuantity"
+                          precision="38"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                          dataType="numeric"
+                          name="SoldValue"
+                          precision="38"
+                          scale="4" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          dataType="dbDate"
+                          lineageId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                          name="InvoiceDate" />
+                        <outputColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          name="ProductID" />
+                        <outputColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[TP]"
+                          dataType="numeric"
+                          lineageId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[TP]"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldQuantity]"
+                          dataType="numeric"
+                          lineageId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldQuantity]"
+                          name="SoldQuantity"
+                          precision="38"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                          dataType="numeric"
+                          lineageId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                          name="SoldValue"
+                          precision="38"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="PRODUCT MONTHLY SALES"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[ProductSales_Monthly]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES.Inputs[OLE DB Destination Input].Columns[InvoiceDate]"
+                          cachedDataType="dbDate"
+                          cachedName="InvoiceDate"
+                          externalMetadataColumnId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          lineageId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[InvoiceDate]" />
+                        <inputColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES.Inputs[OLE DB Destination Input].Columns[TP]"
+                          cachedDataType="numeric"
+                          cachedName="TP"
+                          cachedPrecision="18"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES.Inputs[OLE DB Destination Input].ExternalColumns[TP]"
+                          lineageId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[TP]" />
+                        <inputColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ProductID"
+                          externalMetadataColumnId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                          lineageId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]" />
+                        <inputColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES.Inputs[OLE DB Destination Input].Columns[SoldQuantity]"
+                          cachedDataType="i4"
+                          cachedName="SoldQuantity"
+                          externalMetadataColumnId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES.Inputs[OLE DB Destination Input].ExternalColumns[MonthlySoldQuantity]"
+                          lineageId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]" />
+                        <inputColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES.Inputs[OLE DB Destination Input].Columns[SoldValue]"
+                          cachedDataType="numeric"
+                          cachedName="SoldValue"
+                          cachedPrecision="29"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES.Inputs[OLE DB Destination Input].ExternalColumns[MonthlySoldValue]"
+                          lineageId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                          dataType="dbTimeStamp"
+                          name="InvoiceDate" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ProductCode" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES.Inputs[OLE DB Destination Input].ExternalColumns[TP]"
+                          dataType="numeric"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES.Inputs[OLE DB Destination Input].ExternalColumns[MonthlySoldQuantity]"
+                          dataType="numeric"
+                          name="MonthlySoldQuantity"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES.Inputs[OLE DB Destination Input].ExternalColumns[MonthlySoldValue]"
+                          dataType="numeric"
+                          name="MonthlySoldValue"
+                          precision="18"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\Row Count"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="Row Count">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::NumberOfRows</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\Row Count.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\Row Count.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\Row Count.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES.Paths[OLE DB Source Output]"
+                  endId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\Row Count.Inputs[Row Count Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES.Paths[Row Count Output 1]"
+                  endId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\Row Count.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\PRODUCT MONTHLY\REMOVE EXISTING DATA"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{B4EB5038-6A1A-4EA0-883E-2B9C813E14D5}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="REMOVE EXISTING DATA"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D03CE31B-87FA-46BC-BFB7-57C4829C33D1}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="DELETE SALES.DBO.ProductSales_Monthly&#xA;WHERE InvoiceDate BETWEEN SALES.DBO.getCurrentMonthFirstDate(GETDATE()) &#xA; AND GETDATE()" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\PRODUCT MONTHLY.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{833BC83D-5C0C-45D0-A85A-ADD8D1E7EFB6}"
+          DTS:From="Package\PRODUCT MONTHLY\REMOVE EXISTING DATA"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\PRODUCT MONTHLY.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{3F54647E-B7E1-4850-921A-93767F0E4B05}"
+          DTS:From="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\PRODUCT MONTHLY\LOG SYNC STATUS" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\PRODUCT YEARLY"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:Disabled="True"
+      DTS:DTSID="{E2902AC0-120E-4C33-BB4D-190EE984EAB1}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="PRODUCT YEARLY">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\PRODUCT YEARLY\LOG SYNC STATUS"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{A9E3F1DC-3BB7-44E7-8511-790CD73FE3B5}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="LOG SYNC STATUS"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D03CE31B-87FA-46BC-BFB7-57C4829C33D1}"
+              SQLTask:SqlStatementSource="INSERT INTO Maintenance.dbo.DataSyncLog (PackageName, TaskName, NumberOfRows)&#xA;VALUES('SalesSync_Product','PRODUCT YEARLY',?);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::NumberOfRows"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{2D476D86-AADF-4254-91D6-D923519285E1}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="PRODUCT YEARLY SALES"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="LOAD FROM TRANSCATION SERVER"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">--Declare @DateFrom as varchar(11) = '2021-01-01';
+--Declare @DateTo  as varchar(11) =  '2022-12-31';
+
+Declare @DateFrom as varchar(11) = SALES.DBO.getCurrentYearFirstDate(GETDATE());
+Declare @DateTo  as varchar(11) = GETDATE();
+
+
+EXEC  SALES.DBO.getProductYearlySales  @DateFrom, @DateTo;</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          length="50"
+                          lineageId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          name="ProductID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[TP]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[TP]"
+                          lineageId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[TP]"
+                          name="TP"
+                          precision="18"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldQuantity]"
+                          lineageId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]"
+                          name="SoldQuantity"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                          lineageId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]"
+                          name="SoldValue"
+                          precision="29"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[Year]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                          lineageId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[Year]"
+                          name="Year"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[TP]"
+                          dataType="numeric"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldQuantity]"
+                          dataType="numeric"
+                          name="SoldQuantity"
+                          precision="38"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[SoldValue]"
+                          dataType="numeric"
+                          name="SoldValue"
+                          precision="38"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                          dataType="i4"
+                          name="Year" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[Year]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[Year]"
+                          name="Year" />
+                        <outputColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          name="ProductID" />
+                        <outputColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[TP]"
+                          dataType="numeric"
+                          lineageId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[TP]"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldQuantity]"
+                          dataType="numeric"
+                          lineageId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldQuantity]"
+                          name="SoldQuantity"
+                          precision="38"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                          dataType="numeric"
+                          lineageId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[SoldValue]"
+                          name="SoldValue"
+                          precision="38"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="PRODUCT YEARLY SALES"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[ProductSales_Yearly]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[PROCESS_SERVER]"
+                      connectionManagerRefId="Package.ConnectionManagers[PROCESS_SERVER]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES.Inputs[OLE DB Destination Input].Columns[TP]"
+                          cachedDataType="numeric"
+                          cachedName="TP"
+                          cachedPrecision="18"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES.Inputs[OLE DB Destination Input].ExternalColumns[TP]"
+                          lineageId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[TP]" />
+                        <inputColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ProductID"
+                          externalMetadataColumnId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                          lineageId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[ProductID]" />
+                        <inputColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES.Inputs[OLE DB Destination Input].Columns[SoldQuantity]"
+                          cachedDataType="i4"
+                          cachedName="SoldQuantity"
+                          externalMetadataColumnId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES.Inputs[OLE DB Destination Input].ExternalColumns[YearlySoldQuantity]"
+                          lineageId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldQuantity]" />
+                        <inputColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES.Inputs[OLE DB Destination Input].Columns[SoldValue]"
+                          cachedDataType="numeric"
+                          cachedName="SoldValue"
+                          cachedPrecision="29"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES.Inputs[OLE DB Destination Input].ExternalColumns[YearlySoldValue]"
+                          lineageId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[SoldValue]" />
+                        <inputColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES.Inputs[OLE DB Destination Input].Columns[Year]"
+                          cachedDataType="i4"
+                          cachedName="Year"
+                          externalMetadataColumnId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                          lineageId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output].Columns[Year]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ProductCode" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES.Inputs[OLE DB Destination Input].ExternalColumns[TP]"
+                          dataType="numeric"
+                          name="TP"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES.Inputs[OLE DB Destination Input].ExternalColumns[YearlySoldQuantity]"
+                          dataType="numeric"
+                          name="YearlySoldQuantity"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES.Inputs[OLE DB Destination Input].ExternalColumns[YearlySoldValue]"
+                          dataType="numeric"
+                          name="YearlySoldValue"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                          dataType="i2"
+                          name="Year" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\Row Count"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="Row Count">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::NumberOfRows</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\Row Count.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\Row Count.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\Row Count.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES.Paths[OLE DB Source Output]"
+                  endId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\Row Count.Inputs[Row Count Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES.Paths[Row Count Output 1]"
+                  endId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\Row Count.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\PRODUCT YEARLY\REMOVE EXISTING DATA"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{0E7C79B4-0C69-4449-AA8E-7C8267EB0171}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="REMOVE EXISTING DATA"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D03CE31B-87FA-46BC-BFB7-57C4829C33D1}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="DELETE SALES.DBO.ProductSales_Yearly&#xA;WHERE YEAR = YEAR(GETDATE())" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\PRODUCT YEARLY.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{05E778BB-C32A-4484-9F03-F288553D797C}"
+          DTS:From="Package\PRODUCT YEARLY\REMOVE EXISTING DATA"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\PRODUCT YEARLY.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{4AD9533E-06AA-44BB-A680-1D791550B2DD}"
+          DTS:From="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\PRODUCT YEARLY\LOG SYNC STATUS" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{CA4FEE81-1CB3-44D8-B3B7-71CBE761864E}"
+      DTS:From="Package\PRODUCT DAILY"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\PRODUCT MONTHLY" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{1BEE8EA2-9930-4BFE-A96A-012E3F45D449}"
+      DTS:From="Package\PRODUCT MONTHLY"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\PRODUCT YEARLY" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="169,42"
+          Id="Package\PRODUCT DAILY\LOG SYNC STATUS"
+          TopLeft="45,335" />
+        <NodeLayout
+          Size="206,42"
+          Id="Package\PRODUCT DAILY\PRODUCT DAILY SALES"
+          TopLeft="22,198" />
+        <NodeLayout
+          Size="241,42"
+          Id="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP"
+          TopLeft="69,262" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\PRODUCT DAILY\REMOVE EXISTING DATA"
+          TopLeft="65,67" />
+        <EdgeLayout
+          Id="Package\PRODUCT DAILY.PrecedenceConstraints[Constraint]"
+          TopLeft="171.5,109">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-46.5,89"
+              Start="0,0"
+              End="-46.5,81.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40.5"
+                    Point2="0,44.5"
+                    Point3="-4,44.5" />
+                  <mssgle:LineSegment
+                    End="-42.5,44.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-42.5,44.5"
+                    Point2="-46.5,44.5"
+                    Point3="-46.5,48.5" />
+                  <mssgle:LineSegment
+                    End="-46.5,81.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\PRODUCT DAILY.PrecedenceConstraints[Constraint 1]"
+          TopLeft="127.25,240">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,95"
+              Start="0,0"
+              End="0,87.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,87.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="346,432"
+          Size="346,475"
+          Id="Package\PRODUCT DAILY"
+          TopLeft="48,67" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\PRODUCT MONTHLY\LOG SYNC STATUS"
+          TopLeft="95,270" />
+        <NodeLayout
+          Size="210,42"
+          Id="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES"
+          TopLeft="69,174" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\PRODUCT MONTHLY\REMOVE EXISTING DATA"
+          TopLeft="65,67" />
+        <EdgeLayout
+          Id="Package\PRODUCT MONTHLY.PrecedenceConstraints[Constraint]"
+          TopLeft="172.75,109">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65"
+              Start="0,0"
+              End="0,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\PRODUCT MONTHLY.PrecedenceConstraints[Constraint 1]"
+          TopLeft="176.75,216">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54"
+              Start="0,0"
+              End="0,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="325,367"
+          Size="325,410"
+          Id="Package\PRODUCT MONTHLY"
+          TopLeft="483,68" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\PRODUCT YEARLY\LOG SYNC STATUS"
+          TopLeft="88,263" />
+        <NodeLayout
+          Size="218,42"
+          Id="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES"
+          TopLeft="70,175" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\PRODUCT YEARLY\REMOVE EXISTING DATA"
+          TopLeft="65,67" />
+        <EdgeLayout
+          Id="Package\PRODUCT YEARLY.PrecedenceConstraints[Constraint]"
+          TopLeft="175.25,109">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66"
+              Start="0,0"
+              End="0,58.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\PRODUCT YEARLY.PrecedenceConstraints[Constraint 1]"
+          TopLeft="175.75,217">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="325,360"
+          Size="325,403"
+          Id="Package\PRODUCT YEARLY"
+          TopLeft="899,76" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="394,304.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="89,-31.5"
+              Start="0,0"
+              End="81.5,-31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="40.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="40.5,0"
+                    Point2="44.5,0"
+                    Point3="44.5,-4" />
+                  <mssgle:LineSegment
+                    End="44.5,-27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="44.5,-27.5"
+                    Point2="44.5,-31.5"
+                    Point3="48.5,-31.5" />
+                  <mssgle:LineSegment
+                    End="81.5,-31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="808,275.25">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="91,0"
+              Start="0,0"
+              End="83.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="83.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\PRODUCT DAILY\PRODUCT DAILY SALES">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="206,42"
+          Id="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES"
+          TopLeft="531,346" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\PRODUCT DAILY\PRODUCT DAILY SALES\Row Count"
+          TopLeft="571,217" />
+        <NodeLayout
+          Size="274,42"
+          Id="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER"
+          TopLeft="501,85" />
+        <EdgeLayout
+          Id="Package\PRODUCT DAILY\PRODUCT DAILY SALES.Paths[Row Count Output 1]"
+          TopLeft="635,259">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,87"
+              Start="0,0"
+              End="0,79.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,79.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\PRODUCT DAILY\PRODUCT DAILY SALES.Paths[OLE DB Source Output]"
+          TopLeft="637,127">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,90"
+              Start="0,0"
+              End="0,82.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,82.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\PRODUCT DAILY\PRODUCT DAILY SALES\PRODUCT DAILY SALES">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\PRODUCT DAILY\PRODUCT DAILY SALES\LOAD FROM TRANSCATION SERVER">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="206,42"
+          Id="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\PRODUCT DAILY SALES"
+          TopLeft="299,534" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Row Count"
+          TopLeft="330,272" />
+        <NodeLayout
+          Size="274,42"
+          Id="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER"
+          TopLeft="259,68" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Lookup"
+          TopLeft="336,157" />
+        <EdgeLayout
+          Id="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP.Paths[OLE DB Source Output]"
+          TopLeft="394.25,110">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP.Paths[Lookup No Match Output]"
+          TopLeft="393.75,199">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,73"
+              Start="0,0"
+              End="0,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,26.9453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="199,42"
+          Id="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\DELETE EXISTING ROWS"
+          TopLeft="298,405" />
+        <EdgeLayout
+          Id="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP.Paths[Row Count Output 1]"
+          TopLeft="396.25,314">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,91"
+              Start="0,0"
+              End="0,83.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,83.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP.Paths[OLE DB Command Output]"
+          TopLeft="399.75,447">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,87"
+              Start="0,0"
+              End="0,79.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,79.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\PRODUCT DAILY\PRODUCT DAILY SALES | LOOKUP\LOAD FROM TRANSCATION SERVER">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="228,42"
+          Id="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES"
+          TopLeft="523,351" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\Row Count"
+          TopLeft="570,214" />
+        <NodeLayout
+          Size="274,42"
+          Id="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER"
+          TopLeft="501,85" />
+        <EdgeLayout
+          Id="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES.Paths[Row Count Output 1]"
+          TopLeft="636,256">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,95"
+              Start="0,0"
+              End="0,87.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,87.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES.Paths[OLE DB Source Output]"
+          TopLeft="636.5,127">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,87"
+              Start="0,0"
+              End="0,79.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,79.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\PRODUCT MONTHLY SALES">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\PRODUCT MONTHLY\PRODUCT MONTHLY SALES\LOAD FROM TRANSCATION SERVER">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="218,42"
+          Id="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES"
+          TopLeft="534,326" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\Row Count"
+          TopLeft="573,206" />
+        <NodeLayout
+          Size="274,42"
+          Id="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER"
+          TopLeft="501,85" />
+        <EdgeLayout
+          Id="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES.Paths[Row Count Output 1]"
+          TopLeft="640.5,248">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,78"
+              Start="0,0"
+              End="0,70.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES.Paths[OLE DB Source Output]"
+          TopLeft="638,127">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,79"
+              Start="0,0"
+              End="0,71.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,71.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\PRODUCT YEARLY SALES">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\PRODUCT YEARLY\PRODUCT YEARLY SALES\LOAD FROM TRANSCATION SERVER">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

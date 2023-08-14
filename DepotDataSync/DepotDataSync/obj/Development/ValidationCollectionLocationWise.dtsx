@@ -1,0 +1,1749 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/17/2022 10:29:15 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SIAMIT"
+  DTS:CreatorName="SIAMIT\Jannat"
+  DTS:DTSID="{09537AE3-E669-4792-8B46-17C203D56F2F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5228.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="ValidationCollectionLocationWise"
+  DTS:PackageType="5"
+  DTS:VersionBuild="687"
+  DTS:VersionGUID="{07713C7D-B3F5-456E-A48E-EBCD9DD0842A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DB_SERVER]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2B2D95FD-E176-42DD-9F09-9EA3A27D495B}"
+      DTS:ObjectName="DB_SERVER">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.4;User ID=sa;Initial Catalog=FM_DMS;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-ValidationSalesLocationWiseOLD-{2B2D95FD-E176-42DD-9F09-9EA3A27D495B}DB_SERVER;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4o4Lzv7alUWR3nBt0Y/yKQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADIJspAI2ajMYZtDEJYREAFAUdpyKrIJ1/y3w63KKzSWwAAAAAOgAAAAAIAACAAAADwW4Bbx+oeww25glNWBvnkNVSWgLF4lFx/o8OxkiPucjAAAADREW8AWGDHjHa3F6gnDMdCXpkdqM9chdcet6Aw1e1vZp30qi2K3NFY8shFQE+rZ1hAAAAAkQTmPKrl80Z5uyk8mUvhQslFsGhbQXMr94TTD1gKSCttVD/cOThvgS25yUu56G8Tw3ya14CPT+jVUBSQz0iyZQ</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DB_SERVER_MAINTENANCE]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0C2D7E90-E4BA-4EC5-AFD1-67EE1A5552AF}"
+      DTS:ObjectName="DB_SERVER_MAINTENANCE">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.4;User ID=sa;Initial Catalog=Maintenance;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-MasterDataSynce_ConsolidationStyle-{0C2D7E90-E4BA-4EC5-AFD1-67EE1A5552AF}DB_SERVER_MAINTENANCE;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4o4Lzv7alUWR3nBt0Y/yKQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABKhTowoMYWpCyV30E6ujnWTBMLH+JzV/3rcVi8Ys4WcgAAAAAOgAAAAAIAACAAAAAmLlFmQt/D3O9eNAhrcWCRQvoYmFXQ+fbUo99+aocDRjAAAADqDpuvzNQTe63rExxeFtJXUM9U9x+6v3g/sjdgfn9S6KJx0eTGB4ANsWY7ppxW2KBAAAAADzSrbhFsiII6VbT/smVQSzfQjckHGmZjL/Ggenew46KHXu31BKAkE+cz2+s1oJshXR+1b6IxgWEdiIaK3hysRQ</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DEPOT_SERVER]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2787FC5D-5C97-4594-9031-C305DD6429BE}"
+      DTS:ObjectName="DEPOT_SERVER">
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::IPAddress]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.42.4\DEPOT_CLONE;User ID=sa;Initial Catalog=Maintenance;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-ValidationSalesLocationWiseOLD-{2787FC5D-5C97-4594-9031-C305DD6429BE}DEPOT_SERVER;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4o4Lzv7alUWR3nBt0Y/yKQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACiV/qXg2AQm9JBELYjxyO6PkLfa3pFN2OEeNgsIj5WlwAAAAAOgAAAAAIAACAAAAAxhMVZYQwLRfCTTBcEaRRpmBF5uBNR7GiNShCoGnBMVyAAAADa2OUFm0ptfF91acW3x8xCH+8yF2bPOdMFIAi23so4xkAAAABhTMy5a0AQ0IRBDAXGNs6NJYelITYWHix8nOKw5fLsOeZWj+gXMTO8RiN9LxU3z7LJ0TzQobn1Os8g5dAMP5mq</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="DB_SERVER"
+      DTS:CreationName="Microsoft.LogProviderSQLServer"
+      DTS:Description="Writes log entries for events to a SQL Server database"
+      DTS:DTSID="{03FABD32-B0EB-43B0-89F1-ED147C2AE562}"
+      DTS:ObjectName="SSIS log provider for SQL Server">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BA112E01-6EA5-4D64-8519-7FB69835C6C4}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::DepotCode]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DepotCode">
+      <DTS:VariableValue
+        DTS:DataType="8">DHK</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C4E38923-1E6A-45BD-8AFE-92427B65FAB0}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::IPAddress]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="IPAddress">
+      <DTS:VariableValue
+        DTS:DataType="8">192.168.42.4\DEPOT_CLONE</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F93AF8E1-B049-42D3-88DD-96C2FBF09046}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::LinkedServerName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LinkedServerName">
+      <DTS:VariableValue
+        DTS:DataType="8">BOG_SRV</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{50002ADD-C144-4312-83FC-16160F195F0B}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ServerList">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{03FABD32-B0EB-43B0-89F1-ED147C2AE562}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{78B09E0B-0206-405E-BEB8-252A08C70BEA}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:ForceExecutionResult="0"
+      DTS:ForceExecValue="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachADOEnumerator"
+        DTS:DTSID="{893275C9-A0AA-44A3-A2C7-6A6ECB3D82A4}"
+        DTS:ObjectName="{893275C9-A0AA-44A3-A2C7-6A6ECB3D82A4}">
+        <DTS:ObjectData>
+          <FEEADO
+            EnumType="EnumerateRowsInFirstTable"
+            VarName="User::ServerList" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\CHECK IS SERVER ONLINE"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:DelayValidation="True"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{5424CC7B-1C2A-46EA-A2A4-6181F944C308}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CHECK IS SERVER ONLINE"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{2B2D95FD-E176-42DD-9F09-9EA3A27D495B}"
+              SQLTask:TimeOut="5"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="DECLARE   @sysservername sysname;&#xA;SELECT  @sysservername = CONVERT(sysname, ?);&#xA;exec&#x9; sys.sp_testlinkedserver @sysservername;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::LinkedServerName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\LOG DATA SYNCED DETAIL"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{8AD051EC-C8EF-4F59-A68A-185DBFE50CA5}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="LOG DATA SYNCED DETAIL"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{2B2D95FD-E176-42DD-9F09-9EA3A27D495B}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="INSERT INTO Maintenance.dbo.MasterDataSyncLog (PackageName, ServerName, ServerStatus)&#xA;VALUES(?,?,'ONLINE');" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::DepotCode"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Sequence Container"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{9270943F-4F72-41DA-A177-100D2579D073}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:ForceExecValue="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Sequence Container">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO"
+              DTS:CreationName="Microsoft.Pipeline"
+              DTS:Description="Data Flow Task"
+              DTS:DTSID="{FB861FDA-E2B2-402D-BFCA-5882E82646BC}"
+              DTS:ExecutableType="Microsoft.Pipeline"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Compare Depot VS HO"
+              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:LoggingOptions
+                DTS:FilterKind="0" />
+              <DTS:ObjectData>
+                <pipeline
+                  version="1">
+                  <components>
+                    <component
+                      refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT"
+                      componentClassID="Microsoft.OLEDBSource"
+                      contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                      description="OLE DB Source"
+                      name="DATA FROM DEPOT"
+                      usesDispositions="true"
+                      version="7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the database object used to open a rowset."
+                          name="OpenRowset"></property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the name of the database object used to open a rowset."
+                          name="OpenRowsetVariable"></property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">Declare @DateFrom varchar(11) = SD_DMS.DBO.getLastMonthFirstDate(GETDATE());
+Declare @DateTo varchar(11) =  DATEADD(DAY,-1,GETDATE())
+
+	-- DEPOT Collection
+
+EXEC FM_DMS.DBO.dataValidation_TerritoryWiseCollection @DateFrom,@DateTo</property>
+                        <property
+                          dataType="System.String"
+                          description="The variable that contains the SQL command to be executed."
+                          name="SqlCommandVariable"></property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Forces the use of the DefaultCodePage property value when describing character data."
+                          name="AlwaysUseDefaultCodePage">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the mode used to access the database."
+                          name="AccessMode"
+                          typeConverter="AccessMode">2</property>
+                        <property
+                          dataType="System.String"
+                          description="The mappings between the parameters in the SQL command and variables."
+                          name="ParameterMapping"></property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[DEPOT_SERVER]"
+                          connectionManagerRefId="Package.ConnectionManagers[DEPOT_SERVER]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output]"
+                          name="OLE DB Source Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].Columns[DepotCode]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].ExternalColumns[DepotCode]"
+                              length="5"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].Columns[DepotCode]"
+                              name="DepotCode"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].Columns[AreaCode]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].ExternalColumns[AreaCode]"
+                              length="5"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].Columns[AreaCode]"
+                              name="AreaCode"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].Columns[AREANAME]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].ExternalColumns[AREANAME]"
+                              length="150"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].Columns[AREANAME]"
+                              name="AREANAME"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].Columns[TerritoryCode]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].ExternalColumns[TerritoryCode]"
+                              length="5"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].Columns[TerritoryCode]"
+                              name="TerritoryCode"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].Columns[TERRITORYNAME]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].ExternalColumns[TERRITORYNAME]"
+                              length="50"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].Columns[TERRITORYNAME]"
+                              name="TERRITORYNAME"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].Columns[MPOID]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].ExternalColumns[MPOID]"
+                              length="10"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].Columns[MPOID]"
+                              name="MPOID"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].Columns[MPOName]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].ExternalColumns[MPOName]"
+                              length="100"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].Columns[MPOName]"
+                              name="MPOName"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].Columns[PaidAmount]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].ExternalColumns[PaidAmount]"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].Columns[PaidAmount]"
+                              name="PaidAmount"
+                              precision="38"
+                              scale="2"
+                              truncationRowDisposition="FailComponent" />
+                          </outputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].ExternalColumns[DepotCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="5"
+                              name="DepotCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].ExternalColumns[AreaCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="5"
+                              name="AreaCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].ExternalColumns[AREANAME]"
+                              codePage="1252"
+                              dataType="str"
+                              length="150"
+                              name="AREANAME" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].ExternalColumns[TerritoryCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="5"
+                              name="TerritoryCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].ExternalColumns[TERRITORYNAME]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="TERRITORYNAME" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].ExternalColumns[MPOID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="10"
+                              name="MPOID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].ExternalColumns[MPOName]"
+                              codePage="1252"
+                              dataType="str"
+                              length="100"
+                              name="MPOName" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].ExternalColumns[PaidAmount]"
+                              dataType="numeric"
+                              name="PaidAmount"
+                              precision="38"
+                              scale="2" />
+                          </externalMetadataColumns>
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Error Output]"
+                          isErrorOut="true"
+                          name="OLE DB Source Error Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Error Output].Columns[DepotCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="5"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Error Output].Columns[DepotCode]"
+                              name="DepotCode" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Error Output].Columns[AreaCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="5"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Error Output].Columns[AreaCode]"
+                              name="AreaCode" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Error Output].Columns[AREANAME]"
+                              codePage="1252"
+                              dataType="str"
+                              length="150"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Error Output].Columns[AREANAME]"
+                              name="AREANAME" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Error Output].Columns[TerritoryCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="5"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Error Output].Columns[TerritoryCode]"
+                              name="TerritoryCode" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Error Output].Columns[TERRITORYNAME]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Error Output].Columns[TERRITORYNAME]"
+                              name="TERRITORYNAME" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Error Output].Columns[MPOID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="10"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Error Output].Columns[MPOID]"
+                              name="MPOID" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Error Output].Columns[MPOName]"
+                              codePage="1252"
+                              dataType="str"
+                              length="100"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Error Output].Columns[MPOName]"
+                              name="MPOName" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Error Output].Columns[PaidAmount]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Error Output].Columns[PaidAmount]"
+                              name="PaidAmount"
+                              precision="38"
+                              scale="2" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\UPDATE  DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG"
+                      componentClassID="Microsoft.OLEDBCommand"
+                      contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                      description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                      name="UPDATE  DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG"
+                      usesDispositions="true"
+                      version="2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          expressionType="Notify"
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE Maintenance.DBO.ValidationCollectionLocationWiseLog 
+SET TotalCollectionInDepot = ?
+WHERE TerritoryCode = ? AND ReportDate = CAST(GETDATE() AS DATE);</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\UPDATE  DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[DB_SERVER]"
+                          connectionManagerRefId="Package.ConnectionManagers[DB_SERVER]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\UPDATE  DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Inputs[OLE DB Command Input]"
+                          errorOrTruncationOperation="Command Execution"
+                          errorRowDisposition="FailComponent"
+                          hasSideEffects="true"
+                          name="OLE DB Command Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\UPDATE  DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Inputs[OLE DB Command Input].Columns[PaidAmount]"
+                              cachedDataType="numeric"
+                              cachedName="PaidAmount"
+                              cachedPrecision="38"
+                              cachedScale="2"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\UPDATE  DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].Columns[PaidAmount]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\UPDATE  DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Inputs[OLE DB Command Input].Columns[TerritoryCode]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="5"
+                              cachedName="TerritoryCode"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\UPDATE  DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output].Columns[TerritoryCode]" />
+                          </inputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\UPDATE  DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                              dataType="numeric"
+                              name="Param_0"
+                              precision="18"
+                              scale="2">
+                              <properties>
+                                <property
+                                  dataType="System.Int32"
+                                  description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                                  name="DBParamInfoFlags">81</property>
+                              </properties>
+                            </externalMetadataColumn>
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\UPDATE  DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                              codePage="1252"
+                              dataType="str"
+                              length="5"
+                              name="Param_1">
+                              <properties>
+                                <property
+                                  dataType="System.Int32"
+                                  description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                                  name="DBParamInfoFlags">65</property>
+                              </properties>
+                            </externalMetadataColumn>
+                          </externalMetadataColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\UPDATE  DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Outputs[OLE DB Command Output]"
+                          exclusionGroup="1"
+                          name="OLE DB Command Output"
+                          synchronousInputId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\UPDATE  DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Inputs[OLE DB Command Input]">
+                          <externalMetadataColumns />
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\UPDATE  DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Outputs[OLE DB Command Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="OLE DB Command Error Output"
+                          synchronousInputId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\UPDATE  DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Inputs[OLE DB Command Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\UPDATE  DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\UPDATE  DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\UPDATE  DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\UPDATE  DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                  </components>
+                  <paths>
+                    <path
+                      refId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO.Paths[OLE DB Source Output]"
+                      endId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\UPDATE  DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Inputs[OLE DB Command Input]"
+                      name="OLE DB Source Output"
+                      startId="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT.Outputs[OLE DB Source Output]" />
+                  </paths>
+                </pipeline>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Foreach Loop Container\Sequence Container\Staging in HO"
+              DTS:CreationName="Microsoft.Pipeline"
+              DTS:Description="Data Flow Task"
+              DTS:DTSID="{F6A4EFE8-5D3B-4BCD-AD48-1B504ADF2840}"
+              DTS:ExecutableType="Microsoft.Pipeline"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Staging in HO"
+              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:LoggingOptions
+                DTS:FilterKind="0" />
+              <DTS:ObjectData>
+                <pipeline
+                  version="1">
+                  <components>
+                    <component
+                      refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO"
+                      componentClassID="Microsoft.OLEDBSource"
+                      contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                      description="OLE DB Source"
+                      name="DATA FROM HO"
+                      usesDispositions="true"
+                      version="7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the database object used to open a rowset."
+                          name="OpenRowset"></property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the name of the database object used to open a rowset."
+                          name="OpenRowsetVariable"></property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">Declare @DateFrom varchar(11) = SD_DMS.DBO.getLastMonthFirstDate(GETDATE());
+Declare @DateTo varchar(11) =  DATEADD(DAY,-1,GETDATE())
+
+Declare @DepotCode varchar(5) = ?
+
+	-- HEAD OFFIC
+
+EXEC dataValidation_TerritoryWiseCollection @DateFrom ,@DateTo , @DepotCode</property>
+                        <property
+                          dataType="System.String"
+                          description="The variable that contains the SQL command to be executed."
+                          name="SqlCommandVariable"></property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Forces the use of the DefaultCodePage property value when describing character data."
+                          name="AlwaysUseDefaultCodePage">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the mode used to access the database."
+                          name="AccessMode"
+                          typeConverter="AccessMode">2</property>
+                        <property
+                          dataType="System.String"
+                          description="The mappings between the parameters in the SQL command and variables."
+                          name="ParameterMapping">"Parameter0:Input",{BA112E01-6EA5-4D64-8519-7FB69835C6C4};</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[DB_SERVER]"
+                          connectionManagerRefId="Package.ConnectionManagers[DB_SERVER]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output]"
+                          name="OLE DB Source Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].Columns[DepotCode]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].ExternalColumns[DepotCode]"
+                              length="5"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].Columns[DepotCode]"
+                              name="DepotCode"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].Columns[AreaCode]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].ExternalColumns[AreaCode]"
+                              length="5"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].Columns[AreaCode]"
+                              name="AreaCode"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].Columns[AREANAME]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].ExternalColumns[AREANAME]"
+                              length="150"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].Columns[AREANAME]"
+                              name="AREANAME"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].Columns[TerritoryCode]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].ExternalColumns[TerritoryCode]"
+                              length="5"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].Columns[TerritoryCode]"
+                              name="TerritoryCode"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].Columns[TERRITORYNAME]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].ExternalColumns[TERRITORYNAME]"
+                              length="50"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].Columns[TERRITORYNAME]"
+                              name="TERRITORYNAME"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].Columns[MPOID]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].ExternalColumns[MPOID]"
+                              length="50"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].Columns[MPOID]"
+                              name="MPOID"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].Columns[MPOName]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].ExternalColumns[MPOName]"
+                              length="100"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].Columns[MPOName]"
+                              name="MPOName"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].Columns[PaidAmount]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].ExternalColumns[PaidAmount]"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].Columns[PaidAmount]"
+                              name="PaidAmount"
+                              precision="38"
+                              scale="2"
+                              truncationRowDisposition="FailComponent" />
+                          </outputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].ExternalColumns[DepotCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="5"
+                              name="DepotCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].ExternalColumns[AreaCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="5"
+                              name="AreaCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].ExternalColumns[AREANAME]"
+                              codePage="1252"
+                              dataType="str"
+                              length="150"
+                              name="AREANAME" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].ExternalColumns[TerritoryCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="5"
+                              name="TerritoryCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].ExternalColumns[TERRITORYNAME]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="TERRITORYNAME" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].ExternalColumns[MPOID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="MPOID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].ExternalColumns[MPOName]"
+                              codePage="1252"
+                              dataType="str"
+                              length="100"
+                              name="MPOName" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].ExternalColumns[PaidAmount]"
+                              dataType="numeric"
+                              name="PaidAmount"
+                              precision="38"
+                              scale="2" />
+                          </externalMetadataColumns>
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Error Output]"
+                          isErrorOut="true"
+                          name="OLE DB Source Error Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Error Output].Columns[DepotCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="5"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Error Output].Columns[DepotCode]"
+                              name="DepotCode" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Error Output].Columns[AreaCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="5"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Error Output].Columns[AreaCode]"
+                              name="AreaCode" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Error Output].Columns[AREANAME]"
+                              codePage="1252"
+                              dataType="str"
+                              length="150"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Error Output].Columns[AREANAME]"
+                              name="AREANAME" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Error Output].Columns[TerritoryCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="5"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Error Output].Columns[TerritoryCode]"
+                              name="TerritoryCode" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Error Output].Columns[TERRITORYNAME]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Error Output].Columns[TERRITORYNAME]"
+                              name="TERRITORYNAME" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Error Output].Columns[MPOID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Error Output].Columns[MPOID]"
+                              name="MPOID" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Error Output].Columns[MPOName]"
+                              codePage="1252"
+                              dataType="str"
+                              length="100"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Error Output].Columns[MPOName]"
+                              name="MPOName" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Error Output].Columns[PaidAmount]"
+                              dataType="numeric"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Error Output].Columns[PaidAmount]"
+                              name="PaidAmount"
+                              precision="38"
+                              scale="2" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\INSERT INTO DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG"
+                      componentClassID="Microsoft.OLEDBDestination"
+                      contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                      description="OLE DB Destination"
+                      name="INSERT INTO DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG"
+                      usesDispositions="true"
+                      version="4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the database object used to open a rowset."
+                          name="OpenRowset">[dbo].[ValidationCollectionLocationWiseLog]</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the name of the database object used to open a rowset."
+                          name="OpenRowsetVariable"></property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Forces the use of the DefaultCodePage property value when describing character data."
+                          name="AlwaysUseDefaultCodePage">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the mode used to access the database."
+                          name="AccessMode"
+                          typeConverter="AccessMode">3</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                          name="FastLoadKeepIdentity">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                          name="FastLoadKeepNulls">false</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                          name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                          name="FastLoadMaxInsertCommitSize">2147483647</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\INSERT INTO DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[DB_SERVER_MAINTENANCE]"
+                          connectionManagerRefId="Package.ConnectionManagers[DB_SERVER_MAINTENANCE]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\INSERT INTO DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Inputs[OLE DB Destination Input]"
+                          errorOrTruncationOperation="Insert"
+                          errorRowDisposition="FailComponent"
+                          hasSideEffects="true"
+                          name="OLE DB Destination Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\INSERT INTO DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Inputs[OLE DB Destination Input].Columns[DepotCode]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="5"
+                              cachedName="DepotCode"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Sequence Container\Staging in HO\INSERT INTO DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Inputs[OLE DB Destination Input].ExternalColumns[DepotCode]"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].Columns[DepotCode]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\INSERT INTO DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Inputs[OLE DB Destination Input].Columns[TerritoryCode]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="5"
+                              cachedName="TerritoryCode"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Sequence Container\Staging in HO\INSERT INTO DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryCode]"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].Columns[TerritoryCode]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\INSERT INTO DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Inputs[OLE DB Destination Input].Columns[PaidAmount]"
+                              cachedDataType="numeric"
+                              cachedName="PaidAmount"
+                              cachedPrecision="38"
+                              cachedScale="2"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Sequence Container\Staging in HO\INSERT INTO DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Inputs[OLE DB Destination Input].ExternalColumns[TotalCollectionInHO]"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].Columns[PaidAmount]" />
+                          </inputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\INSERT INTO DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Inputs[OLE DB Destination Input].ExternalColumns[DepotCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="3"
+                              name="DepotCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\INSERT INTO DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryCode]"
+                              codePage="1252"
+                              dataType="str"
+                              length="5"
+                              name="TerritoryCode" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\INSERT INTO DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOn]"
+                              dataType="dbTimeStamp"
+                              name="CreatedOn" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\INSERT INTO DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Inputs[OLE DB Destination Input].ExternalColumns[ReportDate]"
+                              dataType="dbDate"
+                              name="ReportDate" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\INSERT INTO DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Inputs[OLE DB Destination Input].ExternalColumns[TotalCollectionInHO]"
+                              dataType="numeric"
+                              name="TotalCollectionInHO"
+                              precision="18"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\INSERT INTO DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Inputs[OLE DB Destination Input].ExternalColumns[TotalCollectionInDepot]"
+                              dataType="numeric"
+                              name="TotalCollectionInDepot"
+                              precision="18"
+                              scale="2" />
+                          </externalMetadataColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\INSERT INTO DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Outputs[OLE DB Destination Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="OLE DB Destination Error Output"
+                          synchronousInputId="Package\Foreach Loop Container\Sequence Container\Staging in HO\INSERT INTO DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Inputs[OLE DB Destination Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\INSERT INTO DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\INSERT INTO DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\INSERT INTO DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\INSERT INTO DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\OLE DB Command"
+                      componentClassID="Microsoft.OLEDBCommand"
+                      contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                      description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                      name="OLE DB Command"
+                      usesDispositions="true"
+                      version="2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          expressionType="Notify"
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">DELETE Maintenance.dbo.ValidationCollectionLocationWiseLog WHERE DepotCode = ? AND TerritoryCode = ? </property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\OLE DB Command.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[DB_SERVER_MAINTENANCE]"
+                          connectionManagerRefId="Package.ConnectionManagers[DB_SERVER_MAINTENANCE]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\OLE DB Command.Inputs[OLE DB Command Input]"
+                          errorOrTruncationOperation="Command Execution"
+                          errorRowDisposition="FailComponent"
+                          hasSideEffects="true"
+                          name="OLE DB Command Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\OLE DB Command.Inputs[OLE DB Command Input].Columns[DepotCode]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="5"
+                              cachedName="DepotCode"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Sequence Container\Staging in HO\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].Columns[DepotCode]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\OLE DB Command.Inputs[OLE DB Command Input].Columns[TerritoryCode]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="5"
+                              cachedName="TerritoryCode"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Sequence Container\Staging in HO\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output].Columns[TerritoryCode]" />
+                          </inputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                              codePage="1252"
+                              dataType="str"
+                              length="3"
+                              name="Param_0">
+                              <properties>
+                                <property
+                                  dataType="System.Int32"
+                                  description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                                  name="DBParamInfoFlags">65</property>
+                              </properties>
+                            </externalMetadataColumn>
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                              codePage="1252"
+                              dataType="str"
+                              length="5"
+                              name="Param_1">
+                              <properties>
+                                <property
+                                  dataType="System.Int32"
+                                  description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                                  name="DBParamInfoFlags">65</property>
+                              </properties>
+                            </externalMetadataColumn>
+                          </externalMetadataColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\OLE DB Command.Outputs[OLE DB Command Output]"
+                          exclusionGroup="1"
+                          name="OLE DB Command Output"
+                          synchronousInputId="Package\Foreach Loop Container\Sequence Container\Staging in HO\OLE DB Command.Inputs[OLE DB Command Input]">
+                          <externalMetadataColumns />
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="OLE DB Command Error Output"
+                          synchronousInputId="Package\Foreach Loop Container\Sequence Container\Staging in HO\OLE DB Command.Inputs[OLE DB Command Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Sequence Container\Staging in HO\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Sequence Container\Staging in HO\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                  </components>
+                  <paths>
+                    <path
+                      refId="Package\Foreach Loop Container\Sequence Container\Staging in HO.Paths[OLE DB Command Output]"
+                      endId="Package\Foreach Loop Container\Sequence Container\Staging in HO\INSERT INTO DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG.Inputs[OLE DB Destination Input]"
+                      name="OLE DB Command Output"
+                      startId="Package\Foreach Loop Container\Sequence Container\Staging in HO\OLE DB Command.Outputs[OLE DB Command Output]" />
+                    <path
+                      refId="Package\Foreach Loop Container\Sequence Container\Staging in HO.Paths[OLE DB Source Output]"
+                      endId="Package\Foreach Loop Container\Sequence Container\Staging in HO\OLE DB Command.Inputs[OLE DB Command Input]"
+                      name="OLE DB Source Output"
+                      startId="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO.Outputs[OLE DB Source Output]" />
+                  </paths>
+                </pipeline>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Foreach Loop Container\Sequence Container.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{5EE76BD1-1D63-446B-95F8-315504DA0914}"
+              DTS:From="Package\Foreach Loop Container\Sequence Container\Staging in HO"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO" />
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\SET SERVER OFFLINE"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{1AAD79F4-65C4-4CFE-BC7E-3E46FA68E529}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SET SERVER OFFLINE"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{2B2D95FD-E176-42DD-9F09-9EA3A27D495B}"
+              SQLTask:SqlStatementSource="UPDATE Maintenance.DBO.ServerList SET IsOnline = 0 WHERE LinkedServerName = ?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::LinkedServerName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{A9800BC9-59D3-444B-94CA-E85A4E450684}"
+          DTS:From="Package\Foreach Loop Container\CHECK IS SERVER ONLINE"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Foreach Loop Container\SET SERVER OFFLINE"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{79DA9C00-D5AF-4F97-AD9E-F560E3553A23}"
+          DTS:From="Package\Foreach Loop Container\CHECK IS SERVER ONLINE"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Foreach Loop Container\Sequence Container" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{5705B495-DC91-497C-AE15-47DF356567B0}"
+          DTS:From="Package\Foreach Loop Container\Sequence Container"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Foreach Loop Container\LOG DATA SYNCED DETAIL" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{3E6DEE9C-65AB-4971-86F7-BD397DF2F568}"
+          DTS:ObjectName="{3E6DEE9C-65AB-4971-86F7-BD397DF2F568}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::ServerList" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{D61C478B-98B4-4334-BA74-E2D898A51340}"
+          DTS:ObjectName="{D61C478B-98B4-4334-BA74-E2D898A51340}"
+          DTS:ValueIndex="2"
+          DTS:VariableName="User::LinkedServerName" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{1D42137B-698A-4D7C-859B-36264CEB108E}"
+          DTS:ObjectName="{1D42137B-698A-4D7C-859B-36264CEB108E}"
+          DTS:ValueIndex="1"
+          DTS:VariableName="User::IPAddress" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{1B820E08-9DEC-4C05-8C1B-609DA85F2B48}"
+          DTS:ObjectName="{1B820E08-9DEC-4C05-8C1B-609DA85F2B48}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::DepotCode" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\GET DEPOT SERVER LIST"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{C9503D9D-1BDF-4204-B110-37E2B1350CA3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="GET DEPOT SERVER LIST"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2B2D95FD-E176-42DD-9F09-9EA3A27D495B}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="SELECT ServerName,IPAddress,LinkedServerName&#xA;FROM Maintenance.dbo.ServerList&#xA;WHERE  IsActive = 1&#xA;AND IsOnline = 1&#xA;--And ServerName = 'DHK'&#xA;&#xA;ORDER BY ORDERNO"
+          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::ServerList" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{EA8EA56C-555F-41AD-B10D-B53E64E14F4D}"
+      DTS:From="Package\GET DEPOT SERVER LIST"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Foreach Loop Container" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="223,42"
+          Id="Package\Foreach Loop Container\CHECK IS SERVER ONLINE"
+          TopLeft="83.5238095238095,27.1904761904761" />
+        <NodeLayout
+          Size="209,42"
+          Id="Package\Foreach Loop Container\LOG DATA SYNCED DETAIL"
+          TopLeft="77,463" />
+        <NodeLayout
+          Size="207,42"
+          Id="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO"
+          TopLeft="34.1428571428571,115.857142857143" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Foreach Loop Container\Sequence Container\Staging in HO"
+          TopLeft="56.5,24.5" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Sequence Container.PrecedenceConstraints[Constraint]"
+          TopLeft="139.821428571429,66.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.357142857143"
+              Start="0,0"
+              End="0,41.857142857143">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.857142857143" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="273,225"
+          Size="273,268"
+          Id="Package\Foreach Loop Container\Sequence Container"
+          TopLeft="56.1428571428572,147.714285714286" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Foreach Loop Container\SET SERVER OFFLINE"
+          TopLeft="539,25" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="193.833333333333,69.1904761904761">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,78.5238095238099"
+              Start="0,0"
+              End="0,71.0238095238099">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,71.0238095238099" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 2]"
+          TopLeft="192.642857142857,415.714285714286">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-11.1428571428572,47.285714285714"
+              Start="0,0"
+              End="-11.1428571428572,39.785714285714">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.642857142857" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.642857142857"
+                    Point2="0,23.642857142857"
+                    Point3="-4,23.642857142857" />
+                  <mssgle:LineSegment
+                    End="-7.1428571428572,23.642857142857" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-7.1428571428572,23.642857142857"
+                    Point2="-11.1428571428572,23.642857142857"
+                    Point3="-11.1428571428572,27.642857142857" />
+                  <mssgle:LineSegment
+                    End="-11.1428571428572,39.785714285714" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          TopLeft="306.52380952381,47.0952380952381">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="232.47619047619,0"
+              Start="0,0"
+              End="224.97619047619,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="224.97619047619,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="97.2467475818452,5,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="899,560"
+          Size="899,603"
+          Id="Package\Foreach Loop Container"
+          TopLeft="193.535714285714,184.666666666667" />
+        <NodeLayout
+          Size="233,42"
+          Id="Package\GET DEPOT SERVER LIST"
+          TopLeft="529.54761904762,84.555555555556" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="644.541666666667,126.555555555556">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58.111111111111"
+              Start="0,0"
+              End="0,50.611111111111">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.611111111111" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT"
+          TopLeft="633,90" />
+        <NodeLayout
+          Size="440,42"
+          Id="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\UPDATE  DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG"
+          TopLeft="481,247" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO.Paths[OLE DB Source Output]"
+          TopLeft="725,132">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-24,115"
+              Start="0,0"
+              End="-24,107.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,53.5"
+                    Point2="0,57.5"
+                    Point3="-4,57.5" />
+                  <mssgle:LineSegment
+                    End="-20,57.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-20,57.5"
+                    Point2="-24,57.5"
+                    Point3="-24,61.5" />
+                  <mssgle:LineSegment
+                    End="-24,107.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Foreach Loop Container\Sequence Container\Staging in HO">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO"
+          TopLeft="740,65" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Foreach Loop Container\Sequence Container\Staging in HO\OLE DB Command"
+          TopLeft="741,251" />
+        <NodeLayout
+          Size="462,42"
+          Id="Package\Foreach Loop Container\Sequence Container\Staging in HO\INSERT INTO DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG"
+          TopLeft="595,433" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Sequence Container\Staging in HO.Paths[OLE DB Command Output]"
+          TopLeft="826.75,293">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,140"
+              Start="0,0"
+              End="0,132.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,132.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Sequence Container\Staging in HO.Paths[OLE DB Source Output]"
+          TopLeft="824.5,107">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,144"
+              Start="0,0"
+              End="0,136.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,136.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\Sequence Container\Staging in HO\DATA FROM HO">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\Sequence Container\Staging in HO\INSERT INTO DATA_VALIDATION_TERRITORY_WISE_COLLECTION_LOG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\Sequence Container\Compare Depot VS HO\DATA FROM DEPOT">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
